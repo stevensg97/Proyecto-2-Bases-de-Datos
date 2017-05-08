@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>L3M Super</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"  href="estilos.css">
+    <link rel="shortcut icon" type="image/x-icon" href="Recursos/icon_bancatec.ico">
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+			<div class="logo">
+				<img src="Recursos/logo_bancatec.png" >
+			</div>
+			<nav class="" style="display: block;" id="menunav"><!-- Menu de navegación de la página -->
+				<ul>
+					<li><a href="javascript:mostrar('inicio')"">Inicio</a></li>
+					<li><a href="">Roles</a>
+                        <ul>
+                            <li><a href="javascript:mostrar('crearRol')">Crear</a>
+                            <li><a href="javascript:mostrar('modificarRol')">Modificar</a>
+                            <li><a href="javascript:mostrar('eliminarRol')">Eliminar</a>
+                        </ul>
+                    </li>
+					<li><a href="">Clientes</a>
+                        <ul>
+                            <li><a href="javascript:mostrar('crearCli')">Crear</a>
+                            <li><a href="javascript:mostrar('modificarCli')">Modificar</a>
+                            <li><a href="javascript:mostrar('eliminarCli')">Eliminar</a>
+                        </ul>
+                    </li>
+					<li><a href="javascript:mostrar('cuentas')">Cuentas</a></li>
+					<li><a href="javascript:mostrar('tarjetas')">Tarjetas</a></li>
+					<li><a href="javascript:mostrar('asesores')">Asesores</a></li>
+					<li><a href="javascript:mostrar('prestamos')">Préstamos</a></li>
+					<li><a href="javascript:mostrar('moras')">Moras</a></li>
+					<li><a href="index.html">Salir</a></li>
+				</ul>
+			</nav>
+
+            <nav class="" style="display: none;" id="menunemp">
+                <ul>
+                    
+                    <li><a href="index.html">Salir</a></li>
+                </ul>
+            </nav>
+		</div>
+
+        <!-- Roles -->
+        <div class="contenedor" style="display: none" id="roles">
+            <form action="" name="crearRol" method="post" id="crearRol">
+                <h2>Crear Rol</h2>
+                <input type="text" placeholder="Nombre" name="Nombre" required>
+                <input type="text" placeholder="Descripción" name="Descripcion" required>
+                <input type="button" value="Crear" onclick="postRol();">
+            </form>
+
+
+            <form action="" name="modificarRol" method="post" id="modificarRol">
+                <h2>Modificar Rol</h2>
+                <input type="text" placeholder="Nombre" name="Nombre" required>
+                <input type="text" placeholder="Descripción" name="Descripcion" required>
+                <input type="button" value="Modificar" onclick="putRol();">
+            </form>
+
+
+            <form action="" name="eliminarRol" method="post" id="eliminarRol">
+                <h2>Eliminar Rol</h2>
+                <input type="text" placeholder="Nombre" name="Nombre" required>
+                <input type="button" value="Eliminar" onclick="deleteRol();">
+            </form>
+        </div>
+        <!-- Roles -->
+
+        <!-- Clientes -->
+        <div class="contenedor" style="display: none" id="clientes">
+            <form action="" name="crearCli" method="post" id="crearCli">
+                <h2>Agregar Cliente</h2>
+                <input type="text" placeholder="Primer Nombre" name="PNombre" required>
+                <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
+                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
+                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>Tipo de Cédula:<br>
+                <input type="radio" name="tipo_cedula"  id="Fisica" value="Fisica" onclick="desocultar('crear');" checked>
+                <label for="Fisica"> Física<br></label>
+                <input type="radio" name="tipo_cedula"  id="Juridica" value="Juridica" onclick="ocultar('crear');">
+                <label for="Juridica"> Jurídica<br></label>
+                <input type="number" placeholder="Cédula" name="cedula" required>
+                <input type="text" placeholder="Dirección" name="direccion" required>
+                <input type="number" placeholder="Teléfono" name="telefono" required>
+                <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
+                <input type="button" value="Agregar" onclick="postCli();">
+            </form>
+
+            <form action="" name="modificarCli" method="post" id="modificarCli">
+                <h2>Modificar Cliente</h2>
+                <input type="text" placeholder="Primer Nombre" name="PNombre" required>
+                <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
+                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
+                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>Tipo de Cédula:<br>
+                <input type="radio" name="tipo_cedula"  id="Fisica2" value="Fisica" onclick="desocultar('modificar');" checked>
+                <label for="Fisica2"> Física<br></label>
+                <input type="radio" name="tipo_cedula"  id="Juridica2" value="Juridica" onclick="ocultar('modificar');">
+                <label for="Juridica2"> Jurídica<br></label>
+                <input type="number" placeholder="Cédula" name="cedula" required>
+                <input type="text" placeholder="Dirección" name="direccion" required>
+                <input type="number" placeholder="Teléfono" name="telefono" required>
+                <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
+                <input type="button" value="Modificar" onclick="putCli();">
+            </form>
+
+            <form action="" name="eliminarCli" method="post" id="eliminarCli">
+                <h2>Eliminar Cliente</h2>
+                <input type="number" placeholder="Cédula" name="Cedula" required>
+                <input type="button" value="Eliminar" onclick="deleteCli();">
+            </form>
+        </div>
+        <!-- Proveedores -->
+
+	</header>
+	<div class="contenedor">
+		<p>
+			
+		</p>
+	</div>
+
+
+
+	<script>
+        /*
+        Función para mostrar los elementos de cada pestaña
+        Parámetro: nombre de la pestaña a mostrar  
+        */
+		function mostrar(p1){
+			/*Se hacen invisibles todos los divs */
+            /*document.getElementById('login');
+            roles.style.display='none';*/
+			document.getElementById('roles');
+			roles.style.display='none';
+            document.getElementById('clientes');
+            clientes.style.display='none';
+			/*document.getElementById('sucursales');
+			sucursales.style.display='none';
+			document.getElementById('empleados');
+			empleados.style.display='none';
+			document.getElementById('proveedores');
+			proveedores.style.display='none';
+			document.getElementById('productos');
+			productos.style.display='none';
+			document.getElementById('compras');
+			compras.style.display='none';
+			document.getElementById('horas');
+			horas.style.display='none';
+            document.getElementById('planilla');
+            planilla.style.display='none';
+            document.getElementById('reportes');
+            reportes.style.display='none';
+            document.getElementById('facturacion');
+            facturacion.style.display='none';
+
+			/*Se muestra solo el div que se necesita*/
+
+			switch(p1){
+				case 'crearRol':
+                    roles.style.display="block";
+                    document.getElementById('crearRol');
+                    crearRol.style.display='block';
+                    document.getElementById('modificarRol');
+					modificarRol.style.display='none';
+                    document.getElementById('eliminarRol');
+                    eliminarRol.style.display='none';
+                    break;
+                case 'modificarRol':
+                    roles.style.display="block";
+                    document.getElementById('modificarRol');
+                    modificarRol.style.display='block';
+                    document.getElementById('crearRol');
+                    crearRol.style.display='none';
+                    document.getElementById('eliminarRol');
+                    eliminarRol.style.display='none';
+                    break;
+                case 'eliminarRol':
+                    roles.style.display="block";
+                    document.getElementById('eliminarRol');
+                    eliminarRol.style.display='block';
+                    document.getElementById('modificarRol');
+                    modificarRol.style.display='none';
+                    document.getElementById('crearRol');
+                    crearRol.style.display='none';
+                    break;
+
+                case 'crearCli':
+                    clientes.style.display="block";
+                    document.getElementById('crearCli');
+                    crearCli.style.display='block';
+                    document.getElementById('modificarCli');
+                    modificarCli.style.display='none';
+                    document.getElementById('eliminarCli');
+                    eliminarCli.style.display='none';
+                    break;
+                case 'modificarCli':
+                    clientes.style.display="block";
+                    document.getElementById('modificarCli');
+                    modificarCli.style.display='block';
+                    document.getElementById('crearCli');
+                    crearCli.style.display='none';
+                    document.getElementById('eliminarCli');
+                    eliminarCli.style.display='none';
+                    break;
+                case 'eliminarCli':
+                    clientes.style.display="block";
+                    document.getElementById('eliminarCLi');
+                    eliminarCli.style.display='block';
+                    document.getElementById('modificarCli');
+                    modificarCli.style.display='none';
+                    document.getElementById('crearCli');
+                    crearCli.style.display='none';
+                    break;
+				/*case 'sucursales':
+					sucursales.style.display='block';
+					break;
+				case 'empleados':
+					empleados.style.display='block';
+					break;
+				case 'proveedores':
+					proveedores.style.display='block';
+					break;
+				case 'productos':
+					productos.style.display='block';
+					break;
+				case 'compras':
+					compras.style.display='block';
+					break;
+				case 'horas':
+					horas.style.display='block';
+					break;
+                case 'planilla':
+                    planilla.style.display='block';
+                    break;
+                case 'reportes':
+                    reportes.style.display='block';
+                    break;
+                case 'facturacion':
+                    facturacion.style.display='block';
+                    break;
+                case 'login':
+                    var login = document.getElementById("login");
+                    var xhr = new XMLHttpRequest();
+                    var xhr2 = new XMLHttpRequest();
+                    var user='';
+                    var pass='';
+                    var suc='';
+                    xhr2.onreadystatechange = function() {
+                        if (xhr2.readyState == XMLHttpRequest.DONE) {
+                            var parser, xmlDoc;
+                            var text = xhr2.responseText;
+                            parser = new DOMParser();
+                            xmlDoc = parser.parseFromString(text,"text/xml");
+                            user=xmlDoc.getElementsByTagName("Cedula")[0].childNodes[0].nodeValue;
+                            pass=xmlDoc.getElementsByTagName("Contrasena")[0].childNodes[0].nodeValue;
+                            suc=xmlDoc.getElementsByTagName("Sucursal")[0].childNodes[0].nodeValue;
+
+                        }
+                        
+                    }
+                    xhr2.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value, true);
+                    xhr2.send(null);
+                    
+                    if (login.rol.value=="Administrador") {
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState == XMLHttpRequest.DONE) {
+                                var parser, xmlDoc;
+                                var text = xhr.responseText;
+                                parser = new DOMParser();
+                                xmlDoc = parser.parseFromString(text,"text/xml");
+
+                                if (login.Usuario.value==xmlDoc.getElementsByTagName("Ced_administrador")[0].childNodes[0].nodeValue && login.Contraseña.value==pass) {
+                                    login.style.display='none';
+                                    document.getElementById('menunav').style.display='block';
+                                }
+                                else{
+                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
+                                }
+                            }
+                        }
+                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/sucursal?codigo='+login.Sucursal.value, true);
+                        xhr.send(null);
+                        
+                    }
+                    else{
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState == XMLHttpRequest.DONE) {
+                                var parser, xmlDoc;
+                                var text = xhr.responseText;
+                                parser = new DOMParser();
+                                xmlDoc = parser.parseFromString(text,"text/xml");
+
+                                if (login.Usuario.value==user && login.Contraseña.value==pass && login.Sucursal.value==suc) {
+                                    document.getElementById("menunemp").style.display="block";
+                                    login.style.display="none";
+                                    mostrar("facturacion");
+
+                                }
+                                else{
+                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
+                                }
+                            }
+                        }
+                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value+'&contrasena='+login.Contraseña.value+'&codigo_sucursal='+login.Sucursal.value, true);
+                        xhr.send(null);
+
+                    }
+                    break;*/
+				default:
+					
+			}
+        }
+
+
+        function limpiar(p1){
+            var tabla = document.getElementById(p1);
+            while(tabla.rows.length!=1){
+                tabla.deleteRow(1);
+            }
+        }
+
+        function ocultar(p1){
+            if(p1=='crear'){
+                document.getElementById('crearCli');
+                crearCli.PNombre.placeholder='Nombre';
+                crearCli.SNombre.style.display='none';
+                crearCli.PApellido.style.display='none';
+                crearCli.SApellido.style.display='none';
+            }
+            else{
+                document.getElementById('modificarCli');
+                modificarCli.PNombre.placeholder='Nombre';
+                modificarCli.SNombre.style.display='none';
+                modificarCli.PApellido.style.display='none';
+                modificarCli.SApellido.style.display='none';
+            }
+        }
+
+        function desocultar(p1){
+            if (p1=='crear') {
+                document.getElementById('crearCli');
+                crearCli.PNombre.placeholder='Primer Nombre';
+                crearCli.SNombre.style.display='block';
+                crearCli.PApellido.style.display='block';
+                crearCli.SApellido.style.display='block';
+            }
+            else{
+                document.getElementById('modificarCli');
+                modificarCli.PNombre.placeholder='Primer Nombre';
+                modificarCli.SNombre.style.display='block';
+                modificarCli.PApellido.style.display='block';
+                modificarCli.SApellido.style.display='block';
+            }
+        }
+    </script>
+</body>
+</html>
