@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>L3M Super</title>
+	<title>BancaTec</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet"  href="estilos.css">
     <link rel="shortcut icon" type="image/x-icon" href="Recursos/icon_bancatec.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<header>
@@ -18,21 +18,29 @@
 			<nav class="" style="display: block;" id="menunav"><!-- Menu de navegación de la página -->
 				<ul>
 					<li><a href="javascript:mostrar('inicio')"">Inicio</a></li>
-					<li><a href="">Roles</a>
+					<li><a>Roles</a>
                         <ul>
                             <li><a href="javascript:mostrar('crearRol')">Crear</a>
                             <li><a href="javascript:mostrar('modificarRol')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarRol')">Eliminar</a>
                         </ul>
                     </li>
-					<li><a href="">Clientes</a>
+					<li><a>Clientes</a>
                         <ul>
                             <li><a href="javascript:mostrar('crearCli')">Crear</a>
                             <li><a href="javascript:mostrar('modificarCli')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarCli')">Eliminar</a>
                         </ul>
                     </li>
-					<li><a href="javascript:mostrar('cuentas')">Cuentas</a></li>
+					<li><a href="javascript:mostrar('cuentas')">Cuentas</a>
+                        <ul>
+                            <li><a href="javascript:mostrar('crearCue')">Crear</a>
+                            <li><a href="javascript:mostrar('modificarCue')">Modificar</a>
+                            <li><a href="javascript:mostrar('eliminarCue')">Eliminar</a>
+                            <li><a href="javascript:mostrar('depositoCue')">Depósito</a>
+                            <li><a href="javascript:mostrar('retiroCue')">Retiro</a>
+                        </ul>    
+                    </li>
 					<li><a href="javascript:mostrar('tarjetas')">Tarjetas</a></li>
 					<li><a href="javascript:mostrar('asesores')">Asesores</a></li>
 					<li><a href="javascript:mostrar('prestamos')">Préstamos</a></li>
@@ -89,7 +97,13 @@
                 <label for="Juridica"> Jurídica<br></label>
                 <input type="number" placeholder="Cédula" name="cedula" required>
                 <input type="text" placeholder="Dirección" name="direccion" required>
-                <input type="number" placeholder="Teléfono" name="telefono" required>
+                <input type="number" placeholder="Teléfono" name="telefono" required> Tipo de moneda de la cuenta:<br>
+                <input type="radio" name="moneda_cuenta"  id="Colones" value="Colones" onclick="moneda('Colones');" checked>
+                <label for="Colones"> Colones<br></label>
+                <input type="radio" name="moneda_cuenta"  id="Dolares" value="Dólares" onclick="moneda('Dolares');">
+                <label for="Dolares"> Dólares<br></label>
+                <input type="radio" name="moneda_cuenta"  id="Euros" value="Euros" onclick="moneda('Euros');">
+                <label for="Euros"> Euros<br></label>
                 <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
                 <input type="button" value="Agregar" onclick="postCli();">
             </form>
@@ -106,7 +120,13 @@
                 <label for="Juridica2"> Jurídica<br></label>
                 <input type="number" placeholder="Cédula" name="cedula" required>
                 <input type="text" placeholder="Dirección" name="direccion" required>
-                <input type="number" placeholder="Teléfono" name="telefono" required>
+                <input type="number" placeholder="Teléfono" name="telefono" required> Tipo de moneda de la cuenta:<br>
+                <input type="radio" name="moneda_cuenta"  id="Colones2" value="Colones" onclick="monedamod('Colones');" checked>
+                <label for="Colones2"> Colones<br></label>
+                <input type="radio" name="moneda_cuenta"  id="Dolares2" value="Dólares" onclick="monedamod('Dolares');">
+                <label for="Dolares2"> Dólares<br></label>
+                <input type="radio" name="moneda_cuenta"  id="Euros2" value="Euros" onclick="monedamod('Euros');">
+                <label for="Euros2"> Euros<br></label>
                 <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
                 <input type="button" value="Modificar" onclick="putCli();">
             </form>
@@ -117,7 +137,69 @@
                 <input type="button" value="Eliminar" onclick="deleteCli();">
             </form>
         </div>
-        <!-- Proveedores -->
+        <!-- Clientes -->
+
+        <!-- Cuentas -->
+        <div class="contenedor" style="display: none" id="cuentas">
+            <form action="" name="crearCue" method="post" id="crearCue">
+                <h2>Crear Cuenta</h2>
+                <input type="number" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="text" placeholder="Descripción" name="Descripcion" required> Tipo de moneda de la cuenta:<br>
+                <input type="radio" name="moneda_cuenta"  id="ColonesCue" value="Colones" onclick="moneda('Colones');" checked>
+                <label for="ColonesCue"> Colones<br></label>
+                <input type="radio" name="moneda_cuenta"  id="DolaresCue" value="Dólares" onclick="moneda('Dolares');">
+                <label for="DolaresCue"> Dólares<br></label>
+                <input type="radio" name="moneda_cuenta"  id="EurosCue" value="Euros" onclick="moneda('Euros');">
+                <label for="EurosCue"> Euros<br></label> Tipo de cuenta:<br>
+                <input type="radio" name="tipo_cuenta"  id="Ahorros" value="Ahorros" onclick="moneda('Colones');" checked>
+                <label for="Ahorros"> Ahorros<br></label>
+                <input type="radio" name="tipo_cuenta"  id="Corriente" value="Corriente" onclick="moneda('Dolares');">
+                <label for="Corriente"> Corriente<br></label>
+                <input type="number" placeholder="Cédula del Cliente" name="cedula" required>
+                <input type="button" value="Modificar" onclick="postCue();">
+            </form>
+
+
+            <form action="" name="modificarCue" method="post" id="modificarCue">
+                <h2>Modificar Cuenta</h2>
+                <input type="number" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="text" placeholder="Descripción" name="Descripcion" required> Tipo de moneda de la cuenta:<br>
+                <input type="radio" name="moneda_cuenta"  id="ColonesCue2" value="Colones" onclick="moneda('Colones');" checked>
+                <label for="ColonesCue2"> Colones<br></label>
+                <input type="radio" name="moneda_cuenta"  id="DolaresCue2" value="Dólares" onclick="moneda('Dolares');">
+                <label for="DolaresCue2"> Dólares<br></label>
+                <input type="radio" name="moneda_cuenta"  id="EurosCue2" value="Euros" onclick="moneda('Euros');">
+                <label for="EurosCue2"> Euros<br></label> Tipo de cuenta:<br>
+                <input type="radio" name="tipo_cuenta"  id="Ahorros2" value="Ahorros" onclick="moneda('Colones');" checked>
+                <label for="Ahorros2"> Ahorros<br></label>
+                <input type="radio" name="tipo_cuenta"  id="Corriente2" value="Corriente" onclick="moneda('Dolares');">
+                <label for="Corriente2"> Corriente<br></label>
+                <input type="number" placeholder="Cédula del Cliente" name="cedula" required>
+                <input type="button" value="Modificar" onclick="putCue();">
+            </form>
+
+
+            <form action="" name="eliminarCue" method="post" id="eliminarCue">
+                <h2>Eliminar Cuenta</h2>
+                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="button" value="Eliminar" onclick="deleteCue();">
+            </form>
+
+            <form action="" name="depositoCue" method="post" id="depositoCue">
+                <h2>Depósito</h2>
+                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="number" placeholder="Monto" name="Monto" required>
+                <input type="button" value="Depositar" onclick="depositarCue();">
+            </form>
+
+            <form action="" name="retiroCue" method="post" id="retiroCue">
+                <h2>Retiro</h2>
+                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="number" placeholder="Monto" name="Monto" required>
+                <input type="button" value="Retirar" onclick="deleteCue();">
+            </form>
+        </div>
+        <!-- Cuentas -->
 
 	</header>
 	<div class="contenedor">
@@ -141,6 +223,8 @@
 			roles.style.display='none';
             document.getElementById('clientes');
             clientes.style.display='none';
+            document.getElementById('cuentas');
+            cuentas.style.display='none';
 			/*document.getElementById('sucursales');
 			sucursales.style.display='none';
 			document.getElementById('empleados');
@@ -217,6 +301,72 @@
                     modificarCli.style.display='none';
                     document.getElementById('crearCli');
                     crearCli.style.display='none';
+                    break;
+
+                case 'crearCue':
+                    cuentas.style.display="block";
+                    document.getElementById('crearCue');
+                    crearCue.style.display='block';
+                    document.getElementById('modificarCue');
+                    modificarCue.style.display='none';
+                    document.getElementById('eliminarCue');
+                    eliminarCue.style.display='none';
+                    document.getElementById('depositoCue');
+                    depositoCue.style.display='none';
+                    document.getElementById('retiroCue');
+                    retiroCue.style.display='none';
+                    break;
+                case 'modificarCue':
+                    cuentas.style.display="block";
+                    document.getElementById('modificarCue');
+                    modificarCue.style.display='block';
+                    document.getElementById('crearCli');
+                    crearCue.style.display='none';
+                    document.getElementById('eliminarCue');
+                    eliminarCue.style.display='none';
+                    document.getElementById('depositoCue');
+                    depositoCue.style.display='none';
+                    document.getElementById('retiroCue');
+                    retiroCue.style.display='none';
+                    break;
+                case 'eliminarCue':
+                    cuentas.style.display="block";
+                    document.getElementById('eliminarCue');
+                    eliminarCue.style.display='block';
+                    document.getElementById('modificarCue');
+                    modificarCue.style.display='none';
+                    document.getElementById('crearCue');
+                    crearCue.style.display='none';
+                    document.getElementById('depositoCue');
+                    depositoCue.style.display='none';
+                    document.getElementById('retiroCue');
+                    retiroCue.style.display='none';
+                    break;
+                case 'depositoCue':
+                    cuentas.style.display="block";
+                    document.getElementById('modificarCue');
+                    modificarCue.style.display='none';
+                    document.getElementById('crearCli');
+                    crearCue.style.display='none';
+                    document.getElementById('eliminarCue');
+                    eliminarCue.style.display='none';
+                    document.getElementById('depositoCue');
+                    depositoCue.style.display='block';
+                    document.getElementById('retiroCue');
+                    retiroCue.style.display='none';
+                    break;
+                case 'retiroCue':
+                    cuentas.style.display="block";
+                    document.getElementById('eliminarCue');
+                    eliminarCue.style.display='none';
+                    document.getElementById('modificarCue');
+                    modificarCue.style.display='none';
+                    document.getElementById('crearCue');
+                    crearCue.style.display='none';
+                    document.getElementById('depositoCue');
+                    depositoCue.style.display='none';
+                    document.getElementById('retiroCue');
+                    retiroCue.style.display='block';
                     break;
 				/*case 'sucursales':
 					sucursales.style.display='block';
@@ -358,6 +508,42 @@
                 modificarCli.PApellido.style.display='block';
                 modificarCli.SApellido.style.display='block';
                 
+            }
+        }
+
+        function moneda(p1){
+            switch(p1){
+                case 'Dolares':
+                    document.getElementById('crearCli');
+                    crearCli.ingreso.placeholder='$ Ingreso Mensual';
+                    break;
+                case 'Euros':
+                    document.getElementById('crearCli');
+                    crearCli.ingreso.placeholder='€ Ingreso Mensual';
+                    break;
+                case 'Colones':
+                    document.getElementById('crearCli');
+                    crearCli.ingreso.placeholder='₡ Ingreso Mensual';
+                    break;
+                default:
+            }
+        }
+
+        function monedamod(p1){
+            switch(p1){
+                case 'Dolares':
+                    document.getElementById('modificarCli');
+                    modificarCli.ingreso.placeholder='$ Ingreso Mensual';
+                    break;
+                case 'Euros':
+                    document.getElementById('modificarCli');
+                    modificarCli.ingreso.placeholder='€ Ingreso Mensual';
+                    break;
+                case 'Colones':
+                    document.getElementById('modificarCli');
+                    modificarCli.ingreso.placeholder='₡ Ingreso Mensual';
+                    break;
+                default:
             }
         }
     </script>
