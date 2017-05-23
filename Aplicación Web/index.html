@@ -60,6 +60,7 @@
                             <li><a href="javascript:mostrar('crearAse')">Crear</a>
                             <li><a href="javascript:mostrar('modificarAse')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarAse')">Eliminar</a>
+                            <li><a href="javascript:mostrar('reporteAse')">Reporte</a>
                         </ul>
                     </li>
 					<li><a>Préstamos</a>
@@ -128,18 +129,18 @@
                 <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
                 <input type="text" placeholder="Primer Apellido" name="PApellido" required>
                 <input type="text" placeholder="Segundo Apellido" name="SApellido" required>Tipo de Cédula:<br>
-                <input type="radio" name="tipo_cedula"  id="Fisica" value="Fisica" onclick="desocultar('crear');" checked>
+                <input type="radio" name="tipo_cedula"  id="Fisica" value="Fisico" onclick="desocultar('crear');" checked>
                 <label for="Fisica"> Física<br></label>
-                <input type="radio" name="tipo_cedula"  id="Juridica" value="Juridica" onclick="ocultar('crear');">
+                <input type="radio" name="tipo_cedula"  id="Juridica" value="Juridico" onclick="ocultar('crear');">
                 <label for="Juridica"> Jurídica<br></label>
                 <input type="number" placeholder="Cédula" name="cedula" required>
                 <input type="text" placeholder="Dirección" name="direccion" required>
                 <input type="number" placeholder="Teléfono" name="telefono" required> Tipo de moneda del ingreso:<br>
-                <input type="radio" name="moneda_cuenta"  id="Colones" value="Colones" onclick="moneda('Colones');" checked>
+                <input type="radio" name="moneda_ingreso"  id="Colones" value="Colones" onclick="moneda('Colones');" checked>
                 <label for="Colones"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Dolares" value="Dólares" onclick="moneda('Dolares');">
+                <input type="radio" name="moneda_ingreso"  id="Dolares" value="Dolares" onclick="moneda('Dolares');">
                 <label for="Dolares"> Dólares<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Euros" value="Euros" onclick="moneda('Euros');">
+                <input type="radio" name="moneda_ingreso"  id="Euros" value="Euros" onclick="moneda('Euros');">
                 <label for="Euros"> Euros<br></label>
                 <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
                 <input type="button" value="Agregar" onclick="postCli();">
@@ -151,20 +152,24 @@
                 <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
                 <input type="text" placeholder="Primer Apellido" name="PApellido" required>
                 <input type="text" placeholder="Segundo Apellido" name="SApellido" required>Tipo de Cédula:<br>
-                <input type="radio" name="tipo_cedula"  id="Fisica2" value="Fisica" onclick="desocultar('modificar');" checked>
+                <input type="radio" name="tipo_cedula"  id="Fisica2" value="Fisico" onclick="desocultar('modificar');" checked>
                 <label for="Fisica2"> Física<br></label>
-                <input type="radio" name="tipo_cedula"  id="Juridica2" value="Juridica" onclick="ocultar('modificar');">
+                <input type="radio" name="tipo_cedula"  id="Juridica2" value="Juridico" onclick="ocultar('modificar');">
                 <label for="Juridica2"> Jurídica<br></label>
                 <input type="number" placeholder="Cédula" name="cedula" required>
                 <input type="text" placeholder="Dirección" name="direccion" required>
-                <input type="number" placeholder="Teléfono" name="telefono" required> Tipo de moneda de la cuenta:<br>
-                <input type="radio" name="moneda_cuenta"  id="Colones2" value="Colones" onclick="monedamod('Colones');" checked>
+                <input type="number" placeholder="Teléfono" name="telefono" required> Tipo de moneda del ingreso:<br>
+                <input type="radio" name="moneda_ingreso"  id="Colones2" value="Colones" onclick="monedamod('Colones');" checked>
                 <label for="Colones2"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Dolares2" value="Dólares" onclick="monedamod('Dolares');">
+                <input type="radio" name="moneda_ingreso"  id="Dolares2" value="Dolares" onclick="monedamod('Dolares');">
                 <label for="Dolares2"> Dólares<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Euros2" value="Euros" onclick="monedamod('Euros');">
+                <input type="radio" name="moneda_ingreso"  id="Euros2" value="Euros" onclick="monedamod('Euros');">
                 <label for="Euros2"> Euros<br></label>
-                <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
+                <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>Cambiar contraseña:<br>
+                <input type="radio" name="cambiar_con"  id="Si" value="Si" checked>
+                <label for="Si"> Si<br></label>
+                <input type="radio" name="cambiar_con"  id="No" value="No">
+                <label for="No"> No<br></label>
                 <input type="button" value="Modificar" onclick="putCli();">
             </form>
 
@@ -184,7 +189,7 @@
                 <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
                 <input type="text" placeholder="Primer Apellido" name="PApellido" required>
                 <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="number" placeholder="Cédula" name="cedula" required>
+                <input type="number" placeholder="Cédula" name="Cedula" required>
                 <input type="button" value="Agregar" onclick="postEmp();">
             </form>
 
@@ -194,7 +199,11 @@
                 <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
                 <input type="text" placeholder="Primer Apellido" name="PApellido" required>
                 <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="number" placeholder="Cédula" name="cedula" required>
+                <input type="number" placeholder="Cédula" name="Cedula" required>Cambiar contraseña:<br>
+                <input type="radio" name="cambiar_con"  id="Si2" value="Si" checked>
+                <label for="Si2"> Si<br></label>
+                <input type="radio" name="cambiar_con"  id="No2" value="No">
+                <label for="No2"> No<br></label>
                 <input type="button" value="Modificar" onclick="putEmp();">
             </form>
 
@@ -214,7 +223,7 @@
                 <input type="text" placeholder="Descripción" name="Descripcion" required> Tipo de moneda de la cuenta:<br>
                 <input type="radio" name="moneda_cuenta"  id="ColonesCue" value="Colones" onclick="moneda('Colones');" checked>
                 <label for="ColonesCue"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="DolaresCue" value="Dólares" onclick="moneda('Dolares');">
+                <input type="radio" name="moneda_cuenta"  id="DolaresCue" value="Dolares" onclick="moneda('Dolares');">
                 <label for="DolaresCue"> Dólares<br></label>
                 <input type="radio" name="moneda_cuenta"  id="EurosCue" value="Euros" onclick="moneda('Euros');">
                 <label for="EurosCue"> Euros<br></label> Tipo de cuenta:<br>
@@ -222,18 +231,20 @@
                 <label for="Ahorros"> Ahorros<br></label>
                 <input type="radio" name="tipo_cuenta"  id="Corriente" value="Corriente" onclick="moneda('Dolares');">
                 <label for="Corriente"> Corriente<br></label>
+                <input type="number" placeholder="Saldo" name="Saldo" required>
                 <input type="number" placeholder="Cédula del Cliente" name="cedula" required>
-                <input type="button" value="Modificar" onclick="postCue();">
+                <input type="button" value="Crear" onclick="postCue();">
             </form>
 
 
             <form action="" name="modificarCue" method="post" id="modificarCue">
                 <h2>Modificar Cuenta</h2>
                 <!--<input type="number" placeholder="Número de Cuenta" name="Numero" required>-->
+                <input type="number" placeholder="Número de Cuenta" name="Cuenta" required>
                 <input type="text" placeholder="Descripción" name="Descripcion" required> Tipo de moneda de la cuenta:<br>
                 <input type="radio" name="moneda_cuenta"  id="ColonesCue2" value="Colones" onclick="moneda('Colones');" checked>
                 <label for="ColonesCue2"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="DolaresCue2" value="Dólares" onclick="moneda('Dolares');">
+                <input type="radio" name="moneda_cuenta"  id="DolaresCue2" value="Dolares" onclick="moneda('Dolares');">
                 <label for="DolaresCue2"> Dólares<br></label>
                 <input type="radio" name="moneda_cuenta"  id="EurosCue2" value="Euros" onclick="moneda('Euros');">
                 <label for="EurosCue2"> Euros<br></label> Tipo de cuenta:<br>
@@ -241,6 +252,7 @@
                 <label for="Ahorros2"> Ahorros<br></label>
                 <input type="radio" name="tipo_cuenta"  id="Corriente2" value="Corriente" onclick="moneda('Dolares');">
                 <label for="Corriente2"> Corriente<br></label>
+                <input type="number" placeholder="Saldo" name="Saldo" required>
                 <input type="number" placeholder="Cédula del Cliente" name="cedula" required>
                 <input type="button" value="Modificar" onclick="putCue();">
             </form>
@@ -248,22 +260,34 @@
 
             <form action="" name="eliminarCue" method="post" id="eliminarCue">
                 <h2>Eliminar Cuenta</h2>
-                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="number" placeholder="Número de Cuenta" name="Numero" required>
                 <input type="button" value="Eliminar" onclick="deleteCue();">
             </form>
 
             <form action="" name="depositoCue" method="post" id="depositoCue">
                 <h2>Depósito</h2>
-                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="number" placeholder="Número de Cuenta" name="Numero" required>Tipo de moneda del depósito:<br>
+                <input type="radio" name="moneda_dep"  id="ColonesCue3" value="Colones" checked>
+                <label for="ColonesCue3"> Colones<br></label>
+                <input type="radio" name="moneda_dep"  id="DolaresCue3" value="Dolares">
+                <label for="DolaresCue3"> Dólares<br></label>
+                <input type="radio" name="moneda_dep"  id="EurosCue3" value="Euros">
+                <label for="EurosCue3"> Euros<br></label>
                 <input type="number" placeholder="Monto" name="Monto" required>
                 <input type="button" value="Depositar" onclick="depositarCue();">
             </form>
 
             <form action="" name="retiroCue" method="post" id="retiroCue">
                 <h2>Retiro</h2>
-                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
+                <input type="number" placeholder="Número de Cuenta" name="Numero" required>Tipo de moneda de la cuenta:<br>
+                <input type="radio" name="moneda_ret"  id="ColonesCue4" value="Colones" checked>
+                <label for="ColonesCue4"> Colones<br></label>
+                <input type="radio" name="moneda_ret"  id="DolaresCue4" value="Dolares">
+                <label for="DolaresCue4"> Dólares<br></label>
+                <input type="radio" name="moneda_ret"  id="EurosCue4" value="Euros">
+                <label for="EurosCue4"> Euros<br></label>
                 <input type="number" placeholder="Monto" name="Monto" required>
-                <input type="button" value="Retirar" onclick="deleteCue();">
+                <input type="button" value="Retirar" onclick="retirarCue();">
             </form>
         </div>
         <!-- Cuentas -->
@@ -272,24 +296,28 @@
         <div class="contenedor" style="display: none" id="tarjetas">
             <form action="" name="crearTar" method="post" id="crearTar">
                 <h2>Crear Tarjeta</h2>
-                <input type="text" placeholder="Cuenta Asociada" name="Cuenta" required>Tipo de tarjeta:<br>
-                <input type="radio" name="tipo_tarjeta"  id="Debito" value="Debito" onclick="moneda('Colones');" checked>
+                <input type="number" placeholder="Cuenta Asociada" name="Cuenta" required>Tipo de tarjeta:<br>
+                <input type="radio" name="tipo_tarjeta"  id="Debito" value="Debito" onclick="saldo();" checked>
                 <label for="Debito"> Débito<br></label>
-                <input type="radio" name="tipo_tarjeta"  id="Credito" value="Credito" onclick="moneda('Dolares');">
+                <input type="radio" name="tipo_tarjeta"  id="Credito" value="Credito" onclick="saldo();">
                 <label for="Credito"> Crédito<br></label>
-                <input type="text" placeholder="Saldo o Monto" name="Saldo" required>
+                <input type="number" placeholder="Saldo o Monto" style="display: none;" name="Saldo" required>
                 <input type="button" value="Crear" onclick="postTar();">
             </form>
 
 
             <form action="" name="modificarTar" method="post" id="modificarTar">
                 <h2>Modificar Tarjeta</h2>
-                <input type="text" placeholder="Cuenta Asociada" name="Cuenta" required>Tipo de tarjeta:<br>
-                <input type="radio" name="tipo_tarjeta"  id="Debito2" value="Debito" checked>
+                <input type="number" placeholder="Número de Tarjeta" name="Numero" required>
+                <input type="number" placeholder="Cuenta Asociada" name="Cuenta" required>Tipo de tarjeta:<br>
+                <input type="radio" name="tipo_tarjeta"  id="Debito2" value="Debito" onclick="saldo2();" checked>
                 <label for="Debito2"> Débito<br></label>
-                <input type="radio" name="tipo_tarjeta"  id="Credito2" value="Credito">
+                <input type="radio" name="tipo_tarjeta"  id="Credito2" value="Credito" onclick="saldo2();">
                 <label for="Credito2"> Crédito<br></label>
-                <input type="number" placeholder="Saldo o Monto" name="Saldo" required>
+                <input type="number" placeholder="Saldo Original" style="display: none;" name="SaldoOrg" required>
+                <input type="number" placeholder="Saldo Actual" style="display: none;" name="SaldoAct" required><br>Fecha de Expiración:<br>
+                <input type="text" placeholder="aaaa-mm-dd" name="Fecha" required>
+                <input type="number" placeholder="Código de Seguridad" name="Codigo" required>
                 <input type="button" value="Modificar" onclick="putTar();">
             </form>
 
@@ -309,7 +337,8 @@
                 <input type="text" placeholder="Nombre" name="Nombre" required>
                 <input type="text" placeholder="Primer Apellido" name="PApellido" required>
                 <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="number" placeholder="Cédula" name="Cedula" required>
+                <input type="number" placeholder="Cédula" name="Cedula" required>Fecha de Nacimiento:<br>
+                <input type="text" placeholder="aaaa-mm-dd" name="FechaNac" required>
                 <input type="number" placeholder="₡ Meta en Colones" name="MetaColones" required>
                 <input type="number" placeholder="$ Meta en Dólares" name="MetaDolares" required>
                 <input type="button" value="Agregar" onclick="postAse();">
@@ -320,7 +349,8 @@
                 <input type="text" placeholder="Nombre" name="Nombre" required>
                 <input type="text" placeholder="Primer Apellido" name="PApellido" required>
                 <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="text" placeholder="Cédula" name="Cedula" required>
+                <input type="text" placeholder="Cédula" name="Cedula" required>Fecha de Nacimiento:<br>
+                <input type="text" placeholder="aaaa-mm-dd" name="FechaNac" required>
                 <input type="number" placeholder="₡ Meta en Colones" name="MetaColones" required>
                 <input type="number" placeholder="$ Meta en Dólares" name="MetaDolares" required>
                 <input type="button" value="Modificar" onclick="putAse();">
@@ -331,6 +361,42 @@
                 <input type="number" placeholder="Cédula" name="Cedula" required>
                 <input type="button" value="Eliminar" onclick="deleteAse();">
             </form>
+
+            <form action="" name="reporteAse" method="post" id="reporteAse" style="float: left;">
+                <h2>Reporte de Asesor</h2>
+                <input type="number" placeholder="Cédula del Asesor" name="Cedula" required>
+                <input type="button" value="Limpiar" onclick="limpiar('tablaAsesor');">
+                <input type="button" value="Mostrar" onclick="reporteAsesor();">
+            </form>
+
+            <form action="" name="tableAsesor" method="post" id="tableAsesor" style="display: none;float: left;">
+                <table width="700px" border="1px" title="Reporte" style="" id="tablaAsesor">
+                    <caption align="top">Reporte de Asesor</caption>
+                    <tr>
+                        <td width="100px">
+                            Nombre
+                        </td>
+                        <td width="100px">
+                            Meta Colones
+                        </td>
+                        <td width="100px">
+                            Meta Dólares
+                        </td>
+                        <td width="100px">
+                            Créditos Colones
+                        </td>
+                        <td width="100px">
+                            Créditos Dólares
+                        </td>
+                        <td width="100px">
+                            Comisiones Colones
+                        </td>
+                        <td width="100px">
+                            Comisiones Dólares
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <!-- Asesores -->
 
@@ -340,14 +406,18 @@
                 <h2>Crear Préstamo</h2>
                 <input type="number" placeholder="Monto" name="Monto" required>
                 <input type="number" placeholder="Cédula del Cliente" name="cedCliente" required>
-                <input type="number" placeholder="Cédula del Asesor" name="cedAsesor" required>
-                <input type="number" placeholder="% Tasa de Interés" name="Interes" required>
+                <input type="number" placeholder="Cédula del Asesor" name="cedAsesor" required>Tipo de moneda:<br>
+                <input type="radio" name="moneda_prestamo"  id="ColonesPre" value="Colones" checked>
+                <label for="ColonesPre"> Colones<br></label>
+                <input type="radio" name="moneda_prestamo"  id="DolaresPre" value="Dolares">
+                <label for="DolaresPre"> Dólares<br></label>
+                <input type="number" placeholder="% Tasa de Interés" value="3" name="Interes" required>
                 <input type="button" value="Crear" onclick="postPre();">
             </form>
 
             <form action="" name="pagosPre" method="post" id="pagosPre" style="float: left;">
                 <h2>Cálculo de Pagos</h2>
-                <input type="text" placeholder="Cédula del Cliente" name="Cedula" required>
+                <input type="number" placeholder="Cédula del Cliente" name="Cedula" required>
                 <input type="button" value="Calcular" onclick="pagoPre();">
             </form>
 
@@ -378,6 +448,12 @@
 
         <!-- Moras -->
         <div class="contenedor" style="display: none" id="moras">
+        <form action="" name="reporteMor" method="post" id="reporteMor" style="float: left;">
+                <h2>Reporte de Mora</h2>
+                <input type="text" placeholder="Cédula del Cliente" name="Cedula" required>
+                <input type="button" value="Mostrar" onclick="pagoPre();">
+            </form>
+
             <form action="" name="tableMora" method="post" id="tableMora" style="display: none;float: left;">
                 <table width="700px" border="1px" title="Mora" style="" id="tablaMora">
                     <caption align="top">Moras</caption>
@@ -445,24 +521,6 @@
             prestamos.style.display='none';
             document.getElementById('moras');
             moras.style.display='none';
-			/*document.getElementById('sucursales');
-			sucursales.style.display='none';
-			document.getElementById('empleados');
-			empleados.style.display='none';
-			document.getElementById('proveedores');
-			proveedores.style.display='none';
-			document.getElementById('productos');
-			productos.style.display='none';
-			document.getElementById('compras');
-			compras.style.display='none';
-			document.getElementById('horas');
-			horas.style.display='none';
-            document.getElementById('planilla');
-            planilla.style.display='none';
-            document.getElementById('reportes');
-            reportes.style.display='none';
-            document.getElementById('facturacion');
-            facturacion.style.display='none';
 
 			/*Se muestra solo el div que se necesita*/
 
@@ -658,6 +716,10 @@
                     modificarAse.style.display='none';
                     document.getElementById('eliminarAse');
                     eliminarAse.style.display='none';
+                    document.getElementById('reporteAse');
+                    reporteAse.style.display='none';
+                    document.getElementById('tableAsesor');
+                    tableAsesor.style.display='none';
                     break;
                 case 'modificarAse':
                     asesores.style.display="block";
@@ -667,6 +729,10 @@
                     crearAse.style.display='none';
                     document.getElementById('eliminarAse');
                     eliminarAse.style.display='none';
+                    document.getElementById('reporteAse');
+                    reporteAse.style.display='none';
+                    document.getElementById('tableAsesor');
+                    tableAsesor.style.display='none';
                     break;
                 case 'eliminarAse':
                     asesores.style.display="block";
@@ -676,6 +742,23 @@
                     modificarAse.style.display='none';
                     document.getElementById('crearAse');
                     crearAse.style.display='none';
+                    document.getElementById('reporteAse');
+                    reporteAse.style.display='none';
+                    document.getElementById('tableAsesor');
+                    tableAsesor.style.display='none';
+                    break;
+                case 'reporteAse':
+                    asesores.style.display="block";
+                    document.getElementById('eliminarAse');
+                    eliminarAse.style.display='none';
+                    document.getElementById('modificarAse');
+                    modificarAse.style.display='none';
+                    document.getElementById('crearAse');
+                    crearAse.style.display='none';
+                    document.getElementById('reporteAse');
+                    reporteAse.style.display='inline-table';
+                    document.getElementById('tableAsesor');
+                    tableAsesor.style.display='inline-table';
                     break;
 
                 case 'crearPre':
@@ -697,39 +780,12 @@
                     tableCalendario.style.display='inline-table';
                     break;
 
-                 case 'reporteMor':
+                case 'reporteMor':
                     moras.style.display="block";
                     document.getElementById('tableMora');
                     tableMora.style.display='inline-table';
                     break;
-				/*case 'sucursales':
-					sucursales.style.display='block';
-					break;
-				case 'empleados':
-					empleados.style.display='block';
-					break;
-				case 'proveedores':
-					proveedores.style.display='block';
-					break;
-				case 'productos':
-					productos.style.display='block';
-					break;
-				case 'compras':
-					compras.style.display='block';
-					break;
-				case 'horas':
-					horas.style.display='block';
-					break;
-                case 'planilla':
-                    planilla.style.display='block';
-                    break;
-                case 'reportes':
-                    reportes.style.display='block';
-                    break;
-                case 'facturacion':
-                    facturacion.style.display='block';
-                    break;
-                case 'login':
+                /*case 'login':
                     var login = document.getElementById("login");
                     var xhr = new XMLHttpRequest();
                     var xhr2 = new XMLHttpRequest();
@@ -801,6 +857,575 @@
 					
 			}
         }
+
+        /*Métodos de Roles*/
+        function postRol() {
+            var xhr = new XMLHttpRequest();
+            var datos = 'Nombre='+document.crearRol.Nombre.value+'&Descripcion='+document.crearRol.Descripcion.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/rol', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+
+        }
+
+        function getRol() {
+            var xhr = new XMLHttpRequest(); //Se crea el objeto XMLHttpRequest
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/rol', true); //Se abre la conexion entre la aplicación y el servidor.
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function putRol() {
+            var xhr = new XMLHttpRequest();
+            var datos = 'Nombre='+document.modificarRol.Nombre.value+'&Descripcion='+document.modificarRol.Descripcion.value+'&put=1';
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/rol', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteRol() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/rol?nombre='+document.eliminarRol.Nombre.value+'&delete=1', true);
+            alert(this.responseText);
+            xhr.send(null);
+
+        }
+        /*Métodos de Roles*/
+
+        /*Métodos de Clientes*/
+        function postCli() {
+            var xhr = new XMLHttpRequest();
+            var datos = '';
+            var password = contraseña();
+            
+
+            if (document.crearCli.tipo_cedula.value=='Fisico') {
+                datos = 'nombre='+document.crearCli.PNombre.value+'&segundonombre='+document.crearCli.SNombre.value+'&priapellido='+document.crearCli.PApellido.value+'&segapellido='+document.crearCli.SApellido.value+'&cedula='+document.crearCli.cedula.value+'&tipo='+document.crearCli.tipo_cedula.value+'&direccion='+document.crearCli.direccion.value+'&telefono='+document.crearCli.telefono.value+'&ingreso='+document.crearCli.ingreso.value+'&contrasena='+password+'&moneda='+document.crearCli.moneda_ingreso.value;//Datos a enviar en el request.
+
+            }
+            else{
+                datos = 'nombre='+document.crearCli.PNombre.value+'&cedula='+document.crearCli.cedula.value+'&tipo='+document.crearCli.tipo_cedula.value+'&direccion='+document.crearCli.direccion.value+'&telefono='+document.crearCli.telefono.value+'&ingreso='+document.crearCli.ingreso.value+'&contrasena='+password+'&moneda='+document.crearCli.moneda_ingreso.value;//Datos a enviar en el request.
+            }
+            
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/cliente', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function getCli() {
+            var xhr = new XMLHttpRequest(); //Se crea el objeto XMLHttpRequest
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
+                }
+                alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/cliente?', true); //Se abre la conexion entre la aplicación y el servidor.
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function putCli() {
+            var xhr = new XMLHttpRequest();
+            var datos = '';
+            var password = contraseña();
+            if (document.modificarCli.tipo_cedula.value=='Fisico') {
+                if (document.modificarCli.cambiar_con.value=='Si') {
+                    datos = 'nombre='+document.modificarCli.PNombre.value+'&segundonombre='+document.modificarCli.SNombre.value+'&priapellido='+document.modificarCli.PApellido.value+'&segapellido='+document.modificarCli.SApellido.value+'&cedula='+document.modificarCli.cedula.value+'&tipo='+document.modificarCli.tipo_cedula.value+'&direccion='+document.modificarCli.direccion.value+'&telefono='+document.modificarCli.telefono.value+'&ingreso='+document.modificarCli.ingreso.value+'&contrasena='+password+'&moneda='+document.modificarCli.moneda_ingreso.value+'&put=1';//Datos a enviar en el request.
+                }
+                else{
+                    datos = 'nombre='+document.modificarCli.PNombre.value+'&segundonombre='+document.modificarCli.SNombre.value+'&priapellido='+document.modificarCli.PApellido.value+'&segapellido='+document.modificarCli.SApellido.value+'&cedula='+document.modificarCli.cedula.value+'&tipo='+document.modificarCli.tipo_cedula.value+'&direccion='+document.modificarCli.direccion.value+'&telefono='+document.modificarCli.telefono.value+'&ingreso='+document.modificarCli.ingreso.value+'&moneda='+document.modificarCli.moneda_ingreso.value+'&put=1';//Datos a enviar en el request.
+                }
+            }
+            else{
+                if (document.modificarCli.cambiar_con.value=='Si') {
+                    datos = 'nombre='+document.modificarCli.PNombre.value+'&cedula='+document.modificarCli.cedula.value+'&tipo='+document.modificarCli.tipo_cedula.value+'&direccion='+document.modificarCli.direccion.value+'&telefono='+document.modificarCli.telefono.value+'&ingreso='+document.modificarCli.ingreso.value+'&contrasena='+password+'&moneda='+document.modificarCli.moneda_ingreso.value+'&put=1';//Datos a enviar en el request.
+                }
+                else{
+                    datos = 'nombre='+document.modificarCli.PNombre.value+'&cedula='+document.modificarCli.cedula.value+'&tipo='+document.modificarCli.tipo_cedula.value+'&direccion='+document.modificarCli.direccion.value+'&telefono='+document.modificarCli.telefono.value+'&ingreso='+document.modificarCli.ingreso.value+'&moneda='+document.modificarCli.moneda_ingreso.value+'&put=1';//Datos a enviar en el request.
+                }
+            }
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/cliente', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteCli() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/cliente?cedula='+document.eliminarCli.Cedula.value+'&delete=1', true);
+            alert(this.responseText);
+            xhr.send(null);
+
+
+        }
+        /*Métodos de Clientes*/
+
+        /*Métodos de Empleados*/
+        function postEmp() {
+            var xhr = new XMLHttpRequest();
+            var password = contraseña();
+            
+            var datos = 'nombre='+document.crearEmp.PNombre.value+' '+document.crearEmp.SNombre.value+'&priapellido='+document.crearEmp.PApellido.value+'&segapellido='+document.crearEmp.SApellido.value+'&cedula='+document.crearEmp.Cedula.value+'&contrasena='+password+'&rol=Administrador'+'&sucursal=No Especificada';//Datos a enviar en el request.
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/empleado', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function getEmp() {
+            var xhr = new XMLHttpRequest(); //Se crea el objeto XMLHttpRequest
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
+                }
+                alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function putEmp() {
+            var xhr = new XMLHttpRequest();
+            var password = contraseña();
+            if (document.modificarEmp.cambiar_con.value=='Si') {
+                var datos = 'nombre='+document.modificarEmp.PNombre.value+' '+document.modificarEmp.SNombre.value+'&priapellido='+document.modificarEmp.PApellido.value+'&segapellido='+document.modificarEmp.SApellido.value+'&cedula='+document.modificarEmp.Cedula.value+'&contrasena='+password+'&rol=Administrador'+'&sucursal=No Especificada'+'&put=1';//Datos a enviar en el request.
+            }
+            else{
+                var datos = 'nombre='+document.modificarEmp.PNombre.value+' '+document.modificarEmp.SNombre.value+'&priapellido='+document.modificarEmp.PApellido.value+'&segapellido='+document.modificarEmp.SApellido.value+'&cedula='+document.modificarEmp.Cedula.value+'&rol=Administrador'+'&sucursal=No Especificada'+'&put=1';//Datos a enviar en el request.
+            }
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/empleado', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteEmp() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?cedula='+document.eliminarEmp.Cedula.value+'&delete=1', true);
+            alert(this.responseText);
+            xhr.send(null);
+
+        }
+        /*Métodos de Empleados*/
+
+        /*Métodos de Cuentas*/
+        function postCue() {
+            var xhr = new XMLHttpRequest();
+            
+            var datos = 'tipo='+document.crearCue.tipo_cuenta.value+'&moneda='+document.crearCue.moneda_cuenta.value+'&descripcion='+document.crearCue.Descripcion.value+'&cedcliente='+document.crearCue.cedula.value+'&saldo='+document.crearCue.Saldo.value;//Datos a enviar en el request.
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/cuenta', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function getCue() {
+            var xhr = new XMLHttpRequest(); //Se crea el objeto XMLHttpRequest
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
+                }
+                alert(xmlDoc.getElementsByTagName("cedcliente")[0].childNodes[0].nodeValue);
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/cuenta?', true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.send(null);
+        }
+
+        function putCue() {
+            var xhr = new XMLHttpRequest();
+            var datos = 'tipo='+document.modificarCue.tipo_cuenta.value+'&moneda='+document.modificarCue.moneda_cuenta.value+'&descripcion='+document.modificarCue.Descripcion.value+'&cedcliente='+document.modificarCue.cedula.value+'&saldo='+document.modificarCue.Saldo.value+'&numcuenta='+document.modificarCue.Cuenta.value+'&put=1';//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/cuenta', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteCue() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/cuenta?numcuenta='+document.eliminarCue.Numero.value+'&delete=1', true);
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function depositarCue() {
+            var xhr = new XMLHttpRequest();
+            var date = fecha();
+            var datos = 'tipo=Deposito'+'&fecha='+date+'&monto='+document.depositoCue.Monto.value+'&numcuenta='+document.depositoCue.Numero.value+'&moneda='+document.depositoCue.moneda_ret.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/movimiento', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function retirarCue() {
+            var xhr = new XMLHttpRequest();
+            var date = fecha();
+            var datos = 'tipo=Retiro'+'&fecha='+date+'&monto='+document.retiroCue.Monto.value+'&numcuenta='+document.retiroCue.Numero.value+'&moneda='+document.retiroCue.moneda_ret.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/movimiento', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+        /*Métodos de Cuentas*/
+
+        /*Métodos de Tarjetas*/
+        function postTar() {
+            var xhr = new XMLHttpRequest();
+
+            if (document.crearTar.tipo_tarjeta.value=='Debito') {
+                var datos = 'codigoseg='+codseg()+'&fechaexp='+fechaexp()+'&tipo='+document.crearTar.tipo_tarjeta.value+'&numcuenta='+document.crearTar.Cuenta.value;//Datos a enviar en el request.
+            }
+            else{
+                var datos = 'codigoseg='+codseg()+'&fechaexp='+fechaexp()+'&tipo='+document.crearTar.tipo_tarjeta.value+'&saldo='+document.crearTar.Saldo.value+'&numcuenta='+document.crearTar.Cuenta.value;//Datos a enviar en el request.
+            }
+            
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/tarjeta', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function getTar() {
+            var xhr = new XMLHttpRequest(); //Se crea el objeto XMLHttpRequest
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
+                }
+                alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function putTar() {
+            var xhr = new XMLHttpRequest();
+            if (document.modificarTar.tipo_tarjeta.value=='Debito') {
+                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+document.modificarTar.Codigo.value+'&fechaexp='+document.modificarTar.Fecha.value+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
+            }
+            else{
+                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+codseg()+'&fechaexp='+fechaexp()+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&saldoorig='+document.modificarTar.SaldoOrg.value+'&saldoactual='+document.modificarTar.SaldoAct.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
+            }
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/tarjeta', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteTar() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/tarjeta?numero='+document.eliminarTar.Numero.value+'&delete=1', true);
+            alert(this.responseText);
+            xhr.send(null);
+
+        }
+        /*Métodos de Tarjetas*/
+
+        /*Métodos de Asesores*/
+        function postAse() {
+            var xhr = new XMLHttpRequest();
+            var datos = 'nombre='+document.crearAse.Nombre.value+'&priapellido='+document.crearAse.PApellido.value+'&segapellido='+document.crearAse.SApellido.value+'&cedula='+document.crearAse.Cedula.value+'&fechanac='+document.crearAse.FechaNac.value+'&metacolones='+document.crearAse.MetaColones.value+'&metadolares='+document.crearAse.MetaDolares.value;//Datos a enviar en el request.
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/asesor', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function getAse() {
+            var xhr = new XMLHttpRequest(); //Se crea el objeto XMLHttpRequest
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
+                }
+                alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function reporteAsesor(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaAsesor");
+                    limpiar("tablaAsesor");
+                    if (xmlDoc.getElementsByTagName("NombreCompleto")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("NombreCompleto")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            var cell6 = fila.insertCell(5);
+                            var cell7 = fila.insertCell(6);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("NombreCompleto")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("MetaColones")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("MetaDolares")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("TotalColones")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("TotalDolares")[numeroFila].childNodes[0].nodeValue;
+                            cell6.innerHTML = xmlDoc.getElementsByTagName("ComisionColones")[numeroFila].childNodes[0].nodeValue;
+                            cell7.innerHTML = xmlDoc.getElementsByTagName("ComisionDolares")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/comisiones?', true);
+            alert(this.responseText);
+            xhr.send(null);
+        }
+        
+
+        function putAse() {
+            var xhr = new XMLHttpRequest();
+            var datos = 'nombre='+document.modificarAse.Nombre.value+'&priapellido='+document.modificarAse.PApellido.value+'&segapellido='+document.modificarAse.SApellido.value+'&cedula='+document.modificarAse.Cedula.value+'&fechanac='+document.modificarAse.FechaNac.value+'&metacolones='+document.modificarAse.MetaColones.value+'&metadolares='+document.modificarAse.MetaDolares.value+'&put=1';//Datos a enviar en el request.
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/asesor', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+
+        }
+
+        function deleteAse() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/asesor?cedula='+document.eliminarAse.Cedula.value+'&delete=1', true);
+            alert(this.responseText);
+            xhr.send(null);
+
+        }
+        /*Métodos de Asesores*/
+
+        /*Métodos de Préstamos*/
+        function postpre() {
+            var xhr = new XMLHttpRequest();
+
+            var datos = 'interes='+(parseFloat(document.crearPre.Interes.value)/100)+'&saldoorig='+document.crearPre.Monto.value+'&saldoactual='+document.crearPre.Monto.value+'&cedcliente='+document.crearPre.cedCliente.value+'&cedasesor='+document.crearPre.cedAsesor.value+'&moneda='+document.crearPre.moneda_prestamo.value;//Datos a enviar en el request.
+            
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/prestamo', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function pagoPre() {
+            var xhr = new XMLHttpRequest();
+            if (document.modificarTar.tipo_tarjeta.value=='Debito') {
+                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+document.modificarTar.Codigo.value+'&fechaexp='+document.modificarTar.Fecha.value+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
+            }
+            else{
+                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+codseg()+'&fechaexp='+fechaexp()+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&saldoorig='+document.modificarTar.SaldoOrg.value+'&saldoactual='+document.modificarTar.SaldoAct.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
+            }
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/tarjeta', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+        /*Métodos de Préstamos*/
 
 
         function limpiar(p1){
@@ -882,8 +1507,63 @@
         }
 
         function contraseña(){
-            var aleatorio = Math.round(Math.random()*9999);
+            var aleatorio = Math.round(Math.random()*(10000-1000)+1000);
             return ''+aleatorio;
+        }
+
+        function codseg(){
+            var aleatorio = Math.round(Math.random()*(1000-100)+100);
+            return ''+aleatorio;
+        }
+
+        function fecha(){
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                dd='0'+dd;
+            } 
+            if(mm<10){
+                mm='0'+mm;
+            }
+            var today = yyyy+'-'+mm+'-'+dd;
+            return today+'';
+        }
+
+        function fechaexp(){
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear()+10;
+            if(dd<10){
+                dd='0'+dd;
+            } 
+            if(mm<10){
+                mm='0'+mm;
+            }
+            var today = yyyy+'-'+mm+'-'+dd;
+            return today+'';
+        }
+
+        function saldo(){
+            if (document.crearTar.tipo_tarjeta.value=='Debito') {
+                document.crearTar.Saldo.style.display='none';
+            }
+            else{
+                document.crearTar.Saldo.style.display='block';
+            }
+        }
+
+        function saldo2(){
+            if (document.modificarTar.tipo_tarjeta.value=='Debito') {
+                document.modificarTar.SaldoAct.style.display='none';
+                document.modificarTar.SaldoOrg.style.display='none';
+            }
+            else{
+                document.modificarTar.SaldoAct.style.display='block';
+                document.modificarTar.SaldoOrg.style.display='block';
+            }
         }
     </script>
 </body>

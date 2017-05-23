@@ -18,59 +18,22 @@
 			<nav class="" style="display: none;" id="menunav"><!-- Menu de navegación de la página -->
 				<ul>
 					<li><a href="javascript:mostrar('inicio')"">Inicio</a></li>
-					<li><a>Roles</a>
-                        <ul>
-                            <li><a href="javascript:mostrar('crearRol')">Crear</a>
-                            <li><a href="javascript:mostrar('modificarRol')">Modificar</a>
-                            <li><a href="javascript:mostrar('eliminarRol')">Eliminar</a>
-                        </ul>
-                    </li>
-					<li><a>Clientes</a>
-                        <ul>
-                            <li><a href="javascript:mostrar('crearCli')">Crear</a>
-                            <li><a href="javascript:mostrar('modificarCli')">Modificar</a>
-                            <li><a href="javascript:mostrar('eliminarCli')">Eliminar</a>
-                        </ul>
-                    </li>
-                    <li><a>Empleados</a>
-                        <ul>
-                            <li><a href="javascript:mostrar('crearEmp')">Crear</a>
-                            <li><a href="javascript:mostrar('modificarEmp')">Modificar</a>
-                            <li><a href="javascript:mostrar('eliminarEmp')">Eliminar</a>
-                        </ul>
-                    </li>
 					<li><a>Cuentas</a>
                         <ul>
-                            <li><a href="javascript:mostrar('crearCue')">Crear</a>
-                            <li><a href="javascript:mostrar('modificarCue')">Modificar</a>
-                            <li><a href="javascript:mostrar('eliminarCue')">Eliminar</a>
-                            <li><a href="javascript:mostrar('depositoCue')">Depósito</a>
-                            <li><a href="javascript:mostrar('retiroCue')">Retiro</a>
+                            <li><a href="javascript:mostrar('movimientosCue')">Movimientos</a>
+                            <li><a href="javascript:mostrar('tarjetasCue')">Tarjetas</a>
+                            <li><a href="javascript:mostrar('transferenciasCue')">Transferencias</a>
                         </ul>    
                     </li>
 					<li><a>Tarjetas</a>
                         <ul>
-                            <li><a href="javascript:mostrar('crearTar')">Crear</a>
-                            <li><a href="javascript:mostrar('modificarTar')">Modificar</a>
-                            <li><a href="javascript:mostrar('eliminarTar')">Eliminar</a>
-                        </ul>
-                    </li>
-					<li><a>Asesores</a>
-                        <ul>
-                            <li><a href="javascript:mostrar('crearAse')">Crear</a>
-                            <li><a href="javascript:mostrar('modificarAse')">Modificar</a>
-                            <li><a href="javascript:mostrar('eliminarAse')">Eliminar</a>
+                            <li><a href="javascript:mostrar('pagoTar')">Pago</a>
+                            <li><a href="javascript:mostrar('comprasTar')">Compras</a>
                         </ul>
                     </li>
 					<li><a>Préstamos</a>
                         <ul>
-                            <li><a href="javascript:mostrar('crearPre')">Crear</a>
                             <li><a href="javascript:mostrar('pagosPre')">Pagos</a>
-                        </ul>
-                    </li>
-					<li><a>Moras</a>
-                        <ul>
-                            <li><a href="javascript:mostrar('reporteMor')">Reporte</a>
                         </ul>
                     </li>
 					<li><a href="index.html">Salir</a></li>
@@ -94,280 +57,137 @@
         </form>
         <!-- Login -->
 
-        <!-- Roles -->
-        <div class="contenedor" style="display: none" id="roles">
-            <form action="" name="crearRol" method="post" id="crearRol">
-                <h2>Crear Rol</h2>
-                <input type="text" placeholder="Nombre" name="Nombre" required>
-                <input type="text" placeholder="Descripción" name="Descripcion" required>
-                <input type="button" value="Crear" onclick="postRol();">
-            </form>
-
-
-            <form action="" name="modificarRol" method="post" id="modificarRol">
-                <h2>Modificar Rol</h2>
-                <input type="text" placeholder="Nombre" name="Nombre" required>
-                <input type="text" placeholder="Descripción" name="Descripcion" required>
-                <input type="button" value="Modificar" onclick="putRol();">
-            </form>
-
-
-            <form action="" name="eliminarRol" method="post" id="eliminarRol">
-                <h2>Eliminar Rol</h2>
-                <input type="text" placeholder="Nombre" name="Nombre" required>
-                <input type="button" value="Eliminar" onclick="deleteRol();">
-            </form>
-        </div>
-        <!-- Roles -->
-
-        <!-- Clientes -->
-        <div class="contenedor" style="display: none" id="clientes">
-            <form action="" name="crearCli" method="post" id="crearCli">
-                <h2>Agregar Cliente</h2>
-                <input type="text" placeholder="Primer Nombre" name="PNombre" required>
-                <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
-                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
-                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>Tipo de Cédula:<br>
-                <input type="radio" name="tipo_cedula"  id="Fisica" value="Fisica" onclick="desocultar('crear');" checked>
-                <label for="Fisica"> Física<br></label>
-                <input type="radio" name="tipo_cedula"  id="Juridica" value="Juridica" onclick="ocultar('crear');">
-                <label for="Juridica"> Jurídica<br></label>
-                <input type="number" placeholder="Cédula" name="cedula" required>
-                <input type="text" placeholder="Dirección" name="direccion" required>
-                <input type="number" placeholder="Teléfono" name="telefono" required> Tipo de moneda del ingreso:<br>
-                <input type="radio" name="moneda_cuenta"  id="Colones" value="Colones" onclick="moneda('Colones');" checked>
-                <label for="Colones"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Dolares" value="Dólares" onclick="moneda('Dolares');">
-                <label for="Dolares"> Dólares<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Euros" value="Euros" onclick="moneda('Euros');">
-                <label for="Euros"> Euros<br></label>
-                <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
-                <input type="button" value="Agregar" onclick="postCli();">
-            </form>
-
-            <form action="" name="modificarCli" method="post" id="modificarCli">
-                <h2>Modificar Cliente</h2>
-                <input type="text" placeholder="Primer Nombre" name="PNombre" required>
-                <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
-                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
-                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>Tipo de Cédula:<br>
-                <input type="radio" name="tipo_cedula"  id="Fisica2" value="Fisica" onclick="desocultar('modificar');" checked>
-                <label for="Fisica2"> Física<br></label>
-                <input type="radio" name="tipo_cedula"  id="Juridica2" value="Juridica" onclick="ocultar('modificar');">
-                <label for="Juridica2"> Jurídica<br></label>
-                <input type="number" placeholder="Cédula" name="cedula" required>
-                <input type="text" placeholder="Dirección" name="direccion" required>
-                <input type="number" placeholder="Teléfono" name="telefono" required> Tipo de moneda de la cuenta:<br>
-                <input type="radio" name="moneda_cuenta"  id="Colones2" value="Colones" onclick="monedamod('Colones');" checked>
-                <label for="Colones2"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Dolares2" value="Dólares" onclick="monedamod('Dolares');">
-                <label for="Dolares2"> Dólares<br></label>
-                <input type="radio" name="moneda_cuenta"  id="Euros2" value="Euros" onclick="monedamod('Euros');">
-                <label for="Euros2"> Euros<br></label>
-                <input type="number" placeholder="&#8353; Ingreso Mensual" name="ingreso" required>
-                <input type="button" value="Modificar" onclick="putCli();">
-            </form>
-
-            <form action="" name="eliminarCli" method="post" id="eliminarCli">
-                <h2>Eliminar Cliente</h2>
-                <input type="number" placeholder="Cédula" name="Cedula" required>
-                <input type="button" value="Eliminar" onclick="deleteCli();">
-            </form>
-        </div>
-        <!-- Clientes -->
-
-        <!-- Empleados -->
-        <div class="contenedor" style="display: none" id="empleados">
-            <form action="" name="crearEmp" method="post" id="crearEmp">
-                <h2>Agregar Empleado</h2>
-                <input type="text" placeholder="Primer Nombre" name="PNombre" required>
-                <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
-                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
-                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="number" placeholder="Cédula" name="cedula" required>
-                <input type="button" value="Agregar" onclick="postEmp();">
-            </form>
-
-            <form action="" name="modificarEmp" method="post" id="modificarEmp">
-                <h2>Modificar Empleado</h2>
-                <input type="text" placeholder="Primer Nombre" name="PNombre" required>
-                <input type="text" placeholder="Segundo Nombre" name="SNombre" required>
-                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
-                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="number" placeholder="Cédula" name="cedula" required>
-                <input type="button" value="Modificar" onclick="putEmp();">
-            </form>
-
-            <form action="" name="eliminarEmp" method="post" id="eliminarEmp">
-                <h2>Eliminar Empleado</h2>
-                <input type="number" placeholder="Cédula" name="Cedula" required>
-                <input type="button" value="Eliminar" onclick="deleteEmp();">
-            </form>
-        </div>
-        <!-- Empleados -->
-
         <!-- Cuentas -->
         <div class="contenedor" style="display: none" id="cuentas">
-            <form action="" name="crearCue" method="post" id="crearCue">
-                <h2>Crear Cuenta</h2>
-                <!--<input type="number" placeholder="Número de Cuenta" name="Numero" required>-->
-                <input type="text" placeholder="Descripción" name="Descripcion" required> Tipo de moneda de la cuenta:<br>
-                <input type="radio" name="moneda_cuenta"  id="ColonesCue" value="Colones" onclick="moneda('Colones');" checked>
-                <label for="ColonesCue"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="DolaresCue" value="Dólares" onclick="moneda('Dolares');">
-                <label for="DolaresCue"> Dólares<br></label>
-                <input type="radio" name="moneda_cuenta"  id="EurosCue" value="Euros" onclick="moneda('Euros');">
-                <label for="EurosCue"> Euros<br></label> Tipo de cuenta:<br>
-                <input type="radio" name="tipo_cuenta"  id="Ahorros" value="Ahorros" onclick="moneda('Colones');" checked>
-                <label for="Ahorros"> Ahorros<br></label>
-                <input type="radio" name="tipo_cuenta"  id="Corriente" value="Corriente" onclick="moneda('Dolares');">
-                <label for="Corriente"> Corriente<br></label>
-                <input type="number" placeholder="Cédula del Cliente" name="cedula" required>
-                <input type="button" value="Modificar" onclick="postCue();">
+            <form action="" name="movimientosCue" method="post" id="movimientosCue" style="float: left;">
+                <h2>Cuenta a Consultar</h2>
+                <input type="number" placeholder="Cuenta" name="Cuenta" required>
+                <input type="button" value="Mostrar" onclick="consultaCue();">
+            </form>
+
+            <form action="" name="tableMovimientos" method="post" id="tableMovimientos" style="display: none;float: left;">
+                <table width="600px" border="1px" title="Calendario" style="" id="tablaMovimientos">
+                    <caption align="top">Movimientos</caption>
+                    <tr>
+                        <td width="150px">
+                            Tipo
+                        </td>
+                        <td width="150px">
+                            Fecha
+                        </td>
+                        <td width="150px">
+                            Monto
+                        </td>
+                        <td width="150px">
+                            Moneda
+                        </td>
+                    </tr>
+                </table>
             </form>
 
 
-            <form action="" name="modificarCue" method="post" id="modificarCue">
-                <h2>Modificar Cuenta</h2>
-                <!--<input type="number" placeholder="Número de Cuenta" name="Numero" required>-->
-                <input type="text" placeholder="Descripción" name="Descripcion" required> Tipo de moneda de la cuenta:<br>
-                <input type="radio" name="moneda_cuenta"  id="ColonesCue2" value="Colones" onclick="moneda('Colones');" checked>
-                <label for="ColonesCue2"> Colones<br></label>
-                <input type="radio" name="moneda_cuenta"  id="DolaresCue2" value="Dólares" onclick="moneda('Dolares');">
-                <label for="DolaresCue2"> Dólares<br></label>
-                <input type="radio" name="moneda_cuenta"  id="EurosCue2" value="Euros" onclick="moneda('Euros');">
-                <label for="EurosCue2"> Euros<br></label> Tipo de cuenta:<br>
-                <input type="radio" name="tipo_cuenta"  id="Ahorros2" value="Ahorros" onclick="moneda('Colones');" checked>
-                <label for="Ahorros2"> Ahorros<br></label>
-                <input type="radio" name="tipo_cuenta"  id="Corriente2" value="Corriente" onclick="moneda('Dolares');">
-                <label for="Corriente2"> Corriente<br></label>
-                <input type="number" placeholder="Cédula del Cliente" name="cedula" required>
-                <input type="button" value="Modificar" onclick="putCue();">
+            <form action="" name="tarjetasCue" method="post" id="tarjetasCue" style="float: left;">
+                <h2>Cuenta a Consultar</h2>
+                <input type="number" placeholder="Cuenta" name="Cuenta" required>
+                <input type="button" value="Mostrar" onclick="consultaTarCue();">
             </form>
 
-
-            <form action="" name="eliminarCue" method="post" id="eliminarCue">
-                <h2>Eliminar Cuenta</h2>
-                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
-                <input type="button" value="Eliminar" onclick="deleteCue();">
+            <form action="" name="tableTarjetasCue" method="post" id="tableTarjetasCue" style="display: none;float: left;">
+                <table width="600px" border="1px" title="Tarjetas" style="" id="tablaTarjetasCue">
+                    <caption align="top">Tarjetas Asociadas</caption>
+                    <tr>
+                        <td width="150px">
+                            Número
+                        </td>
+                        <td width="150px">
+                            Fecha
+                        </td>
+                        <td width="150px">
+                            Saldo
+                        </td>
+                        <td width="150px">
+                            Tipo
+                        </td>
+                    </tr>
+                </table>
             </form>
 
-            <form action="" name="depositoCue" method="post" id="depositoCue">
-                <h2>Depósito</h2>
-                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
+            <form action="" name="transferenciasCue" method="post" id="transferenciasCue">
+                <h2>Transferencia</h2>
+                Tipo de moneda:<br>
+                <input type="radio" name="moneda_transferencia"  id="ColonesTra" value="Colones" onclick="moneda('Colones');" checked>
+                <label for="ColonesTra"> Colones<br></label>
+                <input type="radio" name="moneda_transferencia"  id="DolaresTra" value="Dólares" onclick="moneda('Dolares');">
+                <label for="DolaresTra"> Dólares<br></label>
                 <input type="number" placeholder="Monto" name="Monto" required>
-                <input type="button" value="Depositar" onclick="depositarCue();">
-            </form>
-
-            <form action="" name="retiroCue" method="post" id="retiroCue">
-                <h2>Retiro</h2>
-                <input type="text" placeholder="Número de Cuenta" name="Numero" required>
-                <input type="number" placeholder="Monto" name="Monto" required>
-                <input type="button" value="Retirar" onclick="deleteCue();">
+                <input type="number" placeholder="Cuenta Emisora" name="CuentaEmi" required>
+                <input type="number" placeholder="Cuenta Receptora" name="CuentaRec" required>
+                <input type="button" value="Transferir" onclick="postTra();">
             </form>
         </div>
         <!-- Cuentas -->
 
         <!-- Tarjetas -->
         <div class="contenedor" style="display: none" id="tarjetas">
-            <form action="" name="crearTar" method="post" id="crearTar">
-                <h2>Crear Tarjeta</h2>
-                <input type="text" placeholder="Cuenta Asociada" name="Cuenta" required>Tipo de tarjeta:<br>
-                <input type="radio" name="tipo_tarjeta"  id="Debito" value="Debito" onclick="moneda('Colones');" checked>
-                <label for="Debito"> Débito<br></label>
-                <input type="radio" name="tipo_tarjeta"  id="Credito" value="Credito" onclick="moneda('Dolares');">
-                <label for="Credito"> Crédito<br></label>
-                <input type="text" placeholder="Saldo o Monto" name="Saldo" required>
-                <input type="button" value="Crear" onclick="postTar();">
-            </form>
-
-
-            <form action="" name="modificarTar" method="post" id="modificarTar">
-                <h2>Modificar Tarjeta</h2>
-                <input type="text" placeholder="Cuenta Asociada" name="Cuenta" required>Tipo de tarjeta:<br>
-                <input type="radio" name="tipo_tarjeta"  id="Debito2" value="Debito" checked>
-                <label for="Debito2"> Débito<br></label>
-                <input type="radio" name="tipo_tarjeta"  id="Credito2" value="Credito">
-                <label for="Credito2"> Crédito<br></label>
-                <input type="number" placeholder="Saldo o Monto" name="Saldo" required>
-                <input type="button" value="Modificar" onclick="putTar();">
-            </form>
-
-
-            <form action="" name="eliminarTar" method="post" id="eliminarTar">
-                <h2>Eliminar Tarjeta</h2>
+            <form action="" name="pagoTar" method="post" id="pagoTar">
+                <h2>Pago de Tarjeta</h2>
                 <input type="number" placeholder="Número de Tarjeta" name="Numero" required>
-                <input type="button" value="Eliminar" onclick="deleteTar();">
+                <input type="number" placeholder="Monto a Cancelar" name="Monto" required>
+                <input type="button" value="Pagar" onclick="pagoTar();">
+            </form>
+
+            <form action="" name="listadoTar" method="post" id="listadoTar" style="float: left;">
+                <h2>Tarjeta a Consultar</h2>
+                <input type="number" placeholder="Número de Tarjeta" name="Numero" required>Fecha Inicial<br>
+                <input type="date" placeholder="Fecha Inicial" name="fechaInicio" required>Fecha Final<br>
+                <input type="date" placeholder="Fecha Final" name="fechaFinal" required>
+                <input type="button" value="Consultar" onclick="listadoTar();">
+            </form>
+
+            <form action="" name="tableListado" method="post" id="tableListado" style="display: none;float: left;">
+                <table width="600px" border="1px" title="Tarjetas" style="" id="tablaListado">
+                    <caption align="top">Listado de Compras</caption>
+                    <tr>
+                        <td width="150px">
+                            Comercio
+                        </td>
+                        <td width="150px">
+                            Monto
+                        </td>
+                        <td width="150px">
+                            Fecha de Expiración
+                        </td>
+                        <td width="150px">
+                            Moneda
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
         <!-- Tarjetas -->
 
-        <!-- Asesores -->
-        <div class="contenedor" style="display: none" id="asesores">
-            <form action="" name="crearAse" method="post" id="crearAse">
-                <h2>Agregar Asesor</h2>
-                <input type="text" placeholder="Nombre" name="Nombre" required>
-                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
-                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="number" placeholder="Cédula" name="Cedula" required>
-                <input type="number" placeholder="₡ Meta en Colones" name="MetaColones" required>
-                <input type="number" placeholder="$ Meta en Dólares" name="MetaDolares" required>
-                <input type="button" value="Agregar" onclick="postAse();">
-            </form>
-
-            <form action="" name="modificarAse" method="post" id="modificarAse">
-                <h2>Modificar Asesor</h2>
-                <input type="text" placeholder="Nombre" name="Nombre" required>
-                <input type="text" placeholder="Primer Apellido" name="PApellido" required>
-                <input type="text" placeholder="Segundo Apellido" name="SApellido" required>
-                <input type="text" placeholder="Cédula" name="Cedula" required>
-                <input type="number" placeholder="₡ Meta en Colones" name="MetaColones" required>
-                <input type="number" placeholder="$ Meta en Dólares" name="MetaDolares" required>
-                <input type="button" value="Modificar" onclick="putAse();">
-            </form>
-
-            <form action="" name="eliminarAse" method="post" id="eliminarAse">
-                <h2>Eliminar Asesor</h2>
-                <input type="number" placeholder="Cédula" name="Cedula" required>
-                <input type="button" value="Eliminar" onclick="deleteAse();">
-            </form>
-        </div>
-        <!-- Asesores -->
-
         <!-- Préstamos -->
         <div class="contenedor" style="display: none" id="prestamos">
-            <form action="" name="crearPre" method="post" id="crearPre">
-                <h2>Crear Préstamo</h2>
-                <input type="number" placeholder="Monto" name="Monto" required>
-                <input type="number" placeholder="Cédula del Cliente" name="cedCliente" required>
-                <input type="number" placeholder="Cédula del Asesor" name="cedAsesor" required>
-                <input type="number" placeholder="% Tasa de Interés" name="Interes" required>
-                <input type="button" value="Crear" onclick="postPre();">
-            </form>
-
-            <form action="" name="pagosPre" method="post" id="pagosPre" style="float: left;">
-                <h2>Cálculo de Pagos</h2>
-                <input type="text" placeholder="Cédula del Cliente" name="Cedula" required>
-                <input type="button" value="Calcular" onclick="pagoPre();">
-            </form>
-
-            <form action="" name="tableCalendario" method="post" id="tableCalendario" style="display: none;float: left;">
-                <table width="600px" border="1px" title="Calendario" style="" id="tablaCalendario">
-                    <caption align="top">Calendario de Pagos</caption>
+            <form action="" name="tablePagoPre" method="post" id="tablePagoPre" style="display: none;float: left;">
+                <table width="720px" border="1px" title="Calendario" style="" id="tablaPagoPre">
+                    <caption align="top">Préstamos</caption>
                     <tr>
-                        <td width="100px">
+                        <td width="120px">
                             # de Préstamo
                         </td>
-                        <td width="100px">
-                            Amortización
+                        <td width="120px">
+                            Monto
                         </td>
-                        <td width="100px">
+                        <td width="120px">
                             Intereses
                         </td>
-                        <td width="100px">
+                        <td width="120px">
+                            Fecha
+                        </td>
+                        <td width="120px">
                             Pago Normal
                         </td>
-                        <td width="100px">
+                        <td width="120px">
                             Pago Extraordinario
                         </td>
                     </tr>
@@ -375,39 +195,6 @@
             </form>
         </div>
         <!-- Préstamos -->
-
-        <!-- Moras -->
-        <div class="contenedor" style="display: none" id="moras">
-            <form action="" name="tableMora" method="post" id="tableMora" style="display: none;float: left;">
-                <table width="700px" border="1px" title="Mora" style="" id="tablaMora">
-                    <caption align="top">Moras</caption>
-                    <tr>
-                        <td width="100px">
-                            Nombre
-                        </td>
-                        <td width="100px">
-                            Primer Apellido
-                        </td>
-                        <td width="100px">
-                            Segundo Apellido
-                        </td>
-                        <td width="100px">
-                            Cédula
-                        </td>
-                        <td width="100px">
-                            # de Préstamo
-                        </td>
-                        <td width="100px">
-                            Cuotas Vencidas
-                        </td>
-                        <td width="100px">
-                            Monto Adeudado
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <!-- Mora -->
 
 	</header>
 	<div class="contenedor">
@@ -428,23 +215,12 @@
             /*document.getElementById('login');
             roles.style.display='none';*/
             document.getElementById('login');
-            roles.style.display='none';
-			document.getElementById('roles');
-			roles.style.display='none';
-            document.getElementById('clientes');
-            clientes.style.display='none';
-            document.getElementById('empleados');
-            empleados.style.display='none';
             document.getElementById('cuentas');
             cuentas.style.display='none';
             document.getElementById('tarjetas');
             tarjetas.style.display='none';
-            document.getElementById('asesores');
-            asesores.style.display='none';
             document.getElementById('prestamos');
             prestamos.style.display='none';
-            document.getElementById('moras');
-            moras.style.display='none';
 			/*document.getElementById('sucursales');
 			sucursales.style.display='none';
 			document.getElementById('empleados');
@@ -472,235 +248,69 @@
                     document.getElementById('menunav').style.display='block';
                     break;
 
-				case 'crearRol':
-                    roles.style.display="block";
-                    document.getElementById('crearRol');
-                    crearRol.style.display='block';
-                    document.getElementById('modificarRol');
-					modificarRol.style.display='none';
-                    document.getElementById('eliminarRol');
-                    eliminarRol.style.display='none';
+                case 'movimientosCue':
+                    cuentas.style.display="block";
+                    document.getElementById('movimientosCue');
+                    movimientosCue.style.display='inline-table';
+                    document.getElementById('tableMovimientos');
+                    tableMovimientos.style.display='inline-table';
+                    document.getElementById('tarjetasCue');
+                    tarjetasCue.style.display='none';
+                    document.getElementById('tableTarjetasCue');
+                    tableTarjetasCue.style.display='none';
+                    document.getElementById('transferenciasCue');
+                    transferenciasCue.style.display='none';
                     break;
-                case 'modificarRol':
-                    roles.style.display="block";
-                    document.getElementById('modificarRol');
-                    modificarRol.style.display='block';
-                    document.getElementById('crearRol');
-                    crearRol.style.display='none';
-                    document.getElementById('eliminarRol');
-                    eliminarRol.style.display='none';
+                case 'tarjetasCue':
+                    cuentas.style.display="block";
+                    document.getElementById('movimientosCue');
+                    movimientosCue.style.display='none';
+                    document.getElementById('tableMovimientos');
+                    tableMovimientos.style.display='none';
+                    document.getElementById('tarjetasCue');
+                    tarjetasCue.style.display='inline-table';
+                    document.getElementById('tableTarjetasCue');
+                    tableTarjetasCue.style.display='inline-table';
+                    document.getElementById('transferenciasCue');
+                    transferenciasCue.style.display='none';
                     break;
-                case 'eliminarRol':
-                    roles.style.display="block";
-                    document.getElementById('eliminarRol');
-                    eliminarRol.style.display='block';
-                    document.getElementById('modificarRol');
-                    modificarRol.style.display='none';
-                    document.getElementById('crearRol');
-                    crearRol.style.display='none';
+                case 'transferenciasCue':
+                    cuentas.style.display="block";
+                    document.getElementById('movimientosCue');
+                    movimientosCue.style.display='none';
+                    document.getElementById('tableMovimientos');
+                    tableMovimientos.style.display='none';
+                    document.getElementById('tarjetasCue');
+                    tarjetasCue.style.display='none';
+                    document.getElementById('tableTarjetasCue');
+                    tableTarjetasCue.style.display='none';
+                    document.getElementById('transferenciasCue');
+                    transferenciasCue.style.display='block';
                     break;
 
-                case 'crearCli':
-                    clientes.style.display="block";
-                    document.getElementById('crearCli');
-                    crearCli.style.display='block';
-                    document.getElementById('modificarCli');
-                    modificarCli.style.display='none';
-                    document.getElementById('eliminarCli');
-                    eliminarCli.style.display='none';
-                    break;
-                case 'modificarCli':
-                    clientes.style.display="block";
-                    document.getElementById('modificarCli');
-                    modificarCli.style.display='block';
-                    document.getElementById('crearCli');
-                    crearCli.style.display='none';
-                    document.getElementById('eliminarCli');
-                    eliminarCli.style.display='none';
-                    break;
-                case 'eliminarCli':
-                    clientes.style.display="block";
-                    document.getElementById('eliminarCLi');
-                    eliminarCli.style.display='block';
-                    document.getElementById('modificarCli');
-                    modificarCli.style.display='none';
-                    document.getElementById('crearCli');
-                    crearCli.style.display='none';
-                    break;
-
-                case 'crearEmp':
-                    empleados.style.display="block";
-                    document.getElementById('crearEmp');
-                    crearEmp.style.display='block';
-                    document.getElementById('modificarEmp');
-                    modificarEmp.style.display='none';
-                    document.getElementById('eliminarEmp');
-                    eliminarEmp.style.display='none';
-                    break;
-                case 'modificarEmp':
-                    empleados.style.display="block";
-                    document.getElementById('modificarEmp');
-                    modificarEmp.style.display='block';
-                    document.getElementById('crearEmp');
-                    crearEmp.style.display='none';
-                    document.getElementById('eliminarEmp');
-                    eliminarEmp.style.display='none';
-                    break;
-                case 'eliminarEmp':
-                    empleados.style.display="block";
-                    document.getElementById('eliminarCLi');
-                    eliminarEmp.style.display='block';
-                    document.getElementById('modificarEmp');
-                    modificarEmp.style.display='none';
-                    document.getElementById('crearEmp');
-                    crearEmp.style.display='none';
-                    break;
-
-                case 'crearCue':
-                    cuentas.style.display="block";
-                    document.getElementById('crearCue');
-                    crearCue.style.display='block';
-                    document.getElementById('modificarCue');
-                    modificarCue.style.display='none';
-                    document.getElementById('eliminarCue');
-                    eliminarCue.style.display='none';
-                    document.getElementById('depositoCue');
-                    depositoCue.style.display='none';
-                    document.getElementById('retiroCue');
-                    retiroCue.style.display='none';
-                    break;
-                case 'modificarCue':
-                    cuentas.style.display="block";
-                    document.getElementById('modificarCue');
-                    modificarCue.style.display='block';
-                    document.getElementById('crearCli');
-                    crearCue.style.display='none';
-                    document.getElementById('eliminarCue');
-                    eliminarCue.style.display='none';
-                    document.getElementById('depositoCue');
-                    depositoCue.style.display='none';
-                    document.getElementById('retiroCue');
-                    retiroCue.style.display='none';
-                    break;
-                case 'eliminarCue':
-                    cuentas.style.display="block";
-                    document.getElementById('eliminarCue');
-                    eliminarCue.style.display='block';
-                    document.getElementById('modificarCue');
-                    modificarCue.style.display='none';
-                    document.getElementById('crearCue');
-                    crearCue.style.display='none';
-                    document.getElementById('depositoCue');
-                    depositoCue.style.display='none';
-                    document.getElementById('retiroCue');
-                    retiroCue.style.display='none';
-                    break;
-                case 'depositoCue':
-                    cuentas.style.display="block";
-                    document.getElementById('modificarCue');
-                    modificarCue.style.display='none';
-                    document.getElementById('crearCli');
-                    crearCue.style.display='none';
-                    document.getElementById('eliminarCue');
-                    eliminarCue.style.display='none';
-                    document.getElementById('depositoCue');
-                    depositoCue.style.display='block';
-                    document.getElementById('retiroCue');
-                    retiroCue.style.display='none';
-                    break;
-                case 'retiroCue':
-                    cuentas.style.display="block";
-                    document.getElementById('eliminarCue');
-                    eliminarCue.style.display='none';
-                    document.getElementById('modificarCue');
-                    modificarCue.style.display='none';
-                    document.getElementById('crearCue');
-                    crearCue.style.display='none';
-                    document.getElementById('depositoCue');
-                    depositoCue.style.display='none';
-                    document.getElementById('retiroCue');
-                    retiroCue.style.display='block';
-                    break;
-
-                case 'crearTar':
+                 case 'pagoTar':
                     tarjetas.style.display="block";
-                    document.getElementById('crearTar');
-                    crearTar.style.display='block';
-                    document.getElementById('modificarTar');
-                    modificarTar.style.display='none';
-                    document.getElementById('eliminarTar');
-                    eliminarTar.style.display='none';
+                    document.getElementById('pagoTar');
+                    pagoTar.style.display='block';
+                    document.getElementById('listadoTar');
+                    listadoTar.style.display='none';
+                    document.getElementById('tableListado');
+                    tableListado.style.display='none';
                     break;
-                case 'modificarTar':
+                case 'comprasTar':
                     tarjetas.style.display="block";
-                    document.getElementById('modificarTar');
-                    modificarTar.style.display='block';
-                    document.getElementById('crearTar');
-                    crearTar.style.display='none';
-                    document.getElementById('eliminarTar');
-                    eliminarTar.style.display='none';
-                    break;
-                case 'eliminarTar':
-                    tarjetas.style.display="block";
-                    document.getElementById('eliminarTar');
-                    eliminarTar.style.display='block';
-                    document.getElementById('modificarTar');
-                    modificarTar.style.display='none';
-                    document.getElementById('crearTar');
-                    crearTar.style.display='none';
+                    document.getElementById('pagoTar');
+                    pagoTar.style.display='none';
+                    document.getElementById('listadoTar');
+                    listadoTar.style.display='inline-table';
+                    document.getElementById('tableListado');
+                    tableListado.style.display='inline-table';
                     break;
 
-                case 'crearAse':
-                    asesores.style.display="block";
-                    document.getElementById('crearAse');
-                    crearAse.style.display='block';
-                    document.getElementById('modificarAse');
-                    modificarAse.style.display='none';
-                    document.getElementById('eliminarAse');
-                    eliminarAse.style.display='none';
-                    break;
-                case 'modificarAse':
-                    asesores.style.display="block";
-                    document.getElementById('modificarAse');
-                    modificarAse.style.display='block';
-                    document.getElementById('crearAse');
-                    crearAse.style.display='none';
-                    document.getElementById('eliminarAse');
-                    eliminarAse.style.display='none';
-                    break;
-                case 'eliminarAse':
-                    asesores.style.display="block";
-                    document.getElementById('eliminarAse');
-                    eliminarAse.style.display='block';
-                    document.getElementById('modificarAse');
-                    modificarAse.style.display='none';
-                    document.getElementById('crearAse');
-                    crearAse.style.display='none';
-                    break;
-
-                case 'crearPre':
-                    prestamos.style.display="block";
-                    document.getElementById('crearPre');
-                    crearPre.style.display='block';
-                    document.getElementById('pagosPre');
-                    pagosPre.style.display='none';
-                    document.getElementById('tableCalendario');
-                    tableCalendario.style.display='none';
-                    break;
                 case 'pagosPre':
                     prestamos.style.display="block";
-                    document.getElementById('pagosPre');
-                    pagosPre.style.display='block';
-                    document.getElementById('crearPre');
-                    crearPre.style.display='none';
-                    document.getElementById('tableCalendario');
-                    tableCalendario.style.display='inline-table';
-                    break;
-
-                 case 'reporteMor':
-                    moras.style.display="block";
-                    document.getElementById('tableMora');
-                    tableMora.style.display='inline-table';
+                    document.getElementById('tablePagoPre');
+                    tablePagoPre.style.display='inline-table';
                     break;
 				/*case 'sucursales':
 					sucursales.style.display='block';

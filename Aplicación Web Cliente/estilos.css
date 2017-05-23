@@ -13,7 +13,7 @@ body{
 
 }
 .contenedor{
-	width: 95%;
+	width: 95%;/*41.65%;*/
 	max-width: 85.37%;/*1011.5px;*/
 	margin: auto;
 }
