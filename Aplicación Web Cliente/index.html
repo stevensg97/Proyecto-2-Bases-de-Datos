@@ -23,6 +23,7 @@
                             <li><a href="javascript:mostrar('movimientosCue')">Movimientos</a>
                             <li><a href="javascript:mostrar('tarjetasCue')">Tarjetas</a>
                             <li><a href="javascript:mostrar('transferenciasCue')">Transferencias</a>
+                            <li><a href="javascript:mostrar('tablaCuentas')">Ver</a>
                         </ul>    
                     </li>
 					<li><a>Tarjetas</a>
@@ -34,6 +35,8 @@
 					<li><a>Préstamos</a>
                         <ul>
                             <li><a href="javascript:mostrar('pagosPre')">Pagos</a>
+                            <li><a href="javascript:mostrar('normal')">Normal</a>
+                            <li><a href="javascript:mostrar('extra')">Extra</a>
                         </ul>
                     </li>
 					<li><a href="index.html">Salir</a></li>
@@ -66,20 +69,23 @@
             </form>
 
             <form action="" name="tableMovimientos" method="post" id="tableMovimientos" style="display: none;float: left;">
-                <table width="600px" border="1px" title="Calendario" style="" id="tablaMovimientos">
+                <table width="700px" border="1px" title="Calendario" style="" id="tablaMovimientos">
                     <caption align="top">Movimientos</caption>
                     <tr>
-                        <td width="150px">
-                            Tipo
+                        <td width="140px">
+                            <b>Tipo</b>
                         </td>
-                        <td width="150px">
-                            Fecha
+                        <td width="140px">
+                            <b>Fecha</b>
                         </td>
-                        <td width="150px">
-                            Monto
+                        <td width="140px">
+                            <b>Monto</b> 
                         </td>
-                        <td width="150px">
-                            Moneda
+                        <td width="140px">
+                            <b>Moneda</b> 
+                        </td>
+                        <td width="140px">
+                            <b>ID</b>
                         </td>
                     </tr>
                 </table>
@@ -97,16 +103,16 @@
                     <caption align="top">Tarjetas Asociadas</caption>
                     <tr>
                         <td width="150px">
-                            Número
+                            <b>Número</b>
                         </td>
                         <td width="150px">
-                            Fecha
+                            <b>Fecha</b>
                         </td>
                         <td width="150px">
-                            Saldo
+                            <b>Saldo</b>
                         </td>
                         <td width="150px">
-                            Tipo
+                            <b>Tipo</b>
                         </td>
                     </tr>
                 </table>
@@ -124,7 +130,32 @@
                 <input type="number" placeholder="Cuenta Receptora" name="CuentaRec" required>
                 <input type="button" value="Transferir" onclick="postTra();">
             </form>
+
+            <form action="" name="tableCuentas" method="post" id="tableCuentas" style="display: none;float: left;">
+                <table width="700px" border="1px" title="Calendario" style="" id="tablaCuentas">
+                    <caption align="top">Cuentas Asociadas</caption>
+                    <tr>
+                        <td width="140px">
+                            <b>Tipo</b>
+                        </td>
+                        <td width="140px">
+                            <b>Moneda</b>
+                        </td>
+                        <td width="140px">
+                            <b>Descripción</b> 
+                        </td>
+                        <td width="140px">
+                            <b>Número</b> 
+                        </td>
+                        <td width="140px">
+                            <b>Saldo</b>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
         </div>
+
         <!-- Cuentas -->
 
         <!-- Tarjetas -->
@@ -133,32 +164,35 @@
                 <h2>Pago de Tarjeta</h2>
                 <input type="number" placeholder="Número de Tarjeta" name="Numero" required>
                 <input type="number" placeholder="Monto a Cancelar" name="Monto" required>
-                <input type="button" value="Pagar" onclick="pagoTar();">
+                <input type="button" value="Pagar" onclick="pagoTarjeta();">
             </form>
 
             <form action="" name="listadoTar" method="post" id="listadoTar" style="float: left;">
                 <h2>Tarjeta a Consultar</h2>
                 <input type="number" placeholder="Número de Tarjeta" name="Numero" required>Fecha Inicial<br>
-                <input type="date" placeholder="Fecha Inicial" name="fechaInicio" required>Fecha Final<br>
-                <input type="date" placeholder="Fecha Final" name="fechaFinal" required>
-                <input type="button" value="Consultar" onclick="listadoTar();">
+                <input type="text" placeholder="aaaa-mm-dd" name="fechaInicio" required>Fecha Final<br>
+                <input type="text" placeholder="aaaa-mm-dd" name="fechaFinal" required>
+                <input type="button" value="Consultar" onclick="listadoTarjetas();">
             </form>
 
             <form action="" name="tableListado" method="post" id="tableListado" style="display: none;float: left;">
-                <table width="600px" border="1px" title="Tarjetas" style="" id="tablaListado">
+                <table width="700px" border="1px" title="Tarjetas" style="" id="tablaListado">
                     <caption align="top">Listado de Compras</caption>
                     <tr>
-                        <td width="150px">
-                            Comercio
+                        <td width="140px">
+                            <b>Comercio</b>
                         </td>
-                        <td width="150px">
-                            Monto
+                        <td width="140px">
+                            <b>Fecha</b>
                         </td>
-                        <td width="150px">
-                            Fecha de Expiración
+                        <td width="140px">
+                            <b>Monto</b>
                         </td>
-                        <td width="150px">
-                            Moneda
+                        <td width="140px">
+                            <b>Moneda</b>
+                        </td>
+                        <td width="140px">
+                            <b>ID</b>
                         </td>
                     </tr>
                 </table>
@@ -168,30 +202,49 @@
 
         <!-- Préstamos -->
         <div class="contenedor" style="display: none" id="prestamos">
-            <form action="" name="tablePagoPre" method="post" id="tablePagoPre" style="display: none;float: left;">
-                <table width="720px" border="1px" title="Calendario" style="" id="tablaPagoPre">
-                    <caption align="top">Préstamos</caption>
+            <form action="" name="pagosPre" method="post" id="pagosPre" style="float: left;">
+                <h2>Cálculo de Pagos</h2>
+                <input type="number" placeholder="Cédula del Cliente" name="Cedula" required>
+                <input type="button" value="Calcular" onclick="pagoPre();">
+            </form>
+
+            <form action="" name="tableCalendario" method="post" id="tableCalendario" style="display: none;float: left;">
+                <table width="700px" border="1px" title="Calendario" style="" id="tablaCalendario">
+                    <caption align="top">Calendario de Pagos</caption>
                     <tr>
-                        <td width="120px">
-                            # de Préstamo
+                        <td width="140px">
+                            <b># de Préstamo</b>
                         </td>
-                        <td width="120px">
-                            Monto
+                        <td width="140px">
+                            <b>Fecha</b>
                         </td>
-                        <td width="120px">
-                            Intereses
+                        <td width="140px">
+                            <b>Amortización</b>
                         </td>
-                        <td width="120px">
-                            Fecha
+                        <td width="140px">
+                            <b>Intereses</b>
                         </td>
-                        <td width="120px">
-                            Pago Normal
-                        </td>
-                        <td width="120px">
-                            Pago Extraordinario
+                        <td width="140px">
+                            <b>Estado</b>
                         </td>
                     </tr>
                 </table>
+            </form>
+
+            <form action="" name="pagoOrd" method="post" id="pagoOrd" style="float: left;">
+                <h2>Pago Normal</h2>
+                <input type="number" placeholder="Número de Cuenta" name="Cuenta" required>
+                <input type="number" placeholder="Número de Préstamo" name="Numero" required>
+                <input type="button" value="Pagar" onclick="pagosOrd();">
+            </form>
+
+            <form action="" name="pagoExt" method="post" id="pagoExt" style="float: left;">
+                <h2>Pago Extraordinario</h2>
+                <input type="number" placeholder="Número de Cuenta" name="Cuenta" required>
+                <input type="number" placeholder="Número de Préstamo" name="Numero" required>
+                <input type="number" placeholder="Monto" name="Monto" required>
+                
+                <input type="button" value="Pagar" onclick="pagosExt();">
             </form>
         </div>
         <!-- Préstamos -->
@@ -260,6 +313,8 @@
                     tableTarjetasCue.style.display='none';
                     document.getElementById('transferenciasCue');
                     transferenciasCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
                     break;
                 case 'tarjetasCue':
                     cuentas.style.display="block";
@@ -273,6 +328,8 @@
                     tableTarjetasCue.style.display='inline-table';
                     document.getElementById('transferenciasCue');
                     transferenciasCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
                     break;
                 case 'transferenciasCue':
                     cuentas.style.display="block";
@@ -286,6 +343,24 @@
                     tableTarjetasCue.style.display='none';
                     document.getElementById('transferenciasCue');
                     transferenciasCue.style.display='block';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
+                    break;
+                case 'tablaCuentas':
+                    cuentas.style.display="block";
+                    document.getElementById('movimientosCue');
+                    movimientosCue.style.display='none';
+                    document.getElementById('tableMovimientos');
+                    tableMovimientos.style.display='none';
+                    document.getElementById('tarjetasCue');
+                    tarjetasCue.style.display='none';
+                    document.getElementById('tableTarjetasCue');
+                    tableTarjetasCue.style.display='none';
+                    document.getElementById('transferenciasCue');
+                    transferenciasCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='inline-table';
+                    verCuentas();
                     break;
 
                  case 'pagoTar':
@@ -309,109 +384,295 @@
 
                 case 'pagosPre':
                     prestamos.style.display="block";
-                    document.getElementById('tablePagoPre');
-                    tablePagoPre.style.display='inline-table';
+                    document.getElementById('pagosPre');
+                    pagosPre.style.display='block';
+                    document.getElementById('tableCalendario');
+                    tableCalendario.style.display='inline-table';
+                    document.getElementById('pagoExt');
+                    pagoExt.style.display='none';
+                    document.getElementById('pagoOrd');
+                    pagoOrd.style.display='none';
                     break;
-				/*case 'sucursales':
-					sucursales.style.display='block';
-					break;
-				case 'empleados':
-					empleados.style.display='block';
-					break;
-				case 'proveedores':
-					proveedores.style.display='block';
-					break;
-				case 'productos':
-					productos.style.display='block';
-					break;
-				case 'compras':
-					compras.style.display='block';
-					break;
-				case 'horas':
-					horas.style.display='block';
-					break;
-                case 'planilla':
-                    planilla.style.display='block';
+                case 'normal':
+                    prestamos.style.display="block";
+                    document.getElementById('pagosPre');
+                    pagosPre.style.display='none';
+                    document.getElementById('tableCalendario');
+                    tableCalendario.style.display='none';
+                    document.getElementById('pagoExt');
+                    pagoExt.style.display='none';
+                    document.getElementById('pagoOrd');
+                    pagoOrd.style.display='block';
                     break;
-                case 'reportes':
-                    reportes.style.display='block';
+                 case 'extra':
+                    prestamos.style.display="block";
+                    document.getElementById('pagosPre');
+                    pagosPre.style.display='none';
+                    document.getElementById('tableCalendario');
+                    tableCalendario.style.display='none';
+                    document.getElementById('pagoExt');
+                    pagoExt.style.display='block';
+                    document.getElementById('pagoOrd');
+                    pagoOrd.style.display='none';
                     break;
-                case 'facturacion':
-                    facturacion.style.display='block';
-                    break;
-                case 'login':
-                    var login = document.getElementById("login");
-                    var xhr = new XMLHttpRequest();
-                    var xhr2 = new XMLHttpRequest();
-                    var user='';
-                    var pass='';
-                    var suc='';
-                    xhr2.onreadystatechange = function() {
-                        if (xhr2.readyState == XMLHttpRequest.DONE) {
-                            var parser, xmlDoc;
-                            var text = xhr2.responseText;
-                            parser = new DOMParser();
-                            xmlDoc = parser.parseFromString(text,"text/xml");
-                            user=xmlDoc.getElementsByTagName("Cedula")[0].childNodes[0].nodeValue;
-                            pass=xmlDoc.getElementsByTagName("Contrasena")[0].childNodes[0].nodeValue;
-                            suc=xmlDoc.getElementsByTagName("Sucursal")[0].childNodes[0].nodeValue;
-
-                        }
-                        
-                    }
-                    xhr2.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value, true);
-                    xhr2.send(null);
-                    
-                    if (login.rol.value=="Administrador") {
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState == XMLHttpRequest.DONE) {
-                                var parser, xmlDoc;
-                                var text = xhr.responseText;
-                                parser = new DOMParser();
-                                xmlDoc = parser.parseFromString(text,"text/xml");
-
-                                if (login.Usuario.value==xmlDoc.getElementsByTagName("Ced_administrador")[0].childNodes[0].nodeValue && login.Contraseña.value==pass) {
-                                    login.style.display='none';
-                                    document.getElementById('menunav').style.display='block';
-                                }
-                                else{
-                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
-                                }
-                            }
-                        }
-                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/sucursal?codigo='+login.Sucursal.value, true);
-                        xhr.send(null);
-                        
-                    }
-                    else{
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState == XMLHttpRequest.DONE) {
-                                var parser, xmlDoc;
-                                var text = xhr.responseText;
-                                parser = new DOMParser();
-                                xmlDoc = parser.parseFromString(text,"text/xml");
-
-                                if (login.Usuario.value==user && login.Contraseña.value==pass && login.Sucursal.value==suc) {
-                                    document.getElementById("menunemp").style.display="block";
-                                    login.style.display="none";
-                                    mostrar("facturacion");
-
-                                }
-                                else{
-                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
-                                }
-                            }
-                        }
-                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value+'&contrasena='+login.Contraseña.value+'&codigo_sucursal='+login.Sucursal.value, true);
-                        xhr.send(null);
-
-                    }
-                    break;*/
+				
 				default:
 					
 			}
         }
 
+        /*Métodos de Cuentas*/
+        function consultaCue() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaMovimientos");
+                    limpiar("tablaMovimientos");
+                    if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML =  str.substring(0,10);
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("Id")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/movimiento?numcuenta='+document.movimientosCue.Cuenta.value, true);
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function consultaTarCue() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaTarjetasCue");
+                    limpiar("tablaTarjetasCue");
+                    if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Numero")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("FechaExp")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML =  str.substring(0,10);
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("SaldoActual")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/tarjeta?numcuenta='+document.tarjetasCue.Cuenta.value, true);
+            alert(this.responseText);
+            xhr.send(null);
+        }
+
+        function postTra() {
+            var xhr = new XMLHttpRequest();
+            
+            var datos = 'monto='+document.transferenciasCue.Monto.value+'&fecha='+fecha()+'&cuentaemisora='+document.transferenciasCue.CuentaEmi.value+'&cuentareceptora='+document.transferenciasCue.CuentaRec.value+'&moneda='+document.transferenciasCue.moneda_transferencia.value;//Datos a enviar en el request.
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/transferencia', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function verCuentas() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaCuentas");
+                    limpiar("tablaCuentas");
+                    if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Descripcion")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("NumCuenta")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("Saldo")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }   
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/cuenta?cedcliente='+document.getElementById('login').Usuario.value, true);
+            xhr.send(null);
+        }
+        /*Métodos de Cuentas*/
+
+        /*Métodos de Tarjetas*/
+        function pagoTarjeta() {
+            var xhr = new XMLHttpRequest();
+            
+            var datos = 'monto='+document.pagoTar.Monto.value+'&fecha='+fecha()+'&numtarjeta='+document.pagoTar.Numero.value;//Datos a enviar en el request.
+
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/cancelar_tarjeta', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function listadoTarjetas() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaListado");
+                    limpiar("tablaListado");
+                    if (xmlDoc.getElementsByTagName("Comercio")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Comercio")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Comercio")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML =  str.substring(0,10);
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("Id")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/compra?numtarjeta='+document.listadoTar.Numero.value, true);
+            alert(this.responseText);
+            xhr.send(null);
+        }
+        /*Métodos de Tarjetas*/
+
+        /*Métodos de Préstamos*/
+        function pagoPre() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaCalendario");
+                    limpiar("tablaCalendario");
+                    if (xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue != null){  
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("NumPrestamo")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = str.substring(0,10);
+                            cell3.innerHTML = ''+parseFloat(xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue + xmlDoc.getElementsByTagName("MontoInteres")[numeroFila].childNodes[0].nodeValue)
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("MontoInteres")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("Estado")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/pago?cedcliente='+document.getElementById('login').Usuario.value, true);
+            alert(this.responseText);
+            xhr.send(null);
+
+        }
+
+        function pagosOrd() {
+            var xhr = new XMLHttpRequest();
+
+            var datos = 'cuenta='+document.pagoOrd.Cuenta.value+'&numprestamo='+document.pagoOrd.Numero.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+
+        }
+
+        function pagosExt() {
+            var xhr = new XMLHttpRequest();
+
+            var datos = 'cuenta='+document.pagoExt.Cuenta.value+'&numprestamo='+document.pagoExt.Numero.value+'&extra='+document.pagoExt.Monto.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
+        /*Métodos de Préstamos*/
 
         function limpiar(p1){
             var tabla = document.getElementById(p1);
@@ -494,6 +755,21 @@
         function contraseña(){
             var aleatorio = Math.round(Math.random()*9999);
             return ''+aleatorio;
+        }
+
+        function fecha(){
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                dd='0'+dd;
+            } 
+            if(mm<10){
+                mm='0'+mm;
+            }
+            var today = yyyy+'-'+mm+'-'+dd;
+            return today+'';
         }
     </script>
 </body>

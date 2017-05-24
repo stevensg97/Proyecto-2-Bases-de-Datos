@@ -1574,23 +1574,6 @@
                     limpiar("tablaCalendario");
                     if (xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue != null) {
                         while (xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue != null){  
-                            var btnnormal = document.createElement("BUTTON");
-                            btnnormal.setAttribute('type', 'button');
-                            btnnormal.setAttribute('onclick', 'alert("holi");')
-                            var tnormal = document.createTextNode("Pagar");
-                            btnnormal.appendChild(tnormal); 
-                            var btnextra = document.createElement("BUTTON");
-                            btnextra.setAttribute('type', 'button');
-                            var textra = document.createTextNode("Pagar");
-                            btnextra.appendChild(textra); 
-                            var txt = document.createElement("INPUT");
-                            txt.setAttribute("type", "text");
-                            txt.setAttribute("placeholder", 'Monto');
-                            txt.setAttribute("style", 'font-size:15px');
-                            txt.setAttribute("style", 'padding:0px');
-                            txt.setAttribute("style", 'margin:0px');
-                            txt.setAttribute("style", 'width:100%');
-
                             var fila = tabla.insertRow(numeroFila+1);
                             var cell1 = fila.insertCell(0);
                             var cell2 = fila.insertCell(1);
