@@ -23,6 +23,7 @@
                             <li><a href="javascript:mostrar('crearRol')">Crear</a>
                             <li><a href="javascript:mostrar('modificarRol')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarRol')">Eliminar</a>
+                            <li><a href="javascript:mostrar('tablaRoles')">Ver</a>
                         </ul>
                     </li>
 					<li><a>Clientes</a>
@@ -30,6 +31,7 @@
                             <li><a href="javascript:mostrar('crearCli')">Crear</a>
                             <li><a href="javascript:mostrar('modificarCli')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarCli')">Eliminar</a>
+                            <li><a href="javascript:mostrar('tablaClientes')">Ver</a>
                         </ul>
                     </li>
                     <li><a>Empleados</a>
@@ -67,6 +69,8 @@
                         <ul>
                             <li><a href="javascript:mostrar('crearPre')">Crear</a>
                             <li><a href="javascript:mostrar('pagosPre')">Pagos</a>
+                            <li><a href="javascript:mostrar('normal')">Normal</a>
+                            <li><a href="javascript:mostrar('extra')">Extra</a>
                         </ul>
                     </li>
 					<li><a>Moras</a>
@@ -117,6 +121,20 @@
                 <h2>Eliminar Rol</h2>
                 <input type="text" placeholder="Nombre" name="Nombre" required>
                 <input type="button" value="Eliminar" onclick="deleteRol();">
+            </form>
+
+            <form action="" name="tableRoles" method="post" id="tableRoles" style="display: none;float: left;">
+                <table width="600px" border="1px" title="Roles" style="" id="tablaRoles">
+                    <caption align="top">Roles</caption>
+                    <tr>
+                        <td width="300px">
+                            <b>Nombre</b> 
+                        </td>
+                        <td width="300px">
+                            <b>Descripción</b> 
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
         <!-- Roles -->
@@ -177,6 +195,38 @@
                 <h2>Eliminar Cliente</h2>
                 <input type="number" placeholder="Cédula" name="Cedula" required>
                 <input type="button" value="Eliminar" onclick="deleteCli();">
+            </form>
+
+            <form action="" name="tableClientes" method="post" id="tableClientes" style="display: none;float: left;">
+                <table width="800px" border="1px" title="Clientes" style="" id="tablaClientes">
+                    <caption align="top">Clientes</caption>
+                    <tr>
+                        <td width="100px">
+                            <b>Nombre</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Cédula</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Tipo</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Dirección</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Teléfono</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Ingreso</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Contraseña</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Moneda</b> 
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
         <!-- Clientes -->
@@ -364,7 +414,6 @@
 
             <form action="" name="reporteAse" method="post" id="reporteAse" style="float: left;">
                 <h2>Reporte de Asesor</h2>
-                <input type="number" placeholder="Cédula del Asesor" name="Cedula" required>
                 <input type="button" value="Limpiar" onclick="limpiar('tablaAsesor');">
                 <input type="button" value="Mostrar" onclick="reporteAsesor();">
             </form>
@@ -374,25 +423,25 @@
                     <caption align="top">Reporte de Asesor</caption>
                     <tr>
                         <td width="100px">
-                            Nombre
+                            <b>Nombre</b> 
                         </td>
                         <td width="100px">
-                            Meta Colones
+                            <b>Meta Colones</b>
                         </td>
                         <td width="100px">
-                            Meta Dólares
+                            <b>Meta Dólares</b>
                         </td>
                         <td width="100px">
-                            Créditos Colones
+                            <b>Créditos Colones</b>
                         </td>
                         <td width="100px">
-                            Créditos Dólares
+                            <b>Créditos Dólares</b>
                         </td>
                         <td width="100px">
-                            Comisiones Colones
+                            <b>Comisiones Colones</b>
                         </td>
                         <td width="100px">
-                            Comisiones Dólares
+                            <b>Comisiones Dólares</b>
                         </td>
                     </tr>
                 </table>
@@ -411,7 +460,13 @@
                 <label for="ColonesPre"> Colones<br></label>
                 <input type="radio" name="moneda_prestamo"  id="DolaresPre" value="Dolares">
                 <label for="DolaresPre"> Dólares<br></label>
-                <input type="number" placeholder="% Tasa de Interés" value="3" name="Interes" required>
+                <input type="number" placeholder="% Tasa de Interés" value="3" name="Interes" required>Plazo del préstamo (meses):<br>
+                <input type="radio" name="meses_prestamo"  id="Seis" value="6" checked>
+                <label for="Seis"> 6<br></label>
+                <input type="radio" name="meses_prestamo"  id="Doce" value="12">
+                <label for="Doce"> 12<br></label>
+                <input type="radio" name="meses_prestamo"  id="Veinticuatro" value="24">
+                <label for="Veinticuatro"> 24<br></label>
                 <input type="button" value="Crear" onclick="postPre();">
             </form>
 
@@ -422,62 +477,75 @@
             </form>
 
             <form action="" name="tableCalendario" method="post" id="tableCalendario" style="display: none;float: left;">
-                <table width="600px" border="1px" title="Calendario" style="" id="tablaCalendario">
+                <table width="700px" border="1px" title="Calendario" style="" id="tablaCalendario">
                     <caption align="top">Calendario de Pagos</caption>
                     <tr>
-                        <td width="100px">
-                            # de Préstamo
+                        <td width="140px">
+                            <b># de Préstamo</b>
                         </td>
-                        <td width="100px">
-                            Amortización
+                        <td width="140px">
+                            <b>Fecha</b>
                         </td>
-                        <td width="100px">
-                            Intereses
+                        <td width="140px">
+                            <b>Amortización</b>
                         </td>
-                        <td width="100px">
-                            Pago Normal
+                        <td width="140px">
+                            <b>Intereses</b>
                         </td>
-                        <td width="100px">
-                            Pago Extraordinario
+                        <td width="140px">
+                            <b>Estado</b>
                         </td>
                     </tr>
                 </table>
+            </form>
+
+            <form action="" name="pagoOrd" method="post" id="pagoOrd" style="float: left;">
+                <h2>Pago Normal</h2>
+                <input type="number" placeholder="Número de Cuenta" name="Cuenta" required>
+                <input type="number" placeholder="Número de Préstamo" name="Numero" required>
+                <input type="button" value="Pagar" onclick="pagosOrd();">
+            </form>
+
+            <form action="" name="pagoExt" method="post" id="pagoExt" style="float: left;">
+                <h2>Pago Extraordinario</h2>
+                <input type="number" placeholder="Número de Cuenta" name="Cuenta" required>
+                <input type="number" placeholder="Número de Préstamo" name="Numero" required>
+                <input type="number" placeholder="Monto" name="Monto" required>
+                
+                <input type="button" value="Pagar" onclick="pagosExt();">
             </form>
         </div>
         <!-- Préstamos -->
 
         <!-- Moras -->
         <div class="contenedor" style="display: none" id="moras">
-        <form action="" name="reporteMor" method="post" id="reporteMor" style="float: left;">
+            <form action="" name="reporteMor" method="post" id="reporteMor" style="float: left;">
                 <h2>Reporte de Mora</h2>
                 <input type="text" placeholder="Cédula del Cliente" name="Cedula" required>
-                <input type="button" value="Mostrar" onclick="pagoPre();">
+                <input type="button" value="Mostrar" onclick="reporteMora();">
             </form>
 
             <form action="" name="tableMora" method="post" id="tableMora" style="display: none;float: left;">
                 <table width="700px" border="1px" title="Mora" style="" id="tablaMora">
                     <caption align="top">Moras</caption>
                     <tr>
-                        <td width="100px">
-                            Nombre
+                        <td width="200px">
+                            <b>Nombre Completo</b>
                         </td>
                         <td width="100px">
-                            Primer Apellido
+                            <b>Cédula</b>
                         </td>
                         <td width="100px">
-                            Segundo Apellido
+                            <b># de Préstamo</b>
                         </td>
                         <td width="100px">
-                            Cédula
+                            <b>Cuotas Vencidas</b>
                         </td>
                         <td width="100px">
-                            # de Préstamo
+                            <b>Monto Adeudado</b>
                         </td>
                         <td width="100px">
-                            Cuotas Vencidas
-                        </td>
-                        <td width="100px">
-                            Monto Adeudado
+                            <b>Moneda</b>
                         </td>
                     </tr>
                 </table>
@@ -504,7 +572,6 @@
             /*document.getElementById('login');
             roles.style.display='none';*/
             document.getElementById('login');
-            roles.style.display='none';
 			document.getElementById('roles');
 			roles.style.display='none';
             document.getElementById('clientes');
@@ -526,8 +593,28 @@
 
 			switch(p1){
                 case 'login':
-                    login.style.display='none';
-                    document.getElementById('menunav').style.display='block';
+                    var xhr = new XMLHttpRequest();
+                    var user='';
+                    var pass='';
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == XMLHttpRequest.DONE) {
+                            var parser, xmlDoc;
+                            var text = xhr.responseText;
+                            parser = new DOMParser();
+                            xmlDoc = parser.parseFromString(text,"text/xml");
+                            user=xmlDoc.getElementsByTagName("Cedula")[0].childNodes[0].nodeValue;
+                            pass=xmlDoc.getElementsByTagName("Contrasena")[0].childNodes[0].nodeValue;
+                            if (user==login.Usuario.value && pass==login.Contraseña.value) {
+                                login.style.display='none';
+                                document.getElementById('menunav').style.display='block';
+                            }
+                            else{
+                                alert("Usuario y/o Contraseña Incorrectos");
+                            }
+                        }
+                    }
+                    xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?cedula='+login.Usuario.value, true);
+                    xhr.send(null);
                     break;
 
 				case 'crearRol':
@@ -538,6 +625,8 @@
 					modificarRol.style.display='none';
                     document.getElementById('eliminarRol');
                     eliminarRol.style.display='none';
+                    document.getElementById('tableRoles');
+                    tableRoles.style.display='none';
                     break;
                 case 'modificarRol':
                     roles.style.display="block";
@@ -547,6 +636,8 @@
                     crearRol.style.display='none';
                     document.getElementById('eliminarRol');
                     eliminarRol.style.display='none';
+                    document.getElementById('tableRoles');
+                    tableRoles.style.display='none';
                     break;
                 case 'eliminarRol':
                     roles.style.display="block";
@@ -556,6 +647,20 @@
                     modificarRol.style.display='none';
                     document.getElementById('crearRol');
                     crearRol.style.display='none';
+                    document.getElementById('tableRoles');
+                    tableRoles.style.display='none';
+                    break;
+                case 'tablaRoles':
+                    roles.style.display="block";
+                    document.getElementById('eliminarRol');
+                    eliminarRol.style.display='none';
+                    document.getElementById('modificarRol');
+                    modificarRol.style.display='none';
+                    document.getElementById('crearRol');
+                    crearRol.style.display='none';
+                    document.getElementById('tableRoles');
+                    tableRoles.style.display='inline-table';
+                    verRoles();
                     break;
 
                 case 'crearCli':
@@ -566,6 +671,8 @@
                     modificarCli.style.display='none';
                     document.getElementById('eliminarCli');
                     eliminarCli.style.display='none';
+                    document.getElementById('tableClientes');
+                    tableClientes.style.display='none';
                     break;
                 case 'modificarCli':
                     clientes.style.display="block";
@@ -575,6 +682,8 @@
                     crearCli.style.display='none';
                     document.getElementById('eliminarCli');
                     eliminarCli.style.display='none';
+                    document.getElementById('tableClientes');
+                    tableClientes.style.display='none';
                     break;
                 case 'eliminarCli':
                     clientes.style.display="block";
@@ -584,6 +693,20 @@
                     modificarCli.style.display='none';
                     document.getElementById('crearCli');
                     crearCli.style.display='none';
+                    document.getElementById('tableClientes');
+                    tableClientes.style.display='none';
+                    break;
+                case 'tablaClientes':
+                    clientes.style.display="block";
+                    document.getElementById('eliminarCLi');
+                    eliminarCli.style.display='none';
+                    document.getElementById('modificarCli');
+                    modificarCli.style.display='none';
+                    document.getElementById('crearCli');
+                    crearCli.style.display='none';
+                    document.getElementById('tableClientes');
+                    tableClientes.style.display='inline-table';
+                    verClientes();
                     break;
 
                 case 'crearEmp':
@@ -769,6 +892,10 @@
                     pagosPre.style.display='none';
                     document.getElementById('tableCalendario');
                     tableCalendario.style.display='none';
+                    document.getElementById('pagoExt');
+                    pagoExt.style.display='none';
+                    document.getElementById('pagoOrd');
+                    pagoOrd.style.display='none';
                     break;
                 case 'pagosPre':
                     prestamos.style.display="block";
@@ -778,6 +905,36 @@
                     crearPre.style.display='none';
                     document.getElementById('tableCalendario');
                     tableCalendario.style.display='inline-table';
+                    document.getElementById('pagoExt');
+                    pagoExt.style.display='none';
+                    document.getElementById('pagoOrd');
+                    pagoOrd.style.display='none';
+                    break;
+                case 'normal':
+                    prestamos.style.display="block";
+                    document.getElementById('pagosPre');
+                    pagosPre.style.display='none';
+                    document.getElementById('crearPre');
+                    crearPre.style.display='none';
+                    document.getElementById('tableCalendario');
+                    tableCalendario.style.display='none';
+                    document.getElementById('pagoExt');
+                    pagoExt.style.display='none';
+                    document.getElementById('pagoOrd');
+                    pagoOrd.style.display='block';
+                    break;
+                 case 'extra':
+                    prestamos.style.display="block";
+                    document.getElementById('pagosPre');
+                    pagosPre.style.display='none';
+                    document.getElementById('crearPre');
+                    crearPre.style.display='none';
+                    document.getElementById('tableCalendario');
+                    tableCalendario.style.display='none';
+                    document.getElementById('pagoExt');
+                    pagoExt.style.display='block';
+                    document.getElementById('pagoOrd');
+                    pagoOrd.style.display='none';
                     break;
 
                 case 'reporteMor':
@@ -785,74 +942,7 @@
                     document.getElementById('tableMora');
                     tableMora.style.display='inline-table';
                     break;
-                /*case 'login':
-                    var login = document.getElementById("login");
-                    var xhr = new XMLHttpRequest();
-                    var xhr2 = new XMLHttpRequest();
-                    var user='';
-                    var pass='';
-                    var suc='';
-                    xhr2.onreadystatechange = function() {
-                        if (xhr2.readyState == XMLHttpRequest.DONE) {
-                            var parser, xmlDoc;
-                            var text = xhr2.responseText;
-                            parser = new DOMParser();
-                            xmlDoc = parser.parseFromString(text,"text/xml");
-                            user=xmlDoc.getElementsByTagName("Cedula")[0].childNodes[0].nodeValue;
-                            pass=xmlDoc.getElementsByTagName("Contrasena")[0].childNodes[0].nodeValue;
-                            suc=xmlDoc.getElementsByTagName("Sucursal")[0].childNodes[0].nodeValue;
-
-                        }
-                        
-                    }
-                    xhr2.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value, true);
-                    xhr2.send(null);
-                    
-                    if (login.rol.value=="Administrador") {
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState == XMLHttpRequest.DONE) {
-                                var parser, xmlDoc;
-                                var text = xhr.responseText;
-                                parser = new DOMParser();
-                                xmlDoc = parser.parseFromString(text,"text/xml");
-
-                                if (login.Usuario.value==xmlDoc.getElementsByTagName("Ced_administrador")[0].childNodes[0].nodeValue && login.Contraseña.value==pass) {
-                                    login.style.display='none';
-                                    document.getElementById('menunav').style.display='block';
-                                }
-                                else{
-                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
-                                }
-                            }
-                        }
-                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/sucursal?codigo='+login.Sucursal.value, true);
-                        xhr.send(null);
-                        
-                    }
-                    else{
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState == XMLHttpRequest.DONE) {
-                                var parser, xmlDoc;
-                                var text = xhr.responseText;
-                                parser = new DOMParser();
-                                xmlDoc = parser.parseFromString(text,"text/xml");
-
-                                if (login.Usuario.value==user && login.Contraseña.value==pass && login.Sucursal.value==suc) {
-                                    document.getElementById("menunemp").style.display="block";
-                                    login.style.display="none";
-                                    mostrar("facturacion");
-
-                                }
-                                else{
-                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
-                                }
-                            }
-                        }
-                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value+'&contrasena='+login.Contraseña.value+'&codigo_sucursal='+login.Sucursal.value, true);
-                        xhr.send(null);
-
-                    }
-                    break;*/
+                
 				default:
 					
 			}
@@ -922,6 +1012,33 @@
             alert(this.responseText);
             xhr.send(null);
 
+        }
+
+        function verRoles() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaRoles");
+                    limpiar("tablaRoles");
+                    if (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Descripcion")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }   
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/rol?', true);
+            xhr.send(null);
         }
         /*Métodos de Roles*/
 
@@ -1018,6 +1135,46 @@
             xhr.send(null);
 
 
+        }
+
+        function verClientes() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaClientes");
+                    limpiar("tablaClientes");
+                    if (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            var cell6 = fila.insertCell(5);
+                            var cell7 = fila.insertCell(6);
+                            var cell8 = fila.insertCell(7);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Cedula")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("Direccion")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("Telefono")[numeroFila].childNodes[0].nodeValue;
+                            cell6.innerHTML = xmlDoc.getElementsByTagName("Ingreso")[numeroFila].childNodes[0].nodeValue;
+                            cell7.innerHTML = xmlDoc.getElementsByTagName("Contrasena")[numeroFila].childNodes[0].nodeValue;
+                            cell8.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                            
+                            numeroFila = numeroFila+1;
+                        }
+                    }   
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/cliente?', true);
+            xhr.send(null);
         }
         /*Métodos de Clientes*/
 
@@ -1165,7 +1322,7 @@
         function depositarCue() {
             var xhr = new XMLHttpRequest();
             var date = fecha();
-            var datos = 'tipo=Deposito'+'&fecha='+date+'&monto='+document.depositoCue.Monto.value+'&numcuenta='+document.depositoCue.Numero.value+'&moneda='+document.depositoCue.moneda_ret.value;//Datos a enviar en el request.
+            var datos = 'tipo=Deposito'+'&fecha='+date+'&monto='+document.depositoCue.Monto.value+'&numcuenta='+document.depositoCue.Numero.value+'&moneda='+document.depositoCue.moneda_dep.value;//Datos a enviar en el request.
 
             xhr.open('POST', 'http://13.82.28.191/BancaTec/movimiento', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
@@ -1386,11 +1543,10 @@
         /*Métodos de Asesores*/
 
         /*Métodos de Préstamos*/
-        function postpre() {
+        function postPre() {
             var xhr = new XMLHttpRequest();
 
-            var datos = 'interes='+(parseFloat(document.crearPre.Interes.value)/100)+'&saldoorig='+document.crearPre.Monto.value+'&saldoactual='+document.crearPre.Monto.value+'&cedcliente='+document.crearPre.cedCliente.value+'&cedasesor='+document.crearPre.cedAsesor.value+'&moneda='+document.crearPre.moneda_prestamo.value;//Datos a enviar en el request.
-            
+            var datos = 'interes='+document.crearPre.Interes.value+'&saldo='+document.crearPre.Monto.value+'&cedcliente='+document.crearPre.cedCliente.value+'&cedasesor='+document.crearPre.cedAsesor.value+'&meses='+document.crearPre.meses_prestamo.value+'&moneda='+document.crearPre.moneda_prestamo.value;//Datos a enviar en el request.
 
 
             xhr.open('POST', 'http://13.82.28.191/BancaTec/prestamo', true); //Indica el tipo y la dirección del request.
@@ -1407,25 +1563,134 @@
 
         function pagoPre() {
             var xhr = new XMLHttpRequest();
-            if (document.modificarTar.tipo_tarjeta.value=='Debito') {
-                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+document.modificarTar.Codigo.value+'&fechaexp='+document.modificarTar.Fecha.value+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaCalendario");
+                    limpiar("tablaCalendario");
+                    if (xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue != null){  
+                            var btnnormal = document.createElement("BUTTON");
+                            btnnormal.setAttribute('type', 'button');
+                            btnnormal.setAttribute('onclick', 'alert("holi");')
+                            var tnormal = document.createTextNode("Pagar");
+                            btnnormal.appendChild(tnormal); 
+                            var btnextra = document.createElement("BUTTON");
+                            btnextra.setAttribute('type', 'button');
+                            var textra = document.createTextNode("Pagar");
+                            btnextra.appendChild(textra); 
+                            var txt = document.createElement("INPUT");
+                            txt.setAttribute("type", "text");
+                            txt.setAttribute("placeholder", 'Monto');
+                            txt.setAttribute("style", 'font-size:15px');
+                            txt.setAttribute("style", 'padding:0px');
+                            txt.setAttribute("style", 'margin:0px');
+                            txt.setAttribute("style", 'width:100%');
+
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("NumPrestamo")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = str.substring(0,10);
+                            cell3.innerHTML = ''+parseFloat(xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue + xmlDoc.getElementsByTagName("MontoInteres")[numeroFila].childNodes[0].nodeValue)
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("MontoInteres")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("Estado")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    
+                }
             }
-            else{
-                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+codseg()+'&fechaexp='+fechaexp()+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&saldoorig='+document.modificarTar.SaldoOrg.value+'&saldoactual='+document.modificarTar.SaldoAct.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
-            }
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/tarjeta', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.setRequestHeader('Content-length', datos.length+'');
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/pago?cedcliente='+document.pagosPre.Cedula.value, true);
+            alert(this.responseText);
+            xhr.send(null);
+
+        }
+
+        function pagosOrd() {
+            var xhr = new XMLHttpRequest();
+
+            var datos = 'cuenta='+document.pagoOrd.Cuenta.value+'&numprestamo='+document.pagoOrd.Numero.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
             xhr.onload = function () {
                 // do something to response
                 console.log(this.responseText);
                 alert(this.responseText);
             };
-            xhr.send(datos);
+            xhr.send(datos); //Se hace el envío del request.
 
         }
+
+        function pagosExt() {
+            var xhr = new XMLHttpRequest();
+
+            var datos = 'cuenta='+document.pagoExt.Cuenta.value+'&numprestamo='+document.pagoExt.Numero.value+'&extra='+document.pagoExt.Monto.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+                alert(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+        }
         /*Métodos de Préstamos*/
+
+        /*Métodos de Moras*/
+        function reporteMora() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaMora");
+                    limpiar("tablaMora");
+                    if (xmlDoc.getElementsByTagName("NombreCompleto")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("NombreCompleto")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            var cell6 = fila.insertCell(5);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("NombreCompleto")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Cedula")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("NumPrestamo")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("Vencidas")[numeroFila].childNodes[0].nodeValue;;
+                            cell4.innerHTML = str.substring(0,10);
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue;
+                            cell6.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    
+                }
+            }
+            xhr.open('GET', 'http://13.82.28.191/BancaTec/morafecha?cedula='+document.reporteMor.Cedula.value, true);
+            xhr.send(null);
+            alert(this.responseText);
+
+        }
+        /*Métodos de Moras*/
 
 
         function limpiar(p1){
