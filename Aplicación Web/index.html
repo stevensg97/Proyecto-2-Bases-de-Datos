@@ -39,6 +39,7 @@
                             <li><a href="javascript:mostrar('crearEmp')">Crear</a>
                             <li><a href="javascript:mostrar('modificarEmp')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarEmp')">Eliminar</a>
+                            <li><a href="javascript:mostrar('tablaEmpleados')">Ver</a>
                         </ul>
                     </li>
 					<li><a>Cuentas</a>
@@ -48,6 +49,7 @@
                             <li><a href="javascript:mostrar('eliminarCue')">Eliminar</a>
                             <li><a href="javascript:mostrar('depositoCue')">Depósito</a>
                             <li><a href="javascript:mostrar('retiroCue')">Retiro</a>
+                            <li><a href="javascript:mostrar('tablaCuentas')">Ver</a>
                         </ul>    
                     </li>
 					<li><a>Tarjetas</a>
@@ -55,6 +57,7 @@
                             <li><a href="javascript:mostrar('crearTar')">Crear</a>
                             <li><a href="javascript:mostrar('modificarTar')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarTar')">Eliminar</a>
+                            <li><a href="javascript:mostrar('tablaTarjetas')">Ver</a>
                         </ul>
                     </li>
 					<li><a>Asesores</a>
@@ -63,6 +66,7 @@
                             <li><a href="javascript:mostrar('modificarAse')">Modificar</a>
                             <li><a href="javascript:mostrar('eliminarAse')">Eliminar</a>
                             <li><a href="javascript:mostrar('reporteAse')">Reporte</a>
+                            <li><a href="javascript:mostrar('tablaAsesores')">Ver</a>
                         </ul>
                     </li>
 					<li><a>Préstamos</a>
@@ -262,6 +266,23 @@
                 <input type="number" placeholder="Cédula" name="Cedula" required>
                 <input type="button" value="Eliminar" onclick="deleteEmp();">
             </form>
+
+            <form action="" name="tableEmpleados" method="post" id="tableEmpleados" style="display: none;float: left;">
+                <table width="500px" border="1px" title="Empleados" style="" id="tablaEmpleados">
+                    <caption align="top">Empleados</caption>
+                    <tr>
+                        <td width="300px">
+                            <b>Nombre</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Cédula</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Sucursal</b> 
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <!-- Empleados -->
 
@@ -339,6 +360,32 @@
                 <input type="number" placeholder="Monto" name="Monto" required>
                 <input type="button" value="Retirar" onclick="retirarCue();">
             </form>
+
+            <form action="" name="tableCuentas" method="post" id="tableCuentas" style="display: none;float: left;">
+                <table width="600px" border="1px" title="Cuentas" style="" id="tablaCuentas">
+                    <caption align="top">Cuentas</caption>
+                    <tr>
+                        <td width="100px">
+                            <b>Tipo</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Moneda</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Descripción</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Cliente</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Número</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Saldo</b> 
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <!-- Cuentas -->
 
@@ -376,6 +423,35 @@
                 <h2>Eliminar Tarjeta</h2>
                 <input type="number" placeholder="Número de Tarjeta" name="Numero" required>
                 <input type="button" value="Eliminar" onclick="deleteTar();">
+            </form>
+
+            <form action="" name="tableTarjetas" method="post" id="tableTarjetas" style="display: none;float: left;">
+                <table width="700px" border="1px" title="Tarjetas" style="" id="tablaTarjetas">
+                    <caption align="top">Tarjetas</caption>
+                    <tr>
+                        <td width="100px">
+                            <b>Número</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Cuenta</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Tipo</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Saldo Actual</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Saldo Original</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Fecha Expiración</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Código</b> 
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
         <!-- Tarjetas -->
@@ -446,6 +522,29 @@
                     </tr>
                 </table>
             </form>
+
+            <form action="" name="tableAsesores" method="post" id="tableAsesores" style="display: none;float: left;">
+                <table width="600px" border="1px" title="Asesores" style="" id="tablaAsesores">
+                    <caption align="top">Asesores</caption>
+                    <tr>
+                        <td width="200px">
+                            <b>Nombre</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Cédula</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Fecha Nacimiento</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Meta Colones</b> 
+                        </td>
+                        <td width="100px">
+                            <b>Meta Dólares</b> 
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <!-- Asesores -->
 
@@ -502,7 +601,11 @@
             <form action="" name="pagoOrd" method="post" id="pagoOrd" style="float: left;">
                 <h2>Pago Normal</h2>
                 <input type="number" placeholder="Número de Cuenta" name="Cuenta" required>
-                <input type="number" placeholder="Número de Préstamo" name="Numero" required>
+                <input type="number" placeholder="Número de Préstamo" name="Numero" required>Pago en efectivo:<br>
+                <input type="radio" name="efectivo_prestamo"  id="efectivoSi" value="Si" checked>
+                <label for="efectivoSi"> Si<br></label>
+                <input type="radio" name="efectivo_prestamo"  id="efectivoNo" value="No">
+                <label for="efectivoNo"> No<br></label>
                 <input type="button" value="Pagar" onclick="pagosOrd();">
             </form>
 
@@ -510,8 +613,11 @@
                 <h2>Pago Extraordinario</h2>
                 <input type="number" placeholder="Número de Cuenta" name="Cuenta" required>
                 <input type="number" placeholder="Número de Préstamo" name="Numero" required>
-                <input type="number" placeholder="Monto" name="Monto" required>
-                
+                <input type="number" placeholder="Monto" name="Monto" required>Pago en efectivo:<br>
+                <input type="radio" name="efectivo_prestamo"  id="efectivoSi2" value="Si" checked>
+                <label for="efectivoSi2"> Si<br></label>
+                <input type="radio" name="efectivo_prestamo"  id="efectivoNo2" value="No">
+                <label for="efectivoNo2"> No<br></label>
                 <input type="button" value="Pagar" onclick="pagosExt();">
             </form>
         </div>
@@ -563,6 +669,7 @@
 
 
 	<script>
+        var IP = 'http://40.71.191.83/BancaTec/';
         /*
         Función para mostrar los elementos de cada pestaña
         Parámetro: nombre de la pestaña a mostrar  
@@ -613,7 +720,7 @@
                             }
                         }
                     }
-                    xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?cedula='+login.Usuario.value, true);
+                    xhr.open('GET', IP+'empleado?cedula='+login.Usuario.value, true);
                     xhr.send(null);
                     break;
 
@@ -717,6 +824,8 @@
                     modificarEmp.style.display='none';
                     document.getElementById('eliminarEmp');
                     eliminarEmp.style.display='none';
+                    document.getElementById('tableEmpleados');
+                    tableEmpleados.style.display='none';
                     break;
                 case 'modificarEmp':
                     empleados.style.display="block";
@@ -726,6 +835,8 @@
                     crearEmp.style.display='none';
                     document.getElementById('eliminarEmp');
                     eliminarEmp.style.display='none';
+                    document.getElementById('tableEmpleados');
+                    tableEmpleados.style.display='none';
                     break;
                 case 'eliminarEmp':
                     empleados.style.display="block";
@@ -735,6 +846,20 @@
                     modificarEmp.style.display='none';
                     document.getElementById('crearEmp');
                     crearEmp.style.display='none';
+                    document.getElementById('tableEmpleados');
+                    tableEmpleados.style.display='none';
+                    break;
+                case 'tablaEmpleados':
+                    empleados.style.display="block";
+                    document.getElementById('eliminarCLi');
+                    eliminarEmp.style.display='none';
+                    document.getElementById('modificarEmp');
+                    modificarEmp.style.display='none';
+                    document.getElementById('crearEmp');
+                    crearEmp.style.display='none';
+                    document.getElementById('tableEmpleados');
+                    tableEmpleados.style.display='inline-table';
+                    verEmpleados();
                     break;
 
                 case 'crearCue':
@@ -749,6 +874,8 @@
                     depositoCue.style.display='none';
                     document.getElementById('retiroCue');
                     retiroCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
                     break;
                 case 'modificarCue':
                     cuentas.style.display="block";
@@ -762,6 +889,8 @@
                     depositoCue.style.display='none';
                     document.getElementById('retiroCue');
                     retiroCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
                     break;
                 case 'eliminarCue':
                     cuentas.style.display="block";
@@ -775,6 +904,8 @@
                     depositoCue.style.display='none';
                     document.getElementById('retiroCue');
                     retiroCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
                     break;
                 case 'depositoCue':
                     cuentas.style.display="block";
@@ -788,6 +919,8 @@
                     depositoCue.style.display='block';
                     document.getElementById('retiroCue');
                     retiroCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
                     break;
                 case 'retiroCue':
                     cuentas.style.display="block";
@@ -801,6 +934,24 @@
                     depositoCue.style.display='none';
                     document.getElementById('retiroCue');
                     retiroCue.style.display='block';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='none';
+                    break;
+                case 'tablaCuentas':
+                    cuentas.style.display="block";
+                    document.getElementById('eliminarCue');
+                    eliminarCue.style.display='none';
+                    document.getElementById('modificarCue');
+                    modificarCue.style.display='none';
+                    document.getElementById('crearCue');
+                    crearCue.style.display='none';
+                    document.getElementById('depositoCue');
+                    depositoCue.style.display='none';
+                    document.getElementById('retiroCue');
+                    retiroCue.style.display='none';
+                    document.getElementById('tableCuentas');
+                    tableCuentas.style.display='inline-table';
+                    verCuentas();
                     break;
 
                 case 'crearTar':
@@ -811,6 +962,8 @@
                     modificarTar.style.display='none';
                     document.getElementById('eliminarTar');
                     eliminarTar.style.display='none';
+                    document.getElementById('tableTarjetas');
+                    tableTarjetas.style.display='none';
                     break;
                 case 'modificarTar':
                     tarjetas.style.display="block";
@@ -820,6 +973,8 @@
                     crearTar.style.display='none';
                     document.getElementById('eliminarTar');
                     eliminarTar.style.display='none';
+                    document.getElementById('tableTarjetas');
+                    tableTarjetas.style.display='none';
                     break;
                 case 'eliminarTar':
                     tarjetas.style.display="block";
@@ -829,6 +984,21 @@
                     modificarTar.style.display='none';
                     document.getElementById('crearTar');
                     crearTar.style.display='none';
+                    crearTar.style.display='none';
+                    document.getElementById('tableTarjetas');
+                    tableTarjetas.style.display='none';
+                    break;
+                case 'tablaTarjetas':
+                    tarjetas.style.display="block";
+                    document.getElementById('eliminarTar');
+                    eliminarTar.style.display='none';
+                    document.getElementById('modificarTar');
+                    modificarTar.style.display='none';
+                    document.getElementById('crearTar');
+                    crearTar.style.display='none';
+                    document.getElementById('tableTarjetas');
+                    tableTarjetas.style.display='inline-table';
+                    verTarjetas();
                     break;
 
                 case 'crearAse':
@@ -843,6 +1013,8 @@
                     reporteAse.style.display='none';
                     document.getElementById('tableAsesor');
                     tableAsesor.style.display='none';
+                    document.getElementById('tableAsesores');
+                    tableAsesores.style.display='none';
                     break;
                 case 'modificarAse':
                     asesores.style.display="block";
@@ -856,6 +1028,8 @@
                     reporteAse.style.display='none';
                     document.getElementById('tableAsesor');
                     tableAsesor.style.display='none';
+                    document.getElementById('tableAsesores');
+                    tableAsesores.style.display='none';
                     break;
                 case 'eliminarAse':
                     asesores.style.display="block";
@@ -869,6 +1043,8 @@
                     reporteAse.style.display='none';
                     document.getElementById('tableAsesor');
                     tableAsesor.style.display='none';
+                    document.getElementById('tableAsesores');
+                    tableAsesores.style.display='none';
                     break;
                 case 'reporteAse':
                     asesores.style.display="block";
@@ -882,6 +1058,24 @@
                     reporteAse.style.display='inline-table';
                     document.getElementById('tableAsesor');
                     tableAsesor.style.display='inline-table';
+                    document.getElementById('tableAsesores');
+                    tableAsesores.style.display='none';
+                    break;
+                case 'tablaAsesores':
+                    asesores.style.display="block";
+                    document.getElementById('eliminarAse');
+                    eliminarAse.style.display='none';
+                    document.getElementById('modificarAse');
+                    modificarAse.style.display='none';
+                    document.getElementById('crearAse');
+                    crearAse.style.display='none';
+                    document.getElementById('reporteAse');
+                    reporteAse.style.display='none';
+                    document.getElementById('tableAsesor');
+                    tableAsesor.style.display='none';
+                    document.getElementById('tableAsesores');
+                    tableAsesores.style.display='inline-table';
+                    verAsesores();
                     break;
 
                 case 'crearPre':
@@ -953,7 +1147,7 @@
             var xhr = new XMLHttpRequest();
             var datos = 'Nombre='+document.crearRol.Nombre.value+'&Descripcion='+document.crearRol.Descripcion.value;//Datos a enviar en el request.
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/rol', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'rol', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -976,7 +1170,7 @@
                     xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/rol', true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.open('GET', IP+'rol', true); //Se abre la conexion entre la aplicación y el servidor.
             alert(this.responseText);
             xhr.send(null);
         }
@@ -985,7 +1179,7 @@
             var xhr = new XMLHttpRequest();
             var datos = 'Nombre='+document.modificarRol.Nombre.value+'&Descripcion='+document.modificarRol.Descripcion.value+'&put=1';
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/rol', true);
+            xhr.open('POST', IP+'rol', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('Content-length', datos.length+'');
 
@@ -1008,7 +1202,7 @@
                     xmlDoc = parser.parseFromString(text,"text/xml");
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/rol?nombre='+document.eliminarRol.Nombre.value+'&delete=1', true);
+            xhr.open('GET', IP+'rol?nombre='+document.eliminarRol.Nombre.value+'&delete=1', true);
             alert(this.responseText);
             xhr.send(null);
 
@@ -1037,7 +1231,7 @@
                     }   
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/rol?', true);
+            xhr.open('GET', IP+'rol?', true);
             xhr.send(null);
         }
         /*Métodos de Roles*/
@@ -1058,7 +1252,7 @@
             }
             
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/cliente', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'cliente', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1081,7 +1275,7 @@
                 }
                 alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/cliente?', true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.open('GET', IP+'cliente?', true); //Se abre la conexion entre la aplicación y el servidor.
             alert(this.responseText);
             xhr.send(null);
         }
@@ -1107,7 +1301,7 @@
                 }
             }
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/cliente', true);
+            xhr.open('POST', IP+'cliente', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('Content-length', datos.length+'');
 
@@ -1130,7 +1324,7 @@
                     xmlDoc = parser.parseFromString(text,"text/xml");
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/cliente?cedula='+document.eliminarCli.Cedula.value+'&delete=1', true);
+            xhr.open('GET', IP+'cliente?cedula='+document.eliminarCli.Cedula.value+'&delete=1', true);
             alert(this.responseText);
             xhr.send(null);
 
@@ -1173,7 +1367,7 @@
                     }   
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/cliente?', true);
+            xhr.open('GET', IP+'cliente?', true);
             xhr.send(null);
         }
         /*Métodos de Clientes*/
@@ -1186,7 +1380,7 @@
             var datos = 'nombre='+document.crearEmp.PNombre.value+' '+document.crearEmp.SNombre.value+'&priapellido='+document.crearEmp.PApellido.value+'&segapellido='+document.crearEmp.SApellido.value+'&cedula='+document.crearEmp.Cedula.value+'&contrasena='+password+'&rol=Administrador'+'&sucursal=No Especificada';//Datos a enviar en el request.
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/empleado', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'empleado', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1209,7 +1403,7 @@
                 }
                 alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.open('GET', IP+'empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
             alert(this.responseText);
             xhr.send(null);
         }
@@ -1223,7 +1417,7 @@
             else{
                 var datos = 'nombre='+document.modificarEmp.PNombre.value+' '+document.modificarEmp.SNombre.value+'&priapellido='+document.modificarEmp.PApellido.value+'&segapellido='+document.modificarEmp.SApellido.value+'&cedula='+document.modificarEmp.Cedula.value+'&rol=Administrador'+'&sucursal=No Especificada'+'&put=1';//Datos a enviar en el request.
             }
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/empleado', true);
+            xhr.open('POST', IP+'empleado', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('Content-length', datos.length+'');
 
@@ -1246,10 +1440,40 @@
                     xmlDoc = parser.parseFromString(text,"text/xml");
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?cedula='+document.eliminarEmp.Cedula.value+'&delete=1', true);
+            xhr.open('GET', IP+'empleado?cedula='+document.eliminarEmp.Cedula.value+'&delete=1', true);
             alert(this.responseText);
             xhr.send(null);
 
+        }
+
+        function verEmpleados() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaEmpleados");
+                    limpiar("tablaEmpleados");
+                    if (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue+' '+xmlDoc.getElementsByTagName("PriApellido")[numeroFila].childNodes[0].nodeValue+' '+xmlDoc.getElementsByTagName("SegApellido")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Cedula")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Sucursal")[numeroFila].childNodes[0].nodeValue;
+                            
+                            numeroFila = numeroFila+1;
+                        }
+                    }   
+                }
+            }
+            xhr.open('GET', IP+'empleado?', true);
+            xhr.send(null);
         }
         /*Métodos de Empleados*/
 
@@ -1260,7 +1484,7 @@
             var datos = 'tipo='+document.crearCue.tipo_cuenta.value+'&moneda='+document.crearCue.moneda_cuenta.value+'&descripcion='+document.crearCue.Descripcion.value+'&cedcliente='+document.crearCue.cedula.value+'&saldo='+document.crearCue.Saldo.value;//Datos a enviar en el request.
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/cuenta', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'cuenta', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1283,7 +1507,7 @@
                 }
                 alert(xmlDoc.getElementsByTagName("cedcliente")[0].childNodes[0].nodeValue);
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/cuenta?', true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.open('GET', IP+'cuenta?', true); //Se abre la conexion entre la aplicación y el servidor.
             xhr.send(null);
         }
 
@@ -1291,7 +1515,7 @@
             var xhr = new XMLHttpRequest();
             var datos = 'tipo='+document.modificarCue.tipo_cuenta.value+'&moneda='+document.modificarCue.moneda_cuenta.value+'&descripcion='+document.modificarCue.Descripcion.value+'&cedcliente='+document.modificarCue.cedula.value+'&saldo='+document.modificarCue.Saldo.value+'&numcuenta='+document.modificarCue.Cuenta.value+'&put=1';//Datos a enviar en el request.
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/cuenta', true);
+            xhr.open('POST', IP+'cuenta', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('Content-length', datos.length+'');
 
@@ -1314,7 +1538,7 @@
                     xmlDoc = parser.parseFromString(text,"text/xml");
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/cuenta?numcuenta='+document.eliminarCue.Numero.value+'&delete=1', true);
+            xhr.open('GET', IP+'cuenta?numcuenta='+document.eliminarCue.Numero.value+'&delete=1', true);
             alert(this.responseText);
             xhr.send(null);
         }
@@ -1324,7 +1548,7 @@
             var date = fecha();
             var datos = 'tipo=Deposito'+'&fecha='+date+'&monto='+document.depositoCue.Monto.value+'&numcuenta='+document.depositoCue.Numero.value+'&moneda='+document.depositoCue.moneda_dep.value;//Datos a enviar en el request.
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/movimiento', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'movimiento', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1341,7 +1565,7 @@
             var date = fecha();
             var datos = 'tipo=Retiro'+'&fecha='+date+'&monto='+document.retiroCue.Monto.value+'&numcuenta='+document.retiroCue.Numero.value+'&moneda='+document.retiroCue.moneda_ret.value;//Datos a enviar en el request.
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/movimiento', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'movimiento', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1351,6 +1575,42 @@
                 alert(this.responseText);
             };
             xhr.send(datos); //Se hace el envío del request.
+        }
+
+        function verCuentas() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaCuentas");
+                    limpiar("tablaCuentas");
+                    if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            var cell6 = fila.insertCell(5);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Descripcion")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("CedCliente")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("NumCuenta")[numeroFila].childNodes[0].nodeValue;
+                            cell6.innerHTML = xmlDoc.getElementsByTagName("Saldo")[numeroFila].childNodes[0].nodeValue;
+                            
+                            numeroFila = numeroFila+1;
+                        }
+                    }   
+                }
+            }
+            xhr.open('GET', IP+'cuenta?', true);
+            xhr.send(null);
         }
         /*Métodos de Cuentas*/
 
@@ -1367,7 +1627,7 @@
             
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/tarjeta', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'tarjeta', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1390,7 +1650,7 @@
                 }
                 alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.open('GET', IP+'empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
             alert(this.responseText);
             xhr.send(null);
         }
@@ -1403,7 +1663,7 @@
             else{
                 var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+codseg()+'&fechaexp='+fechaexp()+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&saldoorig='+document.modificarTar.SaldoOrg.value+'&saldoactual='+document.modificarTar.SaldoAct.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
             }
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/tarjeta', true);
+            xhr.open('POST', IP+'tarjeta', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('Content-length', datos.length+'');
 
@@ -1426,10 +1686,49 @@
                     xmlDoc = parser.parseFromString(text,"text/xml");
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/tarjeta?numero='+document.eliminarTar.Numero.value+'&delete=1', true);
+            xhr.open('GET', IP+'tarjeta?numero='+document.eliminarTar.Numero.value+'&delete=1', true);
             alert(this.responseText);
             xhr.send(null);
 
+        }
+
+        function verTarjetas() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaTarjetas");
+                    limpiar("tablaTarjetas");
+                    if (xmlDoc.getElementsByTagName("Numero")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Numero")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            var cell6 = fila.insertCell(5);
+                            var cell7 = fila.insertCell(6);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Numero")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("NumCuenta")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("SaldoActual")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("SaldoOrig")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("FechaExp")[numeroFila].childNodes[0].nodeValue;
+                            cell6.innerHTML = str.substring(0,10);
+                            cell7.innerHTML = xmlDoc.getElementsByTagName("CodigoSeg")[numeroFila].childNodes[0].nodeValue;
+                            
+                            numeroFila = numeroFila+1;
+                        }
+                    }   
+                }
+            }
+            xhr.open('GET', IP+'tarjeta?', true);
+            xhr.send(null);
         }
         /*Métodos de Tarjetas*/
 
@@ -1439,7 +1738,7 @@
             var datos = 'nombre='+document.crearAse.Nombre.value+'&priapellido='+document.crearAse.PApellido.value+'&segapellido='+document.crearAse.SApellido.value+'&cedula='+document.crearAse.Cedula.value+'&fechanac='+document.crearAse.FechaNac.value+'&metacolones='+document.crearAse.MetaColones.value+'&metadolares='+document.crearAse.MetaDolares.value;//Datos a enviar en el request.
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/asesor', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'asesor', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1462,7 +1761,7 @@
                 }
                 alert(xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue);
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.open('GET', IP+'empleado?', true); //Se abre la conexion entre la aplicación y el servidor.
             alert(this.responseText);
             xhr.send(null);
         }
@@ -1501,7 +1800,7 @@
                     
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/comisiones?', true);
+            xhr.open('GET', IP+'comisiones?', true);
             alert(this.responseText);
             xhr.send(null);
         }
@@ -1512,7 +1811,7 @@
             var datos = 'nombre='+document.modificarAse.Nombre.value+'&priapellido='+document.modificarAse.PApellido.value+'&segapellido='+document.modificarAse.SApellido.value+'&cedula='+document.modificarAse.Cedula.value+'&fechanac='+document.modificarAse.FechaNac.value+'&metacolones='+document.modificarAse.MetaColones.value+'&metadolares='+document.modificarAse.MetaDolares.value+'&put=1';//Datos a enviar en el request.
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/asesor', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'asesor', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1535,10 +1834,45 @@
                     xmlDoc = parser.parseFromString(text,"text/xml");
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/asesor?cedula='+document.eliminarAse.Cedula.value+'&delete=1', true);
+            xhr.open('GET', IP+'asesor?cedula='+document.eliminarAse.Cedula.value+'&delete=1', true);
             alert(this.responseText);
             xhr.send(null);
 
+        }
+
+        function verAsesores() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaAsesores");
+                    limpiar("tablaAsesores");
+                    if (xmlDoc.getElementsByTagName("Cedula")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Cedula")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            var cell5 = fila.insertCell(4);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue +' '+xmlDoc.getElementsByTagName("PriApellido")[numeroFila].childNodes[0].nodeValue+' '+xmlDoc.getElementsByTagName("SegApellido")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Cedula")[numeroFila].childNodes[0].nodeValue;
+                            var str = xmlDoc.getElementsByTagName("FechaNac")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = str.substring(0,10);
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("MetaColones")[numeroFila].childNodes[0].nodeValue;
+                            cell5.innerHTML = xmlDoc.getElementsByTagName("MetaDolares")[numeroFila].childNodes[0].nodeValue;
+                            
+                            numeroFila = numeroFila+1;
+                        }
+                    }   
+                }
+            }
+            xhr.open('GET', IP+'asesor?', true);
+            xhr.send(null);
         }
         /*Métodos de Asesores*/
 
@@ -1549,7 +1883,7 @@
             var datos = 'interes='+document.crearPre.Interes.value+'&saldo='+document.crearPre.Monto.value+'&cedcliente='+document.crearPre.cedCliente.value+'&cedasesor='+document.crearPre.cedAsesor.value+'&meses='+document.crearPre.meses_prestamo.value+'&moneda='+document.crearPre.moneda_prestamo.value;//Datos a enviar en el request.
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/prestamo', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'prestamo', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1592,7 +1926,7 @@
                     
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/pago?cedcliente='+document.pagosPre.Cedula.value, true);
+            xhr.open('GET', IP+'pago?cedcliente='+document.pagosPre.Cedula.value, true);
             alert(this.responseText);
             xhr.send(null);
 
@@ -1600,10 +1934,16 @@
 
         function pagosOrd() {
             var xhr = new XMLHttpRequest();
+            var datos;
+            if (document.pagoOrd.efectivo_prestamo.value=='Si') {
+                datos = 'efectivo=1'+'&numprestamo='+document.pagoOrd.Numero.value;//Datos a enviar en el request.
+            }
+            else{
+                datos = 'cuenta='+document.pagoOrd.Cuenta.value+'&numprestamo='+document.pagoOrd.Numero.value;//Datos a enviar en el request.
+            }
+            
 
-            var datos = 'cuenta='+document.pagoOrd.Cuenta.value+'&numprestamo='+document.pagoOrd.Numero.value;//Datos a enviar en el request.
-
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'pago', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1619,9 +1959,16 @@
         function pagosExt() {
             var xhr = new XMLHttpRequest();
 
-            var datos = 'cuenta='+document.pagoExt.Cuenta.value+'&numprestamo='+document.pagoExt.Numero.value+'&extra='+document.pagoExt.Monto.value;//Datos a enviar en el request.
+            var datos;
+            if (document.pagoExt.efectivo_prestamo.value=='Si') {
+                datos = 'efectivo=1'+'&numprestamo='+document.pagoExt.Numero.value+'&extra='+document.pagoExt.Monto.value;//Datos a enviar en el request.
+            }
+            else{
+                datos = 'cuenta='+document.pagoExt.Cuenta.value+'&numprestamo='+document.pagoExt.Numero.value+'&extra='+document.pagoExt.Monto.value;//Datos a enviar en el request.
+            }
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
+
+            xhr.open('POST', IP+'pago', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -1668,7 +2015,7 @@
                     
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/morafecha?cedula='+document.reporteMor.Cedula.value, true);
+            xhr.open('GET', IP+'morafecha?cedula='+document.reporteMor.Cedula.value, true);
             xhr.send(null);
             alert(this.responseText);
 

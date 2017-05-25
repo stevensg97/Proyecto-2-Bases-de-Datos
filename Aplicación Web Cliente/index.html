@@ -131,6 +131,12 @@
                 <input type="button" value="Transferir" onclick="postTra();">
             </form>
 
+            <form action="" name="verCue" method="post" id="verCue" style="float: left;">
+                <h2>Cuentas</h2>
+                <input type="button" value="Limpiar" onclick="limpiar('tablaCuentas');">
+                <input type="button" value="Mostrar" onclick="verCuentas();">
+            </form>
+
             <form action="" name="tableCuentas" method="post" id="tableCuentas" style="display: none;float: left;">
                 <table width="700px" border="1px" title="Calendario" style="" id="tablaCuentas">
                     <caption align="top">Cuentas Asociadas</caption>
@@ -204,8 +210,8 @@
         <div class="contenedor" style="display: none" id="prestamos">
             <form action="" name="pagosPre" method="post" id="pagosPre" style="float: left;">
                 <h2>Cálculo de Pagos</h2>
-                <input type="number" placeholder="Cédula del Cliente" name="Cedula" required>
-                <input type="button" value="Calcular" onclick="pagoPre();">
+                <input type="button" value="Limpiar" onclick="limpiar('tablaCalendario');">
+                <input type="button" value="Mostrar" onclick="pagoPre();">
             </form>
 
             <form action="" name="tableCalendario" method="post" id="tableCalendario" style="display: none;float: left;">
@@ -259,6 +265,8 @@
 
 
 	<script>
+        var IP = 'http://40.71.191.83/BancaTec/';
+        var accounts = [];
         /*
         Función para mostrar los elementos de cada pestaña
         Parámetro: nombre de la pestaña a mostrar  
@@ -297,8 +305,31 @@
 
 			switch(p1){
                 case 'login':
-                    login.style.display='none';
-                    document.getElementById('menunav').style.display='block';
+                    var xhr = new XMLHttpRequest();
+                    var user='';
+                    var pass='';
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == XMLHttpRequest.DONE) {
+                            var parser, xmlDoc;
+                            var text = xhr.responseText;
+                            parser = new DOMParser();
+                            xmlDoc = parser.parseFromString(text,"text/xml");
+                            user=xmlDoc.getElementsByTagName("Cedula")[0].childNodes[0].nodeValue;
+                            pass=xmlDoc.getElementsByTagName("Contrasena")[0].childNodes[0].nodeValue;
+                            if (user==login.Usuario.value && pass==login.Contraseña.value) {
+                                login.style.display='none';
+                                document.getElementById('menunav').style.display='block';
+                                agregarCuentas();
+                            }
+                            else{
+                                alert("Usuario y/o Contraseña Incorrectos");
+                            }
+                        }
+                    }
+                    xhr.open('GET', IP+'cliente?cedula='+login.Usuario.value, true);
+                    xhr.send(null);
+                    /*login.style.display='none';
+                    document.getElementById('menunav').style.display='block';*/
                     break;
 
                 case 'movimientosCue':
@@ -313,6 +344,8 @@
                     tableTarjetasCue.style.display='none';
                     document.getElementById('transferenciasCue');
                     transferenciasCue.style.display='none';
+                    document.getElementById('verCue');
+                    verCue.style.display='none';
                     document.getElementById('tableCuentas');
                     tableCuentas.style.display='none';
                     break;
@@ -328,6 +361,8 @@
                     tableTarjetasCue.style.display='inline-table';
                     document.getElementById('transferenciasCue');
                     transferenciasCue.style.display='none';
+                    document.getElementById('verCue');
+                    verCue.style.display='none';
                     document.getElementById('tableCuentas');
                     tableCuentas.style.display='none';
                     break;
@@ -343,6 +378,8 @@
                     tableTarjetasCue.style.display='none';
                     document.getElementById('transferenciasCue');
                     transferenciasCue.style.display='block';
+                    document.getElementById('verCue');
+                    verCue.style.display='none';
                     document.getElementById('tableCuentas');
                     tableCuentas.style.display='none';
                     break;
@@ -358,9 +395,10 @@
                     tableTarjetasCue.style.display='none';
                     document.getElementById('transferenciasCue');
                     transferenciasCue.style.display='none';
+                    document.getElementById('verCue');
+                    verCue.style.display='inline-table';
                     document.getElementById('tableCuentas');
                     tableCuentas.style.display='inline-table';
-                    verCuentas();
                     break;
 
                  case 'pagoTar':
@@ -423,91 +461,141 @@
 
         /*Métodos de Cuentas*/
         function consultaCue() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    var parser, xmlDoc;
-                    var text = xhr.responseText;
-                    parser = new DOMParser();
-                    xmlDoc = parser.parseFromString(text,"text/xml");
-                    var numeroFila=0
-                    var tabla = document.getElementById("tablaMovimientos");
-                    limpiar("tablaMovimientos");
-                    if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
-                        while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
-                            var fila = tabla.insertRow(numeroFila+1);
-                            var cell1 = fila.insertCell(0);
-                            var cell2 = fila.insertCell(1);
-                            var cell3 = fila.insertCell(2);
-                            var cell4 = fila.insertCell(3);
-                            var cell5 = fila.insertCell(4);
-                            cell1.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
-                            var str = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
-                            cell2.innerHTML =  str.substring(0,10);
-                            cell3.innerHTML = xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue;
-                            cell4.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
-                            cell5.innerHTML = xmlDoc.getElementsByTagName("Id")[numeroFila].childNodes[0].nodeValue;
-                            numeroFila = numeroFila+1;
+            if (verificar(document.getElementById('movimientosCue').Cuenta.value)) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        var parser, xmlDoc;
+                        var text = xhr.responseText;
+                        parser = new DOMParser();
+                        xmlDoc = parser.parseFromString(text,"text/xml");
+                        var numeroFila=0
+                        var tabla = document.getElementById("tablaMovimientos");
+                        limpiar("tablaMovimientos");
+                        if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
+                            while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
+                                var fila = tabla.insertRow(numeroFila+1);
+                                var cell1 = fila.insertCell(0);
+                                var cell2 = fila.insertCell(1);
+                                var cell3 = fila.insertCell(2);
+                                var cell4 = fila.insertCell(3);
+                                var cell5 = fila.insertCell(4);
+                                cell1.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                                var str = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
+                                cell2.innerHTML =  str.substring(0,10);
+                                cell3.innerHTML = xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue;
+                                cell4.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                                cell5.innerHTML = xmlDoc.getElementsByTagName("Id")[numeroFila].childNodes[0].nodeValue;
+                                numeroFila = numeroFila+1;
+                            }
                         }
+                        
                     }
-                    
                 }
+                xhr.open('GET', IP+'movimiento?numcuenta='+document.movimientosCue.Cuenta.value, true);
+                xhr.send(null);
+
+                var xhr2 = new XMLHttpRequest();
+                xhr2.onreadystatechange = function() {
+                    if (xhr2.readyState == XMLHttpRequest.DONE) {
+                        var parser, xmlDoc;
+                        var text = xhr2.responseText;
+                        parser = new DOMParser();
+                        xmlDoc = parser.parseFromString(text,"text/xml");
+                        numeroFila=0;
+                        var tabla = document.getElementById("tablaMovimientos");
+                        if (xmlDoc.getElementsByTagName("Id")[numeroFila].childNodes[0].nodeValue != null) {
+                            while (xmlDoc.getElementsByTagName("Id")[numeroFila].childNodes[0].nodeValue != null){   
+                                var fila = tabla.insertRow(numeroFila+1);
+                                var cell1 = fila.insertCell(0);
+                                var cell2 = fila.insertCell(1);
+                                var cell3 = fila.insertCell(2);
+                                var cell4 = fila.insertCell(3);
+                                var cell5 = fila.insertCell(4);
+                                if (xmlDoc.getElementsByTagName("CuentaEmisora")[numeroFila].childNodes[0].nodeValue==document.movimientosCue.Cuenta.value) {
+                                    cell1.innerHTML = 'Débito';
+                                }
+                                else{
+                                    cell1.innerHTML = 'Crédito';
+                                }
+                                var str = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
+                                cell2.innerHTML =  str.substring(0,10);
+                                cell3.innerHTML = xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue;
+                                cell4.innerHTML = xmlDoc.getElementsByTagName("Moneda")[numeroFila].childNodes[0].nodeValue;
+                                cell5.innerHTML = xmlDoc.getElementsByTagName("Id")[numeroFila].childNodes[0].nodeValue;
+                                numeroFila = numeroFila+1;
+                            }
+                        }
+                            
+                    }
+                }
+                xhr2.open('GET', IP+'transferencia?cuenta='+document.movimientosCue.Cuenta.value, true);
+                xhr2.send(null);
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/movimiento?numcuenta='+document.movimientosCue.Cuenta.value, true);
-            alert(this.responseText);
-            xhr.send(null);
+            else{
+                alert("Cuenta no válida");
+            }
         }
 
         function consultaTarCue() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    var parser, xmlDoc;
-                    var text = xhr.responseText;
-                    parser = new DOMParser();
-                    xmlDoc = parser.parseFromString(text,"text/xml");
-                    var numeroFila=0
-                    var tabla = document.getElementById("tablaTarjetasCue");
-                    limpiar("tablaTarjetasCue");
-                    if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
-                        while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
-                            var fila = tabla.insertRow(numeroFila+1);
-                            var cell1 = fila.insertCell(0);
-                            var cell2 = fila.insertCell(1);
-                            var cell3 = fila.insertCell(2);
-                            var cell4 = fila.insertCell(3);
-                            cell1.innerHTML = xmlDoc.getElementsByTagName("Numero")[numeroFila].childNodes[0].nodeValue;
-                            var str = xmlDoc.getElementsByTagName("FechaExp")[numeroFila].childNodes[0].nodeValue;
-                            cell2.innerHTML =  str.substring(0,10);
-                            cell3.innerHTML = xmlDoc.getElementsByTagName("SaldoActual")[numeroFila].childNodes[0].nodeValue;
-                            cell4.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
-                            numeroFila = numeroFila+1;
+            if (verificar(document.getElementById('tarjetasCue').Cuenta.value)) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        var parser, xmlDoc;
+                        var text = xhr.responseText;
+                        parser = new DOMParser();
+                        xmlDoc = parser.parseFromString(text,"text/xml");
+                        var numeroFila=0
+                        var tabla = document.getElementById("tablaTarjetasCue");
+                        limpiar("tablaTarjetasCue");
+                        if (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null) {
+                            while (xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue != null){   
+                                var fila = tabla.insertRow(numeroFila+1);
+                                var cell1 = fila.insertCell(0);
+                                var cell2 = fila.insertCell(1);
+                                var cell3 = fila.insertCell(2);
+                                var cell4 = fila.insertCell(3);
+                                cell1.innerHTML = xmlDoc.getElementsByTagName("Numero")[numeroFila].childNodes[0].nodeValue;
+                                var str = xmlDoc.getElementsByTagName("FechaExp")[numeroFila].childNodes[0].nodeValue;
+                                cell2.innerHTML =  str.substring(0,10);
+                                cell3.innerHTML = xmlDoc.getElementsByTagName("SaldoActual")[numeroFila].childNodes[0].nodeValue;
+                                cell4.innerHTML = xmlDoc.getElementsByTagName("Tipo")[numeroFila].childNodes[0].nodeValue;
+                                numeroFila = numeroFila+1;
+                            }
                         }
+                        
                     }
-                    
                 }
+                xhr.open('GET', IP+'tarjeta?numcuenta='+document.tarjetasCue.Cuenta.value, true);
+                xhr.send(null);
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/tarjeta?numcuenta='+document.tarjetasCue.Cuenta.value, true);
-            alert(this.responseText);
-            xhr.send(null);
+            else{
+                alert("Cuenta no válida");
+            }
         }
 
         function postTra() {
-            var xhr = new XMLHttpRequest();
-            
-            var datos = 'monto='+document.transferenciasCue.Monto.value+'&fecha='+fecha()+'&cuentaemisora='+document.transferenciasCue.CuentaEmi.value+'&cuentareceptora='+document.transferenciasCue.CuentaRec.value+'&moneda='+document.transferenciasCue.moneda_transferencia.value;//Datos a enviar en el request.
+            if (verificar(document.transferenciasCue.CuentaEmi.value)) {
+                var xhr = new XMLHttpRequest();
+                
+                var datos = 'monto='+document.transferenciasCue.Monto.value+'&fecha='+fecha()+'&cuentaemisora='+document.transferenciasCue.CuentaEmi.value+'&cuentareceptora='+document.transferenciasCue.CuentaRec.value+'&moneda='+document.transferenciasCue.moneda_transferencia.value;//Datos a enviar en el request.
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/transferencia', true); //Indica el tipo y la dirección del request.
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
-            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+                xhr.open('POST', IP+'transferencia', true); //Indica el tipo y la dirección del request.
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+                xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
-            xhr.onload = function () {
-                // do something to response
-                console.log(this.responseText);
-                alert(this.responseText);
-            };
-            xhr.send(datos); //Se hace el envío del request.
+                xhr.onload = function () {
+                    // do something to response
+                    console.log(this.responseText);
+                    alert(this.responseText);
+                };
+                xhr.send(datos); //Se hace el envío del request.
+            }
+            else{
+                alert("Cuenta emisora no válida")
+            }
         }
 
         function verCuentas() {
@@ -539,7 +627,7 @@
                     }   
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/cuenta?cedcliente='+document.getElementById('login').Usuario.value, true);
+            xhr.open('GET', IP+'cuenta?cedcliente='+document.getElementById('login').Usuario.value, true);
             xhr.send(null);
         }
         /*Métodos de Cuentas*/
@@ -551,7 +639,7 @@
             var datos = 'monto='+document.pagoTar.Monto.value+'&fecha='+fecha()+'&numtarjeta='+document.pagoTar.Numero.value;//Datos a enviar en el request.
 
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/cancelar_tarjeta', true); //Indica el tipo y la dirección del request.
+            xhr.open('POST', IP+'cancelartarjeta', true); //Indica el tipo y la dirección del request.
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
             xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
@@ -594,7 +682,7 @@
                     
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/compra?numtarjeta='+document.listadoTar.Numero.value, true);
+            xhr.open('GET', IP+'compra?numtarjeta='+document.listadoTar.Numero.value+'&fechainicial='+document.listadoTar.fechaInicio.value+'&fechafinal='+document.listadoTar.fechaFinal.value, true);
             alert(this.responseText);
             xhr.send(null);
         }
@@ -632,45 +720,53 @@
                     
                 }
             }
-            xhr.open('GET', 'http://13.82.28.191/BancaTec/pago?cedcliente='+document.getElementById('login').Usuario.value, true);
-            alert(this.responseText);
+            xhr.open('GET', IP+'pago?cedcliente='+document.getElementById('login').Usuario.value, true);
             xhr.send(null);
 
         }
 
         function pagosOrd() {
-            var xhr = new XMLHttpRequest();
+            if (verificar(document.pagoOrd.Cuenta.value)) {
+                var xhr = new XMLHttpRequest();
 
-            var datos = 'cuenta='+document.pagoOrd.Cuenta.value+'&numprestamo='+document.pagoOrd.Numero.value;//Datos a enviar en el request.
+                var datos = 'cuenta='+document.pagoOrd.Cuenta.value+'&numprestamo='+document.pagoOrd.Numero.value;//Datos a enviar en el request.
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
-            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+                xhr.open('POST', IP+'pago', true); //Indica el tipo y la dirección del request.
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+                xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
-            xhr.onload = function () {
-                // do something to response
-                console.log(this.responseText);
-                alert(this.responseText);
-            };
-            xhr.send(datos); //Se hace el envío del request.
-
+                xhr.onload = function () {
+                    // do something to response
+                    console.log(this.responseText);
+                    alert(this.responseText);
+                };
+                xhr.send(datos); //Se hace el envío del request.
+            }
+            else{
+                alert("Cuenta no válida");
+            }
         }
 
         function pagosExt() {
-            var xhr = new XMLHttpRequest();
+            if (verificar(document.pagoExt.Cuenta.value)) {
+                var xhr = new XMLHttpRequest();
 
-            var datos = 'cuenta='+document.pagoExt.Cuenta.value+'&numprestamo='+document.pagoExt.Numero.value+'&extra='+document.pagoExt.Monto.value;//Datos a enviar en el request.
+                var datos = 'cuenta='+document.pagoExt.Cuenta.value+'&numprestamo='+document.pagoExt.Numero.value+'&extra='+document.pagoExt.Monto.value;//Datos a enviar en el request.
 
-            xhr.open('POST', 'http://13.82.28.191/BancaTec/pago', true); //Indica el tipo y la dirección del request.
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
-            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+                xhr.open('POST', IP+'pago', true); //Indica el tipo y la dirección del request.
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+                xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
 
-            xhr.onload = function () {
-                // do something to response
-                console.log(this.responseText);
-                alert(this.responseText);
-            };
-            xhr.send(datos); //Se hace el envío del request.
+                xhr.onload = function () {
+                    // do something to response
+                    console.log(this.responseText);
+                    alert(this.responseText);
+                };
+                xhr.send(datos); //Se hace el envío del request.
+            }
+            else{
+                alert("Cuenta no válida");
+            }
         }
         /*Métodos de Préstamos*/
 
@@ -771,6 +867,40 @@
             var today = yyyy+'-'+mm+'-'+dd;
             return today+'';
         }
+        
+        function agregarCuentas(){
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    numeroFila=0;
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    if (xmlDoc.getElementsByTagName("Saldo")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Saldo")[numeroFila].childNodes[0].nodeValue != null){  
+                            accounts[numeroFila]=xmlDoc.getElementsByTagName("NumCuenta")[numeroFila].childNodes[0].nodeValue+'';
+                            numeroFila=numeroFila+1;
+                        }
+                        
+                    }
+                }
+            }
+            xhr.open('GET', IP+'cuenta?cedcliente='+document.getElementById('login').Usuario.value, true);
+            xhr.send(null);
+        }
+
+
+        function verificar(p1){
+            for (var i = 0 ; i < accounts.length; i++) {
+                if (p1==accounts[i]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     </script>
 </body>
 </html>
