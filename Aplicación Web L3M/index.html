@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>L3M Super</title>
+	<link rel="stylesheet"  href="estilos2.css">
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+			<div class="logo">
+				<img src="Recursos/L3M Logo.png" width="400" height="200">
+			</div>
+			<nav class="" style="display: none;" id="menunav"><!-- Menu de navegación de la página -->
+				<ul>
+					<li><a href="javascript:mostrar('inicio')"">Inicio</a></li>
+					<li><a href="javascript:mostrar('roles')" target="_self">Roles</a></li>
+					<li><a href="javascript:mostrar('sucursales')">Sucursales</a></li>
+					<li><a href="javascript:mostrar('empleados')">Empleados</a></li>
+					<li><a href="javascript:mostrar('proveedores')">Proveedores</a></li>
+					<li><a href="javascript:mostrar('productos')">Productos</a></li>
+					<li><a href="javascript:mostrar('compras')">Compras</a></li>
+					<li><a href="javascript:mostrar('horas')">Horas Laboradas</a></li>
+					<li><a href="javascript:mostrar('planilla')">Planilla</a></li>
+                    <li><a href="javascript:mostrar('reportes')">Reportes</a></li>
+                    <li><a href="javascript:mostrar('facturacion')">Facturación</a></li>
+					<li><a href="index.html">Salir</a></li>
+				</ul>
+			</nav>
+
+            <nav class="" style="display: none;" id="menunemp">
+                <ul>
+                    
+                    <li><a href="index.html">Salir</a></li>
+                </ul>
+            </nav>
+		</div>
+        <!-- Pestañas -->
+        <!-- Login -->
+        <form action= "" id="login" method="post" style="margin-left: 500px">
+            <h2>Login L3M</h2>
+            <input type="radio" name="rol"  id="Administrador" value="Administrador" checked>
+            <label for="Administrador"> Administrador<br></label>
+            <input type="radio" name="rol"  id="Empleado" value="Empleado">
+            <label for="Empleado"> Empleado</label>
+
+            <input type="text" placeholder="&#128272; Usuario" name="Usuario">
+            <input type="password" placeholder="&#128272; Contraseña" name="Contraseña">
+            <input type="text" placeholder="Sucursal" name="Sucursal">
+            <input type="text" placeholder="IP" name="IP">
+            <input type="button" value="Ingresar" onclick="javascript:mostrar('login');">
+        </form>
+        <!-- Login -->
+
+		<!-- Roles -->
+		<div class="contenedor" style="display: none" id="roles">
+			<form action="" name="crearRol" method="post">
+            	<h2>Crear Rol</h2>
+            	<input type="text" placeholder="Nombre" name="Nombre" required>
+            	<input type="text" placeholder="Descripción" name="Descripcion" required>
+            	<input type="button" value="Crear" onclick="postRol();">
+        	</form>
+
+
+        	<form action="" name="modificarRol" method="post">
+            	<h2>Modificar Rol</h2>
+            	<input type="text" placeholder="Nombre" name="Nombre" required>
+            	<input type="text" placeholder="Descripción" name="Descripcion" required>
+            	<input type="button" value="Modificar" onclick="putRol();">
+        	</form>
+
+
+        	<form action="" name="eliminarRol" method="post">
+            	<h2>Eliminar Rol</h2>
+           		<input type="text" placeholder="Nombre" name="Nombre" required>
+            	<input type="button" value="Eliminar" onclick="deleteRol();">
+        	</form>
+		</div>
+		<!-- Roles -->
+
+		<!-- Sucursales -->
+		<div class="contenedor" style="display: none" id="sucursales">
+			<form action="" name="crearSuc" method="post">
+            	<h2>Crear Sucursal</h2>
+            	<input type="text" placeholder="Nombre" name="Nombre" required>
+                <input type="text" placeholder="Código" name="Codigo" required>
+            	<input type="text" placeholder="Dirección" name="Direccion" required>
+            	<input type="tel" placeholder="Teléfono (xxxxxxxx)" name="Telefono" pattern="^\d{8}$" required>
+            	<input type="text" placeholder="Cédula de Administrador" name="Administrador" required>
+            	<input type="button" value="Crear" onclick="postSuc();">
+        	</form>
+
+
+        	<form action="" name="modificarSuc" method="post">
+            	<h2>Modificar Sucursal</h2>
+            	<input type="text" placeholder="Nombre" name="Nombre" required>
+                <input type="text" placeholder="Código" name="Codigo" required>
+            	<input type="text" placeholder="Dirección" name="Direccion" required>
+            	<input type="tel" placeholder="Teléfono (xxxxxxxx)" name="Telefono" pattern="^\d{8}$" required>
+            	<input type="text" placeholder="Cédula de Administrador" name="Administrador" required>
+            	<input type="button" value="Modificar" onclick="putSuc();">
+        	</form>
+
+
+        	<form action="" name="eliminarSuc" method="post">
+            	<h2>Eliminar Sucursal</h2>
+            	<input type="text" placeholder="Código" name="Codigo" required>
+            	<input type="button" value="Eliminar" onclick="deleteSuc();">
+        	</form>
+		</div>
+		<!-- Sucursales -->
+
+		<!-- Empleados -->
+		<div class="contenedor" style="display: none;" id="empleados">
+			<form action="" name="crearEmp" method="post">
+            	<h2>Agregar Empleado</h2>
+            	<input type="text" placeholder="Nombre" name="PNombre" required>
+            	<input type="text" placeholder="Primer Apellido" name="Apellido1" required>
+            	<input type="text" placeholder="Segundo Apellido" name="Apellido2" required>
+            	<input type="number" placeholder="Cédula" name="Cedula" required>Fecha de Nacimiento:<br>
+            	<input type="date" placeholder="Fecha de Nacimiento" name="Nacimiento" required>Fecha de Ingreso:<br>
+            	<input type="date" placeholder="Fecha de Ingreso" name="Ingreso" required>
+            	<input type="text" placeholder="Sucursal" name="Sucursal" required>
+                <input type="text" placeholder="Contraseña" name="Contraseña">
+            	<input type="number" placeholder="&#8353; Salario" name="Salario" required>
+            	<input type="button" value="Agregar" onclick="postEmp();">
+        	</form>
+
+
+        	<form action="" name="modificarEmp" method="post">
+            	<h2>Modificar Empleado</h2>
+            	<input type="text" placeholder="Nombre" name="PNombre" required>
+            	<input type="text" placeholder="Primer Apellido" name="Apellido1" required>
+            	<input type="text" placeholder="Segundo Apellido" name="Apellido2" required>
+            	<input type="number" placeholder="Cédula" name="Cedula" required>Fecha de Nacimiento:<br>
+           		<input type="date" placeholder="Fecha de Nacimiento" name="Nacimiento" required>Fecha de Ingreso:<br>
+            	<input type="date" placeholder="Fecha de Ingreso" name="Ingreso" required>
+        	    <input type="text" placeholder="Sucursal" name="Sucursal" required>
+                <input type="text" placeholder="Contraseña" name="Contraseña">
+            	<input type="number" placeholder="&#8353; Salario" name="Salario" required>
+            	<input type="button" value="Modificar" onclick="putEmp();">
+        	</form>
+
+
+        	<form action="" name="eliminarEmp" method="post">
+            	<h2>Eliminar Empleado</h2>
+            	<input type="text" placeholder="Cédula" name="Cedula" required>
+            	<input type="button" value="Eliminar" onclick="deleteEmp();">
+        	</form>
+		</div>
+		<!-- Empleados -->
+
+		<!-- Proveedores-->
+		<div class="contenedor" style="display: none" id="proveedores">
+			<form action="" name="crearProv" method="post">
+            	<h2>Agregar Proveedor</h2>
+            	<input type="text" placeholder="Nombre" name="PNombre" required>Tipo de Cédula:<br>
+            	<input type="radio" name="tipo_cedula"  id="Fisica" value="Fisica" checked>
+            	<label for="Fisica"> Física<br></label>
+            	<input type="radio" name="tipo_cedula"  id="Juridica" value="Juridica">
+            	<label for="Juridica"> Jurídica<br></label>
+            	<input type="number" placeholder="Cédula" name="cedula" required>
+            	<input type="button" value="Agregar" onclick="postProv();">
+        	</form>
+
+        	<form action="" name="modificarProv" method="post">
+            	<h2>Modificar Proveedor</h2>
+            	<input type="text" placeholder="Nombre" name="PNombre" required>Tipo de Cédula:<br>
+            	<input type="radio" name="tipo_cedula"  id="Fisica2" value="Fisica" checked>
+            	<label for="Fisica2"> Física<br></label>
+            	<input type="radio" name="tipo_cedula"  id="Juridica2" value="Juridica">
+            	<label for="Juridica2"> Jurídica<br></label>
+            	<input type="number" placeholder="Cédula" name="cedula" required>
+            	<input type="button" value="Modificar" onclick="putProv();">
+        	</form>
+
+        	<form action="" name="eliminarProv" method="post">
+            	<h2>Eliminar Proveedor</h2>
+            	<input type="number" placeholder="Cédula" name="Cedula" required>
+            	<input type="button" value="Eliminar" onclick="deleteProv();">
+        	</form>
+		</div>
+		<!-- Proveedores -->
+
+		<!-- Productos -->
+		<div class="contenedor" style="display: none" id="productos">
+			<form action="" name="crearProd" method="post">
+            	<h2>Crear Producto</h2>
+            	<input type="text" placeholder="Nombre" name="Nombre" required>
+            	<input type="text" placeholder="Descripción" name="Descripcion" required>
+            	<input type="number" placeholder="Código de Barras" name="Codigo" required>
+                <input type="number" placeholder="Cantidad" name="Cantidad">
+            	<input type="number" placeholder="Cédula del Proveedor" name="Cedula" required>
+            	<input type="number" placeholder="&#8353; Precio de Compra" name="Pcompra" required>¿Exento?<br>
+            	<input type="radio" name="exento"  id="Si" value="true" checked>
+            	<label for="Si"> Si<br></label>
+            	<input type="radio" name="exento"  id="No" value="false">
+            	<label for="No"> No<br></label>
+            	<input type="number" placeholder="&#8353; Descuento" name="Descuento">
+                <input type="text" placeholder="Sucursal" name="Sucursal">
+            	<input type="button" value="Crear" onclick="postProd();">
+        	</form>
+
+        	<form action="" name="modificarProd" method="post">
+            	<h2>Modificar Producto</h2>
+            	<input type="text" placeholder="Nombre" name="Nombre" required>
+            	<input type="text" placeholder="Descripción" name="Descripcion" required>
+            	<input type="number" placeholder="Código de Barras" name="Codigo" required>
+                <input type="number" placeholder="Cantidad" name="Cantidad">
+            	<input type="number" placeholder="Cédula del Proveedor" name="Cedula" required>
+            	<input type="number" placeholder="&#8353; Precio de Compra" name="Pcompra" required>¿Exento?<br>
+            	<input type="radio" name="exento"  id="Si2" value="true" checked>
+            	<label for="Si2"> Si<br></label>
+            	<input type="radio" name="exento"  id="No2" value="false">
+            	<label for="No2"> No<br></label>
+            	<input type="number" placeholder="&#8353; Descuento" name="Descuento">
+                <input type="text" placeholder="Sucursal" name="Sucursal">
+            	<input type="button" value="Modificar" onclick="putProd();">
+        	</form>
+
+        	<form action="" name="eliminarProd" method="post">
+            	<h2>Eliminar Producto</h2>
+            	<input type="number" placeholder="Código de Barras" name="Codigo" required>
+                <input type="text" placeholder="Sucursal" name="Sucursal">
+            	<input type="button" value="Eliminar" onclick="deleteProd();">
+        	</form>
+		</div>
+		<!-- Productos -->
+
+		<!-- Compras -->
+		<div class="contenedor" style="display: none" id="compras">
+			<form action="" name="crearCom" method="post">
+            	<h2>Ingresar Compra</h2>
+                <input type="number" placeholder="Código de Barras" name="Codigo">
+                <input type="number" placeholder="Cantidad" name="Cantidad">
+                <input type="button" name="Agregar" value="Agregar Producto" onclick="agregarProdCompra();">
+                <input type="button" name="Modificar" value="Modificar Producto" onclick="modificaProdCompra();">
+                <input type="button" name="Eliminar" value="Eliminar Producto" onclick="eliminaProdCompra();">
+            	<input type="text" placeholder="Descripción" name="Descripcion" required> Fecha Real:<br>
+            	<input type="date" placeholder="Fecha Real" name="Real" required> Fecha de Registro:<br>
+            	<input type="date" placeholder="Fecha Registro" name="Registro" required>
+            	<input type="number" placeholder="Cédula del Proveedor" name="Cedula" required> Foto:<br>
+            	<input type="file" name="Foto">
+            	<input type="button" value="Ingresar" onclick="postCom();">
+        	</form>
+
+            <form action="" name="tableCompra" method="post">
+                <table width="600px" border="1px" title="Planilla" style="margin-left: 20px;" id="tablaCompra">
+                    <caption>Compra</caption>
+                    <tr>
+                        <td width="200px">
+                            Codigo
+                        </td>
+                        <td width="200px">
+                            Cantidad
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+
+        	<form action="" name="modificarCom" method="post">
+            	<h2>Modificar Compra</h2>
+                <input type="number" placeholder="Orden" name="Orden" required>
+                <input type="number" placeholder="Código de Barras" name="Codigo">
+                <input type="number" placeholder="Cantidad" name="Cantidad">
+                <input type="button" name="Agregar" value="Agregar Producto" onclick="agregarProdModCompra();">
+                <input type="button" name="Modificar" value="Modificar Producto" onclick="modificaProdModCompra();">
+                <input type="button" name="Eliminar" value="Eliminar Producto" onclick="eliminaProdModCompra();">
+            	<input type="text" placeholder="Descripción" name="Descripcion" required> Fecha Real:<br>
+            	<input type="date" placeholder="Fecha Real" name="Real" required> Fecha de Registro:<br>
+            	<input type="date" placeholder="Fecha Registro" name="Registro" required>
+            	<input type="number" placeholder="Cédula del Proveedor" name="Cedula" required> Foto:<br>
+            	<input type="file" name="Foto">
+            	<input type="button" value="Modificar" onclick="putCom();">
+        	</form>
+
+            <form action="" name="tableModCompra" method="post">
+                <table width="600px" border="1px" title="Planilla" style="margin-left: 20px;" id="tablaModCompra">
+                    <caption>Compra</caption>
+                    <tr>
+                        <td width="200px">
+                            Codigo
+                        </td>
+                        <td width="200px">
+                            Cantidad
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+
+        	<form action="" name="eliminarCom" method="post">
+            	<h2>Eliminar Compra</h2>
+            	<input type="text" placeholder="Orden de Compra" name="Orden">
+            	<input type="button" value="Eliminar" onclick="deleteCom();">
+        	</form>
+		</div>
+		<!-- Compras -->
+
+		<!-- Horas -->
+		<div class="contenedor" style="display: none" id="horas">
+			<form action="" name="crearHor" method="post">
+            	<h2>Ingresar Horas</h2>
+            	<input type="text" placeholder="Cédula del Empleado" name="Cedula" required>
+            	<input type="number" placeholder="Horas" name="Horas" required>
+            	<input type="number" placeholder="Horas Extra" name="Extra" required>
+            	<input type="tel" placeholder="Semana (xx.xx)" name="Semana"  required>
+            	<input type="button" value="Ingresar" onclick="postHor();">
+        	</form>
+
+
+        	<form action="" name="modificarHor" method="post">
+            	<h2>Modificar Horas</h2>
+            	<input type="text" placeholder="Cédula del Empleado" name="Cedula" required>
+            	<input type="number" placeholder="Horas" name="Horas" required>
+            	<input type="number" placeholder="Horas Extra" name="Extra" required>
+            	<input type="tel" placeholder="Semana (xx.xx)" name="Semana"  required>
+            	<input type="button" value="Modificar" onclick="putHor();">
+        	</form>
+
+		</div>
+		<!-- Horas -->
+
+        <!-- Planilla -->
+        <div class="contenedor" style="display: none; margin-left: 150px;" id="planilla" >
+            <form action="" name="generarPla" method="get">
+                <h2>Generar Planilla</h2>
+                <input type="button" value="Generar" onclick="getHor();">
+                <input type="button" value="Limpiar" onclick="limpiar('tablaPlanilla');">
+                <input type="button" onclick="descargarExcel('tablaPlanilla');" value="Exportar a Excel">
+            </form>
+
+            <form action="" name="tablePla" method="post">
+                <table width="600px" border="1px" title="Planilla" style="margin-left: 20px;" id="tablaPlanilla">
+                    <caption>Planilla</caption>
+                    <tr>
+                        <td width="200px">
+                            Empleado
+                        </td>
+                        <td width="200px">
+                            Horas Ordinarias
+                        </td>
+                        <td width="200px">
+                            Horas Extras
+                        </td>
+                        <td width="200px">
+                            Semana (Año.Semana)
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!-- Planilla -->
+
+        <!-- Reportes -->
+        <div class="contenedor" style="display: none; margin-left: 150px;" id="reportes" >
+            <form action="" name="LproductosSuc" method="post">
+                <h2>Lista de Productos por Sucursal</h2>
+                <input type="text" placeholder="Sucursal" name="Sucursal">
+                <input type="button" value="Mostrar" onclick="getSucProd();">
+                <input type="button" value="Limpiar" onclick="limpiar('tablaListaSuc');">
+                <input type="button" onclick="descargarExcel('tablaListaSuc');" value="Exportar a Excel">
+            </form>
+
+            <form action="" name="tableListaSuc" method="post">
+                <table width="600px" border="1px" title="Planilla" style="margin-left: 20px;" id="tablaListaSuc">
+                    <caption>Productos por Sucursal</caption>
+                    <tr>
+                        <td width="200px">
+                            Nombre
+                        </td>
+                        <td width="200px">
+                            Descripcion
+                        </td>
+                        <td width="200px">
+                            Costo
+                        </td>
+                        <td width="200px">
+                            Cantidad
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <form action="" name="LproductosTod" method="post">
+                <h2>Lista de Productos de la Cadena</h2>
+                <input type="button" value="Mostrar Todos" onclick="getTodProd();">
+                <input type="button" value="Limpiar" onclick="limpiar('tablaListaTod');">
+                <input type="button" onclick="descargarExcel('tablaListaTod');" value="Exportar a Excel">
+            </form>
+
+            <form action="" name="tableListaTod" method="post">
+                <table width="600px" border="1px" title="Planilla" style="margin-left: 20px;" id="tablaListaTod">
+                    <caption>Productos de la Cadena</caption>
+                    <tr>
+                        <td width="200px">
+                            Nombre
+                        </td>
+                        <td width="200px">
+                            Costo
+                        </td>
+                        <td width="200px">
+                            Cantidad
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <form action="" name="Lgastos" method="post">
+                <h2>Lista de Gastos</h2>
+                <input type="text" placeholder="Sucursal" name="Sucursal">Fecha Inicio:<br>
+                <input type="date" placeholder="Fecha Inicio" name="Inicio" required> Fecha Final:<br>
+                <input type="date" placeholder="Fecha Final" name="Final" required>
+                <input type="button" value="Mostrar" onclick="getGastos();">
+                <input type="button" value="Limpiar" onclick="limpiar('tablaGastos');">
+                <input type="button" onclick="descargarExcel('tablaGastos');" value="Exportar a Excel">
+            </form>
+
+            <form action="" name="tableGastos" method="post">
+                <table width="600px" border="1px" title="Planilla" style="margin-left: 20px;" id="tablaGastos">
+                    <caption>Gastos</caption>
+                    <tr>
+                        <td width="200px">
+                            Fecha
+                        </td>
+                        <td width="200px">
+                            Proveedor
+                        </td>
+                        <td width="200px">
+                            Descripcion
+                        </td>
+                        <td width="200px">
+                            Monto
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!-- Reportes -->
+
+        <!-- Facturacion -->
+        <div class="contenedor" style="display: none; margin-left: 150px;" id="facturacion" >
+            <form action="" name="generarFac" method="post">
+                <h2>Facturación de Pedido</h2>Agregar Productos:<br>
+                <!-- <input type="number" placeholder="Código de Pedido" name="Pedido"> -->
+                <input type="number" placeholder="Código de Barras" name="Codigo">
+                <input type="number" placeholder="Cantidad" name="Cantidad">
+                <input type="button" name="Agregar" value="Agregar" onclick="agregarProdVenta();">
+                <input type="button" name="Modificar" value="Modificar" onclick="modificaProdVenta();">
+                <input type="button" name="Eliminar" value="Eliminar" onclick="eliminaProdVenta();"><br>¿Pagar con tarjeta?<br>
+                <input type="radio" name="card"  id="SiTar" value="Si" onclick="vertar();">
+                <label for="SiTar"> Si</label>
+                <input type="radio" name="card"  id="NoTar" value="No" onclick="vertar();" checked>
+                <label for="NoTar"> No</label>
+                <input type="number" placeholder="Número Tarjeta" name="Numero" style="display: none;">
+                <input type="number" placeholder="Código" name="CodigoTar" style="display: none;">
+                <input type="text" placeholder="Fecha Expiración" name="Fecha" style="display: none;">
+                <input type="button" value="Facturar" onclick="facturar();">
+            </form>
+
+            <form action="" name="tableVenta" method="post">
+                <table width="600px" border="1px" title="Planilla" style="margin-left: 20px;" id="tablaVenta">
+                    <caption>Venta</caption>
+                    <tr>
+                        <td width="200px">
+                            Codigo
+                        </td>
+                        <td width="200px">
+                            Cantidad
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <form action="" name="cancelarFac" method="post">
+                <h2>Cancelar Pedido</h2>
+                <input type="number" placeholder="Código de Pedido" name="Pedido">
+                <input type="button" value="Cancelar" onclick="cancelarPedido();">
+            </form>
+        </div>
+        <!-- Facturacion -->
+
+	</header>
+	<div class="contenedor">
+		<p>
+			
+		</p>
+	</div>
+
+	<script>
+        function vertar(){
+            if (document.generarFac.card.value=='No') {
+                document.generarFac.Numero.style.display='none';
+                document.generarFac.CodigoTar.style.display='none';
+                document.generarFac.Fecha.style.display='none';
+            }
+            else{
+                document.generarFac.Numero.style.display='block';
+                document.generarFac.CodigoTar.style.display='block';
+                document.generarFac.Fecha.style.display='block';
+            }
+        }
+
+        /*document.getElementById('login').style.display='none';
+        document.getElementById('menunav').style.display='block';*/
+        
+        /*
+        Función para mostrar los elementos de cada pestaña
+        Parámetro: nombre de la pestaña a mostrar  
+        */
+		function mostrar(p1){
+			/*Se hacen invisibles todos los divs */
+            document.getElementById('login');
+            roles.style.display='none';
+			document.getElementById('roles');
+			roles.style.display='none';
+			document.getElementById('sucursales');
+			sucursales.style.display='none';
+			document.getElementById('empleados');
+			empleados.style.display='none';
+			document.getElementById('proveedores');
+			proveedores.style.display='none';
+			document.getElementById('productos');
+			productos.style.display='none';
+			document.getElementById('compras');
+			compras.style.display='none';
+			document.getElementById('horas');
+			horas.style.display='none';
+            document.getElementById('planilla');
+            planilla.style.display='none';
+            document.getElementById('reportes');
+            reportes.style.display='none';
+            document.getElementById('facturacion');
+            facturacion.style.display='none';
+
+			/*Se muestra solo el div que se necesita*/
+			switch(p1){
+				case 'roles':
+					roles.style.display='block';
+					break;
+				case 'sucursales':
+					sucursales.style.display='block';
+					break;
+				case 'empleados':
+					empleados.style.display='block';
+					break;
+				case 'proveedores':
+					proveedores.style.display='block';
+					break;
+				case 'productos':
+					productos.style.display='block';
+					break;
+				case 'compras':
+					compras.style.display='block';
+					break;
+				case 'horas':
+					horas.style.display='block';
+					break;
+                case 'planilla':
+                    planilla.style.display='block';
+                    break;
+                case 'reportes':
+                    reportes.style.display='block';
+                    break;
+                case 'facturacion':
+                    facturacion.style.display='block';
+                    break;
+                case 'login':
+                    var login = document.getElementById("login");
+                    var xhr = new XMLHttpRequest();
+                    var xhr2 = new XMLHttpRequest();
+                    var user='';
+                    var pass='';
+                    var suc='';
+                    xhr2.onreadystatechange = function() {
+                        if (xhr2.readyState == XMLHttpRequest.DONE) {
+                            var parser, xmlDoc;
+                            var text = xhr2.responseText;
+                            parser = new DOMParser();
+                            xmlDoc = parser.parseFromString(text,"text/xml");
+                            user=xmlDoc.getElementsByTagName("Cedula")[0].childNodes[0].nodeValue;
+                            pass=xmlDoc.getElementsByTagName("Contrasena")[0].childNodes[0].nodeValue;
+                            suc=xmlDoc.getElementsByTagName("Sucursal")[0].childNodes[0].nodeValue;
+
+                        }
+                        
+                    }
+                    xhr2.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value, true);
+                    xhr2.send(null);
+                    
+                    if (login.rol.value=="Administrador") {
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState == XMLHttpRequest.DONE) {
+                                var parser, xmlDoc;
+                                var text = xhr.responseText;
+                                parser = new DOMParser();
+                                xmlDoc = parser.parseFromString(text,"text/xml");
+
+                                if (login.Usuario.value==xmlDoc.getElementsByTagName("Ced_administrador")[0].childNodes[0].nodeValue && login.Contraseña.value==pass) {
+                                    login.style.display='none';
+                                    document.getElementById('menunav').style.display='block';
+                                }
+                                else{
+                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
+                                }
+                            }
+                        }
+                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/sucursal?codigo='+login.Sucursal.value, true);
+                        xhr.send(null);
+                        
+                    }
+                    else{
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState == XMLHttpRequest.DONE) {
+                                var parser, xmlDoc;
+                                var text = xhr.responseText;
+                                parser = new DOMParser();
+                                xmlDoc = parser.parseFromString(text,"text/xml");
+
+                                if (login.Usuario.value==user && login.Contraseña.value==pass && login.Sucursal.value==suc) {
+                                    document.getElementById("menunemp").style.display="block";
+                                    login.style.display="none";
+                                    mostrar("facturacion");
+
+                                }
+                                else{
+                                    alert("Usuario, Contraseña o Sucursal Incorrectos");
+                                }
+                            }
+                        }
+                        xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+login.Usuario.value+'&contrasena='+login.Contraseña.value+'&codigo_sucursal='+login.Sucursal.value, true);
+                        xhr.send(null);
+
+                    }
+                    break;
+				default:
+					
+			}
+        }
+
+        /*Métodos de Roles*/
+        function postRol() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos = 'Nombre='+document.crearRol.Nombre.value+'&Descripcion='+document.crearRol.Descripcion.value;//Datos a enviar en el request.
+
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/rol', true); //Indica el tipo y la dirección del request.
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // Indica el header del request
+            xhr.setRequestHeader('Content-length', datos.length+''); //Indica el largo de los datos a enviar.
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos); //Se hace el envío del request.
+
+        }
+
+        function getRol() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest(); //Se crea el objeto XMLHttpRequest
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml"); //Se parsean los datos recibidos para extraerlos
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+document.eliminarEmp.Cedula.value, true); //Se abre la conexion entre la aplicación y el servidor.
+            xhr.send(null);
+        }
+
+        function putRol() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos = 'Nombre='+document.modificarRol.Nombre.value+'&Descripcion='+document.modificarRol.Descripcion.value+'&put=1';
+
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/rol', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteRol() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/rol?nombre='+document.eliminarRol.Nombre.value+'&delete=1', true);
+            xhr.send(null);
+
+        }
+        /*Métodos de Roles*/
+
+        /*Métodos de Sucursales*/
+        function postSuc() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos = 'Codigo='+document.crearSuc.Codigo.value+'&Nombre='+document.crearSuc.Nombre.value+'&Telefono='+document.crearSuc.Telefono.value+'&Direccion='+document.crearSuc.Direccion.value+'&Ced_administrador='+document.crearSuc.Administrador.value;
+
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/sucursal', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function getSuc() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+document.eliminarEmp.Cedula.value, true);
+            xhr.send(null);
+        }
+
+        function putSuc() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos = 'Codigo='+document.modificarSuc.Codigo.value+'&Nombre='+document.modificarSuc.Nombre.value+'&Telefono='+document.modificarSuc.Telefono.value+'&Direccion='+document.modificarSuc.Direccion.value+'&Ced_administrador='+document.modificarSuc.Administrador.value+'&put=1';
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/sucursal', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteSuc() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/sucursal?codigo='+document.eliminarSuc.Codigo.value+'&delete=1', true);
+            xhr.send(null);
+
+        }
+        /*Métodos de Sucursales*/
+
+        /*Métodos de Empleados*/
+        function postEmp() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos = 'Nombre='+document.crearEmp.PNombre.value+'&Pri_apellido='+document.crearEmp.Apellido1.value+'&Seg_apellido='+document.crearEmp.Apellido2.value+'&Cedula='+document.crearEmp.Cedula.value+'&Fecha_inicio='+document.crearEmp.Ingreso.value+'&Salario_por_hora='+document.crearEmp.Salario.value+'&Fecha_nacimiento='+document.crearEmp.Nacimiento.value+'&Codigo_sucursal='+document.crearEmp.Sucursal.value+"&Contrasena="+document.crearEmp.Contraseña.value;
+
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/empleado', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function getEmp() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+
+                    alert(xmlDoc.getElementsByTagName("Pri_apellido")[0].childNodes[0].nodeValue);
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+document.eliminarEmp.Cedula.value, true);
+            xhr.send(null);
+        }
+
+        function putEmp() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos = 'Nombre='+document.modificarEmp.PNombre.value+'&Pri_apellido='+document.modificarEmp.Apellido1.value+'&Seg_apellido='+document.modificarEmp.Apellido2.value+'&Cedula='+document.modificarEmp.Cedula.value+'&Fecha_inicio='+document.modificarEmp.Ingreso.value+'&Salario_por_hora='+document.modificarEmp.Salario.value+'&Fecha_nacimiento='+document.modificarEmp.Nacimiento.value+'&Codigo_sucursal='+document.modificarEmp.Sucursal.value+"&Contrasena="+document.modificarEmp.Contraseña.value+'&put=1';
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/empleado', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteEmp() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/empleado?cedula='+document.eliminarEmp.Cedula.value+'&delete=1', true);
+            xhr.send(null);
+
+        }
+        /*Métodos de Empleados*/
+
+        /*Métodos de Proveedores*/
+        function postProv() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos ='Cedula='+document.crearProv.cedula.value+'&Tipo='+document.crearProv.tipo_cedula.value+'&Nombre='+document.crearProv.PNombre.value;
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/proveedor', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function getProv() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+
+                    alert(xmlDoc.getElementsByTagName("Pri_apellido")[0].childNodes[0].nodeValue);
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/proveedor?cedula='+document.eliminarEmp.Cedula.value, true);
+            xhr.send(null);
+        }
+
+        function putProv() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos = 'Cedula='+document.modificarProv.cedula.value+'&Tipo='+document.modificarProv.tipo_cedula.value+'&Nombre='+document.modificarProv.PNombre.value+'&put=1';
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/proveedor', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteProv() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/proveedor?cedula='+document.eliminarProv.Cedula.value+'&delete=1', true);
+            xhr.send(null);
+
+        }
+        /*Métodos de Proveedores*/
+
+        /*Métodos de Productos*/
+        function postProd() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos ='Exento='+document.crearProd.exento.value+'&Codigo_barras='+document.crearProd.Codigo.value+'&Nombre='+document.crearProd.Nombre.value+'&Descripcion='+document.crearProd.Descripcion.value+'&Impuesto=13'+'&Precio_compra='+document.crearProd.Pcompra.value+'&Descuento='+document.crearProd.Descuento.value+'&Codigo_sucursal='+document.crearProd.Sucursal.value+'&Cantidad='+document.crearProd.Cantidad.value+'&Precio_venta='+(parseFloat(document.crearProd.Pcompra.value)+(document.crearProd.Pcompra.value*0.25))+'&Cedula_proveedor='+document.crearProd.Cedula.value;
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/producto', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function getTodProd() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaListaTod");
+                    limpiar("tablaListaTod");
+                    while (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null){   
+                        var fila = tabla.insertRow(numeroFila+1);
+                        var cell1 = fila.insertCell(0);
+                        var cell2 = fila.insertCell(1);
+                        var cell3 = fila.insertCell(2);
+                        cell1.innerHTML = xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue;
+                        cell2.innerHTML = xmlDoc.getElementsByTagName("Costo")[numeroFila].childNodes[0].nodeValue;
+                        cell3.innerHTML = xmlDoc.getElementsByTagName("Cantidad")[numeroFila].childNodes[0].nodeValue;
+                        numeroFila = numeroFila+1;
+                    }
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/producto?todos=1', true);
+            xhr.send(null);
+        }
+
+        function getSucProd() {
+            var login = document.getElementById("login");//Se obtiene la instancia del formulario del login.
+            var xhr = new XMLHttpRequest();//Se creal el objeto XMLHttpRequest.
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;//Respuesta del servidor.
+                    parser = new DOMParser();//Parseador del XML.
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0//Contador de las filas de la tabla a llenar.
+                    var tabla = document.getElementById("tablaListaSuc");//Tabla que muestra los productos. 
+                    limpiar("tablaListaSuc"); //Método para limpiar la tabla.
+                    while (xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue != null){ //Se extraen los datos del XML para mostrarlos en la tabla.
+                        var fila = tabla.insertRow(numeroFila+1);
+                        var cell1 = fila.insertCell(0);
+                        var cell2 = fila.insertCell(1);
+                        var cell3 = fila.insertCell(2);
+                        var cell4 = fila.insertCell(3);
+                        cell1.innerHTML = xmlDoc.getElementsByTagName("Nombre")[numeroFila].childNodes[0].nodeValue;
+                        cell2.innerHTML = xmlDoc.getElementsByTagName("Descripcion")[numeroFila].childNodes[0].nodeValue;
+                        cell3.innerHTML = xmlDoc.getElementsByTagName("Costo")[numeroFila].childNodes[0].nodeValue;
+                        cell4.innerHTML = xmlDoc.getElementsByTagName("Cantidad")[numeroFila].childNodes[0].nodeValue;
+                        numeroFila = numeroFila+1;
+                    }
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/producto?codigo_sucursal='+document.LproductosSuc.Sucursal.value, true);//Se envia la solicitud de tipo GET.
+            xhr.send(null);
+        }
+
+        function putProd() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos ='Exento='+document.modificarProd.exento.value+'&Codigo_barras='+document.modificarProd.Codigo.value+'&Nombre='+document.modificarProd.Nombre.value+'&Descripcion='+document.modificarProd.Descripcion.value+'&Impuesto=13'+'&Precio_compra='+document.modificarProd.Pcompra.value+'&Descuento='+document.modificarProd.Descuento.value+'&Codigo_sucursal='+document.modificarProd.Sucursal.value+'&Cantidad='+document.modificarProd.Cantidad.value+'&Precio_venta='+(parseFloat(document.modificarProd.Pcompra.value)+(document.modificarProd.Pcompra.value*0.25))+'&Cedula_proveedor='+document.modificarProd.Cedula.value+'&put=1';
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/producto', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteProd() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/producto?codigo_barras='+document.eliminarProd.Codigo.value+'&codigo_sucursal='+document.eliminarProd.Sucursal.value+'&delete=1', true);
+            xhr.send(null);
+
+        }
+        /*Métodos de Productos*/
+
+        /*Métodos de Compras*/
+        function postCom() {
+            var login = document.getElementById("login");
+            var tabla = document.getElementById("tablaCompra");
+            var xhr = new XMLHttpRequest();
+            var numeroFila=tabla.rows.length;
+            var productos = '';
+            var cantidad = '';
+            var i = 1;
+            while(i<numeroFila){
+                if (i==numeroFila-1) {
+                    productos=productos+tabla.rows[i].cells[0].innerText;
+                    cantidad=cantidad+tabla.rows[i].cells[1].innerText;
+                    break;
+                }
+                productos=productos+tabla.rows[i].cells[0].innerText+',';
+                cantidad=cantidad+tabla.rows[i].cells[1].innerText+',';
+                i=i+1;
+            }
+            var datos ='Cedula_proveedor='+document.crearCom.Cedula.value+'&Descripcion='+document.crearCom.Descripcion.value+'&Foto='+document.crearCom.Foto.value+'&Fecha_registro='+document.crearCom.Registro.value+'&Fecha_real='+document.crearCom.Real.value+'&Codigo_sucursal='+login.Sucursal.value+'&productos='+productos+'&cantidad='+cantidad;
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/compra', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function getCom() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+
+                    alert(xmlDoc.getElementsByTagName("Pri_apellido")[0].childNodes[0].nodeValue);
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/proveedor?cedula='+document.eliminarEmp.Cedula.value, true);
+            xhr.send(null);
+        }
+
+        function putCom() {
+            var login = document.getElementById("login");
+            var tabla = document.getElementById("tablaModCompra");
+            var xhr = new XMLHttpRequest();
+            var productos='';
+            var cantidad='';
+            var numeroFila=tabla.rows.length;
+            var i = 1;
+            while(i<numeroFila){
+                if (i==numeroFila-1) {
+                    productos=productos+tabla.rows[i].cells[0].innerText;
+                    cantidad=cantidad+tabla.rows[i].cells[1].innerText;
+                    break;
+                }
+                productos=productos+tabla.rows[i].cells[0].innerText+',';
+                cantidad=cantidad+tabla.rows[i].cells[1].innerText+',';
+                i=i+1;
+
+            }
+            var datos ='codigo_compra='+document.modificarCom.Orden.value+'&productos='+productos+'&cantidad='+cantidad+'&put=1';
+                xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/productos_en_compra', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.setRequestHeader('Content-length', datos.length+'');
+
+                xhr.onload = function () {
+                    // do something to response
+                    console.log(this.responseText);
+                };
+                xhr.send(datos);
+
+            var datos = 'Codigo='+document.modificarCom.Orden.value+'&Cedula_proveedor='+document.modificarCom.Cedula.value+'&Descripcion='+document.modificarCom.Descripcion.value+'&Foto='+document.modificarCom.Foto.value+'&Fecha_registro='+document.modificarCom.Registro.value+'&Fecha_real='+document.modificarCom.Real.value+'&Codigo_sucursal='+login.Sucursal.value+'&put=1';
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/compra', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function deleteCom() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/compra?codigo='+document.eliminarCom.Orden.value+'&delete=1', true);
+            xhr.send(null);
+
+        }
+
+        function agregarProdCompra(){
+            var tabla = document.getElementById("tablaCompra");
+            var numeroFila=tabla.rows.length; 
+            if (document.crearCom.Codigo.value.length>0 && document.crearCom.Cantidad.value.length>0) {
+                var fila = tabla.insertRow(numeroFila);
+                var cell1 = fila.insertCell(0);
+                var cell2 = fila.insertCell(1);
+                cell1.innerHTML = document.crearCom.Codigo.value;
+                cell2.innerHTML = document.crearCom.Cantidad.value;
+            }
+        }
+
+        function modificaProdCompra(){
+            var tabla = document.getElementById("tablaCompra");
+            var numeroFila=tabla.rows.length;
+            var i =0; 
+            if (document.crearCom.Codigo.value!="" && document.crearCom.Cantidad.value!="") {
+                while(i<=numeroFila){
+                    if (tabla.rows[i].cells[0].innerHTML==document.crearCom.Codigo.value) {
+                        tabla.deleteRow(i);
+                        var fila = tabla.insertRow(i);
+                        var cell1 = fila.insertCell(0);
+                        var cell2 = fila.insertCell(1);
+                        cell1.innerHTML = document.crearCom.Codigo.value;
+                        cell2.innerHTML=document.crearCom.Cantidad.value;
+                        break;
+                    }
+                    i=i+1
+                }
+            }
+            
+        }
+
+        function eliminaProdCompra(){
+            var tabla = document.getElementById("tablaCompra");
+            var numeroFila=tabla.rows.length;
+            var i =0; 
+            if (document.crearCom.Codigo.value.length>0) {
+                while(i<=numeroFila){
+                    if (tabla.rows[i].cells[0].innerHTML==document.crearCom.Codigo.value) {
+                        tabla.deleteRow(i);
+                        break;
+                    }
+                    i=i+1
+                }
+            }
+        }
+
+        function agregarProdModCompra(){
+            var tabla = document.getElementById("tablaModCompra");
+            var numeroFila=tabla.rows.length; 
+            if (document.modificarCom.Codigo.value.length>0 && document.modificarCom.Cantidad.value.length>0) {
+                var fila = tabla.insertRow(numeroFila);
+                var cell1 = fila.insertCell(0);
+                var cell2 = fila.insertCell(1);
+                cell1.innerHTML = document.modificarCom.Codigo.value;
+                cell2.innerHTML = document.modificarCom.Cantidad.value;
+            }
+        }
+
+        function modificaProdModCompra(){
+            var tabla = document.getElementById("tablaModCompra");
+            var numeroFila=tabla.rows.length;
+            var i =0; 
+            if (document.modificarCom.Codigo.value!="" && document.modificarCom.Cantidad.value!="") {
+                while(i<=numeroFila){
+                    if (tabla.rows[i].cells[0].innerHTML==document.modificarCom.Codigo.value) {
+                        tabla.deleteRow(i);
+                        var fila = tabla.insertRow(i);
+                        var cell1 = fila.insertCell(0);
+                        var cell2 = fila.insertCell(1);
+                        cell1.innerHTML = document.modificarCom.Codigo.value;
+                        cell2.innerHTML=document.modificarCom.Cantidad.value;
+                        break;
+                    }
+                    i=i+1
+                }
+            }
+            
+        }
+
+        function eliminaProdModCompra(){
+            var tabla = document.getElementById("tablaModCompra");
+            var numeroFila=tabla.rows.length;
+            var i =0; 
+            if (document.modificarCom.Codigo.value.length>0) {
+                while(i<=numeroFila){
+                    if (tabla.rows[i].cells[0].innerHTML==document.modificarCom.Codigo.value) {
+                        tabla.deleteRow(i);
+                        break;
+                    }
+                    i=i+1
+                }
+            }
+        }
+
+        /*Métodos de Compras*/
+
+        /*Métodos de Horas*/
+        function postHor() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos ='ID_semana='+document.crearHor.Semana.value+'&Horas_ordinarias='+document.crearHor.Horas.value+'&Horas_extras='+document.crearHor.Extra.value+'&Ced_empleado='+document.crearHor.Cedula.value;
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/horas', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function getHor() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaPlanilla");
+                    limpiar("tablaPlanilla");
+                    if (xmlDoc.getElementsByTagName("Ced_empleado")[numeroFila].childNodes[0].nodeValue != null) {
+                        while (xmlDoc.getElementsByTagName("Ced_empleado")[numeroFila].childNodes[0].nodeValue != null){   
+                            var fila = tabla.insertRow(numeroFila+1);
+                            var cell1 = fila.insertCell(0);
+                            var cell2 = fila.insertCell(1);
+                            var cell3 = fila.insertCell(2);
+                            var cell4 = fila.insertCell(3);
+                            cell1.innerHTML = xmlDoc.getElementsByTagName("Ced_empleado")[numeroFila].childNodes[0].nodeValue;
+                            cell2.innerHTML = xmlDoc.getElementsByTagName("Horas_ordinarias")[numeroFila].childNodes[0].nodeValue;
+                            cell3.innerHTML = xmlDoc.getElementsByTagName("Horas_extras")[numeroFila].childNodes[0].nodeValue;
+                            cell4.innerHTML = xmlDoc.getElementsByTagName("ID_semana")[numeroFila].childNodes[0].nodeValue;
+                            numeroFila = numeroFila+1;
+                        }
+                    }
+                    else{
+                        alert("Debe asignar las horas laboradas a los empleados");
+                    }
+                    
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/horas?cedula', true);
+            xhr.send(null);
+        }
+
+        function putHor() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            var datos ='ID_semana='+document.modificarHor.Semana.value+'&Horas_ordinarias='+document.modificarHor.Horas.value+'&Horas_extras='+document.modificarHor.Extra.value+'&Ced_empleado='+document.modificarHor.Cedula.value+'&put=1';
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/horas', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+
+        }
+
+        function limpiar(p1){
+            var tabla = document.getElementById(p1);
+            while(tabla.rows.length!=1){
+                tabla.deleteRow(1);
+            }
+        }
+
+        /*Métodos de Horas*/
+
+        /*Métodos de Gastos*/
+        function getGastos() {
+            var login = document.getElementById("login");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    var numeroFila=0
+                    var tabla = document.getElementById("tablaGastos");
+                    limpiar("tablaGastos");
+                    while (xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue != null){   
+                        var fila = tabla.insertRow(numeroFila+1);
+                        var cell1 = fila.insertCell(0);
+                        var cell2 = fila.insertCell(1);
+                        var cell3 = fila.insertCell(2);
+                        var cell4 = fila.insertCell(3);
+                        cell1.innerHTML = xmlDoc.getElementsByTagName("Fecha")[numeroFila].childNodes[0].nodeValue;
+                        cell2.innerHTML = xmlDoc.getElementsByTagName("Proveedor")[numeroFila].childNodes[0].nodeValue;
+                        cell3.innerHTML = xmlDoc.getElementsByTagName("Descripcion")[numeroFila].childNodes[0].nodeValue;
+                        cell4.innerHTML = xmlDoc.getElementsByTagName("Monto")[numeroFila].childNodes[0].nodeValue;
+                        numeroFila = numeroFila+1;
+                    }
+                }
+            }
+            if(document.Lgastos.Sucursal.value != ''){
+                xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/compra?fecha_inicial='+document.Lgastos.Inicio.value+'&fecha_final='+document.Lgastos.Final.value+'&codigo_sucursal='+document.Lgastos.Sucursal.value, true);
+            }
+            else{
+                xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/compra?fecha_inicial='+document.Lgastos.Inicio.value+'&fecha_final='+document.Lgastos.Final.value, true);
+            }
+            xhr.send(null);
+        }
+        /*Métodos de Gastos*/
+
+        /*Métodos de Facturación*/
+        function agregarProdVenta(){
+            var tabla = document.getElementById("tablaVenta");
+            var numeroFila=tabla.rows.length; 
+            if (document.generarFac.Codigo.value.length>0 && document.generarFac.Cantidad.value.length>0) {
+                var fila = tabla.insertRow(numeroFila);
+                var cell1 = fila.insertCell(0);
+                var cell2 = fila.insertCell(1);
+                cell1.innerHTML = document.generarFac.Codigo.value;
+                cell2.innerHTML = document.generarFac.Cantidad.value;
+            }
+        }
+
+        function modificaProdVenta(){
+            var tabla = document.getElementById("tablaVenta");
+            var numeroFila=tabla.rows.length;
+            var i =0; 
+            if (document.generarFac.Codigo.value!="" && document.generarFac.Cantidad.value!="") {
+                while(i<=numeroFila){
+                    if (tabla.rows[i].cells[0].innerHTML==document.generarFac.Codigo.value) {
+                        tabla.deleteRow(i);
+                        var fila = tabla.insertRow(i);
+                        var cell1 = fila.insertCell(0);
+                        var cell2 = fila.insertCell(1);
+                        cell1.innerHTML = document.generarFac.Codigo.value;
+                        cell2.innerHTML=document.generarFac.Cantidad.value;
+                        break;
+                    }
+                    i=i+1
+                }
+            }
+            
+        }
+
+        function eliminaProdVenta(){
+            var tabla = document.getElementById("tablaVenta");
+            var numeroFila=tabla.rows.length;
+            var i =0; 
+            if (document.generarFac.Codigo.value.length>0) {
+                while(i<=numeroFila){
+                    if (tabla.rows[i].cells[0].innerHTML==document.generarFac.Codigo.value) {
+                        tabla.deleteRow(i);
+                        break;
+                    }
+                    i=i+1
+                }
+            }
+        }
+
+        function facturar(){
+            var tabla = document.getElementById("tablaVenta");
+            var login = document.getElementById("login");
+            var numeroFila=tabla.rows.length;
+            var productos = '';
+            var cantidad = '';
+            var i = 1; 
+            var xhr = new XMLHttpRequest();
+            while(i<numeroFila){
+                if (i==numeroFila-1) {
+                    productos=productos+tabla.rows[i].cells[0].innerText;
+                    cantidad=cantidad+tabla.rows[i].cells[1].innerText;
+                    break;
+                }
+                productos=productos+tabla.rows[i].cells[0].innerText+',';
+                cantidad=cantidad+tabla.rows[i].cells[1].innerText+',';
+                i=i+1;
+            }
+            var datos;
+            if (document.generarFac.card.value=='Si') {
+                datos ='cedula_cajero='+login.Usuario.value+'&codigo_sucursal='+login.Sucursal.value+'&productos='+productos+'&cantidad='+cantidad+'numerotarjeta='+document.generarFac.Numero.value+'&numeroseguridad='+document.generarFac.CodigoTar.value+'&fechaexpiracion='+document.generarFac.Fecha.value;
+            }
+            else{
+                datos ='cedula_cajero='+login.Usuario.value+'&codigo_sucursal='+login.Sucursal.value+'&productos='+productos+'&cantidad='+cantidad;
+            }
+            xhr.open('POST', 'http://'+login.IP.value+'/RESTWebService/venta', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-length', datos.length+'');
+
+            xhr.onload = function () {
+                // do something to response
+                console.log(this.responseText);
+            };
+            xhr.send(datos);
+            
+        }
+
+        function cancelarPedido(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var parser, xmlDoc;
+                    var text = xhr.responseText;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                }
+            }
+            xhr.open('GET', 'http://'+login.IP.value+'/RESTWebService/venta?codigo='+document.cancelarFac.Pedido.value+'&delete=1', true);
+            xhr.send(null);
+        }
+        /*Métodos de Facturación*/
+
+        function descargarExcel(p){
+            //Creamos un Elemento Temporal en forma de enlace
+            var tmpElemento = document.createElement('a');
+            var tab=p;
+            // obtenemos la información desde el div que lo contiene en el html
+            // Obtenemos la información de la tabla
+            var data_type = 'data:application/vnd.ms-excel';
+            var tabla_div = document.getElementById(p);
+            var tabla_html = tabla_div.outerHTML.replace(/ /g, '%20');
+            tmpElemento.href = data_type + ', ' + tabla_html;
+            //Asignamos el nombre a nuestro EXCEL
+            tmpElemento.download = 'Archivo.xls';
+            // Simulamos el click al elemento creado para descargarlo
+            tmpElemento.click();
+        }
+    </script>
+</body>
+</html>

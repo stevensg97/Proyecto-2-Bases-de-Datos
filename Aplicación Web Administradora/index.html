@@ -411,8 +411,8 @@
                 <label for="Debito2"> Débito<br></label>
                 <input type="radio" name="tipo_tarjeta"  id="Credito2" value="Credito" onclick="saldo2();">
                 <label for="Credito2"> Crédito<br></label>
-                <input type="number" placeholder="Saldo Original" style="display: none;" name="SaldoOrg" required>
-                <input type="number" placeholder="Saldo Actual" style="display: none;" name="SaldoAct" required><br>Fecha de Expiración:<br>
+                <input type="number" placeholder="Saldo Original" style="display: none;" name="SaldoOrg" required><br>
+                <!--<input type="number" placeholder="Saldo Actual" style="display: none;" name="SaldoAct" required><br>-->Fecha de Expiración:<br>
                 <input type="text" placeholder="aaaa-mm-dd" name="Fecha" required>
                 <input type="number" placeholder="Código de Seguridad" name="Codigo" required>
                 <input type="button" value="Modificar" onclick="putTar();">
@@ -1661,7 +1661,7 @@
                 var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+document.modificarTar.Codigo.value+'&fechaexp='+document.modificarTar.Fecha.value+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
             }
             else{
-                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+codseg()+'&fechaexp='+fechaexp()+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&saldoorig='+document.modificarTar.SaldoOrg.value+'&saldoactual='+document.modificarTar.SaldoAct.value+'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
+                var datos = 'numero='+document.modificarTar.Numero.value+'&codigoseg='+document.modificarTar.Codigo.value+'&fechaexp='+fechaexp()+'&tipo='+document.modificarTar.tipo_tarjeta.value+'&saldoorig='+document.modificarTar.SaldoOrg.value+/*'&saldoactual='+document.modificarTar.SaldoAct.value+*/'&numcuenta='+document.modificarTar.Cuenta.value+'&put=1';//Datos a enviar en el request.
             }
             xhr.open('POST', IP+'tarjeta', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -2152,11 +2152,11 @@
 
         function saldo2(){
             if (document.modificarTar.tipo_tarjeta.value=='Debito') {
-                document.modificarTar.SaldoAct.style.display='none';
+                //document.modificarTar.SaldoAct.style.display='none';
                 document.modificarTar.SaldoOrg.style.display='none';
             }
             else{
-                document.modificarTar.SaldoAct.style.display='block';
+                //document.modificarTar.SaldoAct.style.display='block';
                 document.modificarTar.SaldoOrg.style.display='block';
             }
         }

@@ -636,7 +636,7 @@
         function pagoTarjeta() {
             var xhr = new XMLHttpRequest();
             
-            var datos = 'monto='+document.pagoTar.Monto.value+'&fecha='+fecha()+'&numtarjeta='+document.pagoTar.Numero.value;//Datos a enviar en el request.
+            var datos = 'monto='+document.pagoTar.Monto.value+/*'&fecha='+fecha()+*/'&numtarjeta='+document.pagoTar.Numero.value;//Datos a enviar en el request.
 
 
             xhr.open('POST', IP+'cancelartarjeta', true); //Indica el tipo y la dirección del request.
@@ -647,6 +647,7 @@
                 // do something to response
                 console.log(this.responseText);
                 alert(this.responseText);
+                alert(datos);
             };
             xhr.send(datos); //Se hace el envío del request.
         }
