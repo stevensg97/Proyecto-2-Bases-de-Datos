@@ -647,7 +647,6 @@
                 // do something to response
                 console.log(this.responseText);
                 alert(this.responseText);
-                alert(datos);
             };
             xhr.send(datos); //Se hace el envío del request.
         }
@@ -684,7 +683,6 @@
                 }
             }
             xhr.open('GET', IP+'compra?numtarjeta='+document.listadoTar.Numero.value+'&fechainicial='+document.listadoTar.fechaInicio.value+'&fechafinal='+document.listadoTar.fechaFinal.value, true);
-            alert(this.responseText);
             xhr.send(null);
         }
         /*Métodos de Tarjetas*/

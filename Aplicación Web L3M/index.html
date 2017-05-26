@@ -504,7 +504,7 @@
 
         /*document.getElementById('login').style.display='none';
         document.getElementById('menunav').style.display='block';*/
-        
+
         /*
         Función para mostrar los elementos de cada pestaña
         Parámetro: nombre de la pestaña a mostrar  
@@ -1405,7 +1405,7 @@
             }
             var datos;
             if (document.generarFac.card.value=='Si') {
-                datos ='cedula_cajero='+login.Usuario.value+'&codigo_sucursal='+login.Sucursal.value+'&productos='+productos+'&cantidad='+cantidad+'numerotarjeta='+document.generarFac.Numero.value+'&numeroseguridad='+document.generarFac.CodigoTar.value+'&fechaexpiracion='+document.generarFac.Fecha.value;
+                datos ='cedula_cajero='+login.Usuario.value+'&codigo_sucursal='+login.Sucursal.value+'&productos='+productos+'&cantidad='+cantidad+'&numerotarjeta='+document.generarFac.Numero.value+'&numeroseguridad='+document.generarFac.CodigoTar.value+'&fechaexpiracion='+document.generarFac.Fecha.value;
             }
             else{
                 datos ='cedula_cajero='+login.Usuario.value+'&codigo_sucursal='+login.Sucursal.value+'&productos='+productos+'&cantidad='+cantidad;
@@ -1417,6 +1417,7 @@
             xhr.onload = function () {
                 // do something to response
                 console.log(this.responseText);
+                alert(this.responseText);
             };
             xhr.send(datos);
             
